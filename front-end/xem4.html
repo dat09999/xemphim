@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Phim Hay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style16.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo"><span class="logo-icon">▶</span> PhimHay</div>
+    <input type="text" placeholder="Tìm kiếm Phim..." class="search" id="searchInput">
+    <div class="so1">
+        <img class="hello" src="image/a9.jpg" alt="">
+        <p class="ten">Đạt</p>
+    </div>
+</header>
+
+<nav class="menu">
+    <a href="index.html">TRANG CHỦ</a>
+    <a href="#" class="active">ADMIN</a>
+    <a href="#">PHIM LẺ</a>
+    <a href="#">PHIM BỘ</a>
+
+    <div class="dd">
+        <button class="dd-btn" type="button">
+            THỂ LOẠI
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dd-menu cols3">
+            <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
+            <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
+            <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
+            <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+        </div>
+    </div>
+
+    <div class="dd">
+        <button class="dd-btn" type="button">
+            QUỐC GIA
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dd-menu">
+            <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
+            <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+        </div>
+    </div>
+
+    <a href="#">CHIẾU RẠP</a>
+
+    <div class="dd">
+        <button class="dd-btn" type="button">
+            NĂM
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="dd-menu">
+            <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
+            <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+        </div>
+    </div>
+</nav>
+
+<main class="container">
+
+    <section class="so2">
+        <div class="so21">
+            <button class="Thong-ke sidebar-btn" type="button"><span class="btn-icon">📊</span> Thống Kê</button>
+
+            <div class="sidebar-group-label">THÊM MỚI</div>
+            <button class="btn-themphim sidebar-btn" type="button"><span class="btn-icon">➕</span> Thêm Phim</button>
+            <button class="btn-themtl sidebar-btn" type="button"><span class="btn-icon">🏷️</span> Thêm Thể Loại</button>
+            <button class="btn-themanh sidebar-btn" type="button"><span class="btn-icon">🖼</span> Thêm Ảnh</button>
+
+            <div class="sidebar-group-label">QUẢN LÝ</div>
+            <button class="quan-ly sidebar-btn" type="button"><span class="btn-icon">🎬</span> Quản Lý Phim</button>
+            <button class="quanly-user sidebar-btn" type="button"><span class="btn-icon">👥</span> Quản Lý User</button>
+        </div>
+    </section>
+
+    <aside class="content-area">
+
+        <!-- THỐNG KÊ -->
+        <div id="idthongke" class="thongke1">
+            <h2 class="panel-title">📊 Thống Kê Hệ Thống</h2>
+            <section class="stat-grid">
+                <div class="stat-card"><span class="stat-icon">🎬</span><div class="stat-info"><p class="stat-num">150</p><p class="stat-label">Số Lượng Phim</p></div></div>
+                <div class="stat-card"><span class="stat-icon">👥</span><div class="stat-info"><p class="stat-num">20</p><p class="stat-label">Số Lượng User</p></div></div>
+                <div class="stat-card"><span class="stat-icon">🏷️</span><div class="stat-info"><p class="stat-num">5</p><p class="stat-label">Số Thể Loại</p></div></div>
+                <div class="stat-card"><span class="stat-icon">💬</span><div class="stat-info"><p class="stat-num">200</p><p class="stat-label">Tổng Bình Luận</p></div></div>
+                <div class="stat-card wide"><span class="stat-icon">👁</span><div class="stat-info"><p class="stat-num">2,000</p><p class="stat-label">Số Lượt Xem</p></div></div>
+            </section>
+        </div>
+
+        <!-- THÊM PHIM -->
+        <div id="panel-themphim" class="thongke1">
+            <h2 class="panel-title">➕ Thêm Phim Mới</h2>
+            <form class="modal-form" id="formthem">
+                <div class="form-row"><label class="label">Tên Phim</label><input class="text1" type="text" placeholder="Nhập tên phim..."></div>
+                <div class="form-row"><label class="label">Nội Dung</label><input class="text11" type="text" placeholder="Mô tả nội dung..."></div>
+                <div class="form-row"><label class="label">Thể Loại</label><input class="text1" type="text" placeholder="Hành động, Kinh dị..."></div>
+                <div class="form-row"><label class="label">Diễn Viên</label><input class="text1" type="text" placeholder="Tên diễn viên..."></div>
+                <div class="form-row"><label class="label">Quốc Gia</label><input class="text1" type="text" placeholder="Việt Nam, Hàn Quốc..."></div>
+                <div class="form-row"><label class="label">Đạo Diễn</label><input class="text1" type="text" placeholder="Tên đạo diễn..."></div>
+                <div class="form-row"><label class="label">Link Video</label><input class="text1" type="text" placeholder="https://..."></div>
+            </form>
+            <button class="tp" type="button">✓ Lưu Phim</button>
+        </div>
+
+        <!-- THÊM THỂ LOẠI -->
+        <div id="panel-themtl" class="thongke1">
+            <h2 class="panel-title">🏷️ Thêm Thể Loại</h2>
+            <form class="formthemtl">
+                <div class="form-row-single"><label class="label11">Tên Thể Loại</label><input class="text111" type="text" placeholder="VD: Hành động"></div>
+            </form>
+            <button class="tp1" type="button">✓ Lưu Thể Loại</button>
+        </div>
+
+        <!-- THÊM ẢNH -->
+        <div id="panel-themanh" class="thongke1">
+            <h2 class="panel-title">🖼 Thêm Ảnh</h2>
+            <form id="formThemAnh" class="form-yellow">
+                <div class="form-row"><label class="label">Id của Phim</label><input class="text1" type="text" placeholder="Nhập ID phim..."/></div>
+                <div class="form-row">
+                    <label class="label">Kind</label>
+                    <div class="kind">
+                        <input type="radio" id="kindBanner" name="kind" value="banner" checked>
+                        <label for="kindBanner" class="kind-btn">Banner</label>
+                        <input type="radio" id="kindPoster" name="kind" value="poster">
+                        <label for="kindPoster" class="kind-btn">Poster</label>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label class="label">File ảnh</label>
+                    <div class="file-wrap">
+                        <input class="text1" id="fileName" type="text" placeholder="Chưa chọn file" readonly/>
+                        <input id="fileInput" type="file" accept="image/*" hidden>
+                        <button type="button" class="upload-btn" id="btnUpload">Chọn file</button>
+                    </div>
+                </div>
+                <button class="tp" type="submit">✓ Thêm Ảnh</button>
+            </form>
+        </div>
+
+        <!-- QUẢN LÝ PHIM: tab Danh sách phim + Danh sách thể loại -->
+        <div id="idquanly" class="quanly1">
+            <h2 class="panel-title">🎬 Quản Lý Phim</h2>
+
+            <!-- Tab bar -->
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="tab-dsphim">📋 Danh sách phim</button>
+                <button class="tab-btn" data-tab="tab-dstheloai">🏷️ Danh sách thể loại</button>
+            </div>
+
+            <!-- Tab: Danh sách phim -->
+            <div id="tab-dsphim" class="tab-panel show">
+                <div class="genre-bar">
+                    <button class="genre-btn active" data-genre="all">Tất cả</button>
+                    <button class="genre-btn" data-genre="hanh-dong">🔥 Hành động</button>
+                    <button class="genre-btn" data-genre="kinh-di">👻 Kinh dị</button>
+                    <button class="genre-btn" data-genre="tinh-cam">💕 Tình cảm</button>
+                    <button class="genre-btn" data-genre="bi-an">🌙 Bí ẩn</button>
+                    <button class="genre-btn" data-genre="hai-huoc">😂 Hài hước</button>
+                    <button class="genre-btn" data-genre="vien-tuong">🚀 Viễn tưởng</button>
+                </div>
+                <div class="result-info">
+                    <span id="resultCount">6 phim</span>
+                    <span id="genreLabel">• Tất cả thể loại</span>
+                </div>
+                <div class="movie-grid" id="movieGrid">
+                    <div class="poster" data-genre="hanh-dong" data-title="Avatar lửa và tro tàn" data-year="2025" data-country="Mỹ" data-director="James Cameron" data-cast="Sam Worthington, Zoe Saldana" data-desc="Hành trình tiếp theo của gia đình Sully trên Pandora, đối mặt với kẻ thù mới trong một thế giới đại dương kỳ diệu." data-img="image/a1.jpg">
+                        <div class="poster-thumb"><img src="image/a1.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div><span class="m-badge">HD</span></div>
+                        <div class="poster-info"><h4>Avatar lửa và tro tàn</h4><p>Hành động • 2025</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                    <div class="poster" data-genre="tinh-cam" data-title="Công chúa trở về" data-year="2025" data-country="Hàn Quốc" data-director="Park Jin-woo" data-cast="Park Min-young, Go Kyung-pyo" data-desc="Câu chuyện tình yêu lãng mạn giữa một nàng công chúa hiện đại và chàng hoàng tử đến từ thế giới khác." data-img="image/a2.jpg">
+                        <div class="poster-thumb"><img src="image/a2.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div></div>
+                        <div class="poster-info"><h4>Công chúa trở về</h4><p>Tình cảm • 2025</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                    <div class="poster" data-genre="kinh-di" data-title="Điên Cuồng 731" data-year="2025" data-country="Trung Quốc" data-director="Trần Khải Ca" data-cast="Ngô Kinh, Trương Nghệ Mưu" data-desc="Bộ phim kinh dị về những thí nghiệm bí ẩn và tàn bạo tại một cơ sở bí mật trong thời chiến." data-img="image/a3.jpg">
+                        <div class="poster-thumb"><img src="image/a3.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div><span class="m-badge new">MỚI</span></div>
+                        <div class="poster-info"><h4>Điên Cuồng 731</h4><p>Kinh dị • 2025</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                    <div class="poster" data-genre="bi-an" data-title="Mưa Đỏ" data-year="2025" data-country="Việt Nam" data-director="Nguyễn Quang Dũng" data-cast="Kaity Nguyễn, Kiều Minh Tuấn" data-desc="Một cơn mưa kỳ lạ đổ xuống thành phố kéo theo hàng loạt vụ mất tích bí ẩn không có lời giải." data-img="image/a4.jpg">
+                        <div class="poster-thumb"><img src="image/a4.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div></div>
+                        <div class="poster-info"><h4>Mưa Đỏ</h4><p>Bí ẩn • 2025</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                    <div class="poster" data-genre="tinh-cam" data-title="Thiên Thiên hữu hy" data-year="2025" data-country="Trung Quốc" data-director="Từ Tịnh Ba" data-cast="Tiêu Chiến, Vương Nhất Bác" data-desc="Câu chuyện tình yêu đẹp giữa hai người trẻ vượt qua mọi rào cản gia đình để đến với nhau." data-img="image/a5.jpg">
+                        <div class="poster-thumb"><img src="image/a5.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div></div>
+                        <div class="poster-info"><h4>Thiên Thiên hữu hy</h4><p>Tình cảm • 2025</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                    <div class="poster" data-genre="tinh-cam" data-title="Tại Sao Boss Cưới Tôi" data-year="2019" data-country="Trung Quốc" data-director="Lâm Lê Sinh" data-cast="Trầm Nguyệt, Vương Tử Dị" data-desc="Cô gái bình thường bất ngờ kết hôn với vị tổng giám đốc quyền lực và hành trình tìm kiếm tình yêu thật sự." data-img="image/a6.jpg">
+                        <div class="poster-thumb"><img src="image/a6.jpg" loading="lazy"/><div class="poster-overlay"><span class="play-btn">▶</span></div></div>
+                        <div class="poster-info"><h4>Tại Sao Boss Cưới Tôi</h4><p>Tình cảm • 2019</p></div>
+                        <div class="poster-actions"><button class="detail-btn" type="button">🔍 Chi tiết</button><button class="edit-btn" type="button">✏️ Sửa</button><button class="del-btn" type="button">🗑</button></div>
+                    </div>
+                </div>
+                <div id="noResult" class="no-result" style="display:none"><p>😕 Không có phim nào thuộc thể loại này</p></div>
+            </div>
+
+            <!-- Tab: Danh sách thể loại -->
+            <div id="tab-dstheloai" class="tab-panel">
+                <div class="theloai-grid">
+                    <div class="tl-item"><span class="tl-icon">🔥</span><span class="tl-name">Hành động</span><span class="tl-count">1 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                    <div class="tl-item"><span class="tl-icon">👻</span><span class="tl-name">Kinh dị</span><span class="tl-count">1 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                    <div class="tl-item"><span class="tl-icon">💕</span><span class="tl-name">Tình cảm</span><span class="tl-count">3 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                    <div class="tl-item"><span class="tl-icon">🌙</span><span class="tl-name">Bí ẩn</span><span class="tl-count">1 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                    <div class="tl-item"><span class="tl-icon">😂</span><span class="tl-name">Hài hước</span><span class="tl-count">0 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                    <div class="tl-item"><span class="tl-icon">🚀</span><span class="tl-name">Viễn tưởng</span><span class="tl-count">0 phim</span><div class="tl-actions"><button class="edit-btn" type="button">✏️</button><button class="del-btn" type="button">🗑</button></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUẢN LÝ USER -->
+        <div id="qlyuser" class="ql-user">
+            <h2 class="panel-title">👥 Quản Lý User</h2>
+            <div class="user-list">
+                <div class="user"><div class="user-info"><span class="user-id">#1</span><span class="user-name">Dương Văn Đạt</span><span class="user-role">Admin</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
+                <div class="user"><div class="user-info"><span class="user-id">#2</span><span class="user-name">Nguyễn Văn A</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
+                <div class="user"><div class="user-info"><span class="user-id">#3</span><span class="user-name">Trần Thị B</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
+                <div class="user"><div class="user-info"><span class="user-id">#4</span><span class="user-name">Lê Văn C</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
+            </div>
+        </div>
+
+
+    </aside>
+</main>
+
+<!-- MODAL CHI TIẾT PHIM -->
+<div id="detailModal" class="detail-overlay">
+    <div class="detail-modal">
+        <button class="detail-close" id="closeDetail">✕</button>
+        <div class="detail-content">
+            <div class="detail-poster">
+                <img id="detailImg" src="" alt=""/>
+            </div>
+            <div class="detail-info">
+                <h2 id="detailTitle"></h2>
+                <div class="detail-meta">
+                    <span class="meta-tag" id="detailYear"></span>
+                    <span class="meta-tag" id="detailCountry"></span>
+                </div>
+                <div class="detail-row"><span class="detail-label">🎬 Đạo diễn</span><span id="detailDirector"></span></div>
+                <div class="detail-row"><span class="detail-label">🌟 Diễn viên</span><span id="detailCast"></span></div>
+                <div class="detail-row desc-row"><span class="detail-label">📝 Nội dung</span><span id="detailDesc"></span></div>
+                <div class="detail-btns">
+                    <button class="watch-btn" type="button">▶ Xem Phim</button>
+                    <button class="edit-btn-modal" type="button">✏️ Chỉnh sửa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="tieude">
+    <div class="info6">
+        <span class="logo-icon">▶</span>
+        <h2>PhimHay Admin</h2>
+        <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
+    </div>
+</footer>
+
+<script>
+// ===== DROPDOWN NAVBAR =====
+document.querySelectorAll(".dd").forEach(function(dd) {
+    dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+        e.stopPropagation();
+        var wasOpen = dd.classList.contains("open");
+        document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+        if (!wasOpen) dd.classList.add("open");
+    });
+});
+document.addEventListener("click", function() {
+    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+});
+
+// ===== PANEL SWITCHING =====
+const allPanels = ["idthongke","panel-themphim","panel-themtl","panel-themanh","idquanly","qlyuser"]
+    .map(id => document.getElementById(id));
+
+function showPanel(id) {
+    allPanels.forEach(p => p && p.classList.remove("show"));
+    document.getElementById(id).classList.add("show");
+    document.querySelectorAll(".sidebar-btn").forEach(b => b.classList.remove("active-btn"));
+}
+
+document.querySelector(".Thong-ke").addEventListener("click",    () => showPanel("idthongke"));
+document.querySelector(".btn-themphim").addEventListener("click",() => showPanel("panel-themphim"));
+document.querySelector(".btn-themtl").addEventListener("click",  () => showPanel("panel-themtl"));
+document.querySelector(".btn-themanh").addEventListener("click", () => showPanel("panel-themanh"));
+document.querySelector(".quan-ly").addEventListener("click",     () => showPanel("idquanly"));
+document.querySelector(".quanly-user").addEventListener("click", () => showPanel("qlyuser"));
+
+// Upload file
+document.getElementById("btnUpload").addEventListener("click", () => document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", function() {
+    document.getElementById("fileName").value = this.files[0]?.name || "";
+});
+
+// ===== TABS trong Quản Lý Phim =====
+document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+        document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("show"));
+        this.classList.add("active");
+        document.getElementById(this.dataset.tab).classList.add("show");
+    });
+});
+
+// ===== FILTER BY GENRE =====
+const movies = document.querySelectorAll("#movieGrid .poster");
+const noResult = document.getElementById("noResult");
+const resultCount = document.getElementById("resultCount");
+const genreLabel = document.getElementById("genreLabel");
+
+const genreNames = {
+    "all":"Tất cả thể loại","hanh-dong":"Hành động","kinh-di":"Kinh dị",
+    "tinh-cam":"Tình cảm","bi-an":"Bí ẩn","hai-huoc":"Hài hước","vien-tuong":"Viễn tưởng"
+};
+
+document.querySelectorAll(".genre-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+        document.querySelectorAll(".genre-btn").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        const genre = this.dataset.genre;
+        let count = 0;
+        movies.forEach(m => {
+            const match = genre === "all" || m.dataset.genre === genre;
+            m.style.display = match ? "block" : "none";
+            if (match) count++;
+        });
+        resultCount.textContent = count + " phim";
+        genreLabel.textContent  = "• " + genreNames[genre];
+        noResult.style.display  = count === 0 ? "block" : "none";
+    });
+});
+
+// ===== SEARCH =====
+document.getElementById("searchInput").addEventListener("input", function() {
+    const q = this.value.toLowerCase().trim();
+    let count = 0;
+    movies.forEach(m => {
+        const match = m.dataset.title.toLowerCase().includes(q);
+        m.style.display = match ? "block" : "none";
+        if (match) count++;
+    });
+    resultCount.textContent = count + " phim";
+    genreLabel.textContent  = q ? '• Tìm: "' + this.value + '"' : "• Tất cả thể loại";
+    noResult.style.display  = count === 0 ? "block" : "none";
+    if (q) document.querySelectorAll(".genre-btn").forEach(b => b.classList.remove("active"));
+});
+
+// ===== MODAL CHI TIẾT =====
+const detailModal = document.getElementById("detailModal");
+document.querySelectorAll(".detail-btn").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+        e.preventDefault();
+        const p = this.closest(".poster");
+        document.getElementById("detailImg").src              = p.dataset.img;
+        document.getElementById("detailTitle").textContent    = p.dataset.title;
+        document.getElementById("detailYear").textContent     = p.dataset.year;
+        document.getElementById("detailCountry").textContent  = p.dataset.country;
+        document.getElementById("detailDirector").textContent = p.dataset.director;
+        document.getElementById("detailCast").textContent     = p.dataset.cast;
+        document.getElementById("detailDesc").textContent     = p.dataset.desc;
+        detailModal.classList.add("show");
+        document.body.style.overflow = "hidden";
+    });
+});
+document.getElementById("closeDetail").addEventListener("click", closeDetail);
+detailModal.addEventListener("click", e => { if (e.target === detailModal) closeDetail(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetail(); });
+function closeDetail() {
+    detailModal.classList.remove("show");
+    document.body.style.overflow = "";
+}
+</script>
+</body>
+</html>

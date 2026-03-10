@@ -1,0 +1,133 @@
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background-color: #3A3A3A;
+  color: white;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  background:#222;
+  padding: 15px 30px;
+}
+
+.logo{
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search{
+  width: 300px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+.auth button{
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 10px;
+  border: none;
+}
+
+.login{
+  color: white;
+  background-color: red;
+}
+
+.Signup{
+  color: white;
+  background-color: red;
+}
+
+.menu{
+  display: flex;
+  align-items: center;
+}
+
+.menu a{
+  flex: 1;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color:white;
+  background-color:#2A2D30;
+}
+.dropdown{
+  position: relative;
+  flex: 1;
+}
+
+/* nút dropdown nhìn giống link menu */
+.dropbtn{
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  cursor: pointer;
+  background-color: #2A2D30;
+  color: white;
+  font: inherit;
+}
+
+.dropbtn:hover{
+  color: red;
+}
+
+/* khung xổ xuống */
+.dropdown-content{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background: #111;
+  min-width: 220px;
+  padding: 10px;
+  z-index: 9999;
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+/* link trong dropdown */
+.dropdown-content a{
+  display: block;
+  padding: 8px 10px;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dropdown-content a:hover{
+  background: #222;
+}
+
+/* hover thì hiện dropdown */
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+
+/* THỂ LOẠI nhiều cột */
+.dropdown-content.grid{
+  min-width: 420px;
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.dropdown:hover .dropdown-content.grid{
+  display: grid;
+}
+
+.menu a:hover{
+  color:red;
+}
+
+.blank{
+  height: 5px;
+  background: #ffd400;
+}
+#reset-form { display: none; }
+#reset-form.show { display: block; }
+#email-form.show { display: block; }

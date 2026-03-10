@@ -1,0 +1,2 @@
+if (data.path) document.getElementById("anh1").src = data.path;
+       if (data.path) document.getElementById("anh11").src = data.path;

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phim hay</title>
+       <link rel="stylesheet" href="style4.css">
+</head>
+<body class="body">
+  <header class="header">
+    <div class="logo">Phim hay</div>
+    <input type="text" placeholder="Tìm kiếm Phim" class="search" />
+    <div class="auth">
+      <button class="login" type="button">Đăng Nhập</button>
+      <a href="xem5.html" class="Signup">Đăng Ký</a>
+    </div>
+  </header>
+  <div class="blank">
+    
+  </div>
+  <nav class="menu">
+   <a href="#">PHIM HAY</a>
+    <a href="#">PHIM MỚI</a>
+    <a href="xem6.html">PHIM LẺ</a>
+
+    <a href="#">THỂ LOẠI</a>
+    <a href="#">QUỐC GIA</a>
+    <a href="#">PHIM CHIẾU RẠP</a>
+    <a href="#">NĂM</a>
+  </nav>
+  <div class="hello1">
+
+  </div>
+  <div class="dk">
+    <h2> Đăng Ký</h2>
+
+  </div>
+  <form id="login-form" class="tt">
+     <div class="tt1">
+        <label class="label1">Username  </label>
+        <input  id="username" class="input" type="text" placeholder="" required />
+
+     </div>
+     <div class="tt11">
+        <label class="label1">Email     </label>
+        <input  id="email" class="input" type="text" placeholder="" required />
+
+     </div>
+     <div class="tt12">
+        <label class="label1">Password     </label>
+        <input  id="password" class="input" type="password" placeholder="" required />
+
+     </div>
+     <div class="tt13">
+        <label class="label1">Họ và Tên     </label>
+        <input id="fullname" class="input" type="text" placeholder="" required />
+
+     </div>
+     <div class="tt13">
+        <label class="label1">Số Điện Thoại    </label>
+        <input id="sdt" class="input" type="text" placeholder="" required />
+
+     </div>
+     <div class="tt2">
+        <div class="tt211">
+           <label class="label1">Giới Tính    </label>
+          <input  id="gender" class="input" type="text" placeholder="" required />
+        </div>
+        <div class="tt212">
+           <label class="label1">Ngày Sinh    </label>
+          <input  id="ns"class="input" type="date" placeholder="" required />
+        </div>
+
+     </div>
+     <div class="dk11">
+
+     
+    <button  type="submit">Đăng Ký</button>
+    </div>
+
+
+
+
+  </form>
+  <section class="tieude">
+    <div class="info6">
+        <h2>Phim Hay</h2>
+        <p>Web Được làm bởi Dương Văn Đạt</p>
+    </div>
+ </section>
+ <script>
+  const API_BASE = "http://localhost:8080";
+
+  document.getElementById("login-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const phone = document.getElementById("sdt").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value; // nên để input type="password"
+    const fullName = document.getElementById("fullname").value.trim();
+    const gender = document.getElementById("gender").value.trim(); // nếu backend là Enum thì phải đúng giá trị
+    const dateOfBirth = document.getElementById("ns").value; // "yyyy-MM-dd"
+
+    try {
+      const res = await fetch(`${API_BASE}/api/add`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, gender, phone, fullName, dateOfBirth })
+      });
+
+      console.log("status:", res.status);
+      const text = await res.text();
+      console.log("response:", text);
+
+      if (!res.ok) {
+        alert("Đăng ký thất bại: " + text);
+        return;
+      }
+
+      alert("Đăng ký thành công!");
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error(err);
+      alert("Không kết nối được backend.");
+    }
+  });
+</script></body>
+</html>

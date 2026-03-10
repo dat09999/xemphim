@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xem phim - PhimHay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
+  <form class="searchbar" action="#" role="search">
+    <span class="search-icon">🔍</span>
+    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+  </form>
+  <div class="auth" id="auth">
+    <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
+    <a class="btn btn-primary" href="xem5.html">Đăng ký</a>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-link" href="index.html">Trang chủ</a>
+  <a class="nav-link" href="#">Phim mới</a>
+  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Thể loại
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu cols3">
+      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
+      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
+      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
+      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+    </div>
+  </div>
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Quốc gia
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
+      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+    </div>
+  </div>
+  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Năm
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
+      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="page">
+  <div class="player-layout">
+
+    <!-- CỘT TRÁI -->
+    <div class="player-left">
+
+      <!-- TIÊU ĐỀ -->
+      <div class="player-title-bar">
+        <h1 id="movieTitle">Đang tải...</h1>
+        <span class="view-count">👁 <span id="viewCount">...</span> lượt xem</span>
+      </div>
+
+      <!-- VIDEO PLAYER -->
+      <div class="video-wrap">
+        <video id="videoPlayer" controls poster="image/a8.jpg">
+          <source src="" type="video/mp4" />
+          Trình duyệt không hỗ trợ video.
+        </video>
+      </div>
+
+      <!-- DIỄN VIÊN & ĐẠO DIỄN -->
+      <section class="player-card">
+        <h2 class="card-title">🎭 Diễn viên & Đạo diễn</h2>
+        <div class="cast-row" id="castList">
+          <p style="color:var(--sub);font-size:14px;">Đang tải...</p>
+        </div>
+      </section>
+
+      <!-- BÌNH LUẬN -->
+      <section class="player-card">
+        <h2 class="card-title">💬 Bình luận</h2>
+        <div class="comment-box">
+          <textarea class="comment-input" placeholder="Viết bình luận của bạn..."></textarea>
+          <button class="btn-comment">Gửi</button>
+        </div>
+        <div class="comment-list" id="commentList">
+          <div class="comment-item">
+            <div class="comment-avatar">D</div>
+            <div class="comment-content">
+              <span class="comment-name">Dương Văn Hóa</span>
+              <p>Phim hay tuyệt!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- CỘT PHẢI: XEM NHIỀU NHẤT -->
+    <aside class="player-sidebar">
+      <div class="sidebar-card">
+        <h3 class="sidebar-title">👁 Xem nhiều nhất</h3>
+        <div class="rank-list">
+          <a class="rank-item" href="#"><span class="rank-no t1">1</span><img src="image/a1.jpg" alt=""/><div class="rank-info"><h4>Avatar lửa và tro tàn</h4><p>2025</p><span class="rank-meta">👁 9,919 lượt</span></div></a>
+          <a class="rank-item" href="#"><span class="rank-no t2">2</span><img src="image/a2.jpg" alt=""/><div class="rank-info"><h4>Công chúa trở về</h4><p>2025</p><span class="rank-meta">👁 8,000 lượt</span></div></a>
+          <a class="rank-item" href="#"><span class="rank-no t3">3</span><img src="image/a3.jpg" alt=""/><div class="rank-info"><h4>Điên Cuồng 731</h4><p>2025</p><span class="rank-meta">👁 4,000 lượt</span></div></a>
+          <a class="rank-item" href="#"><span class="rank-no">4</span><img src="image/a4.jpg" alt=""/><div class="rank-info"><h4>Bé Ghẻ Ma Cung</h4><p>2024</p><span class="rank-meta">👁 3,500 lượt</span></div></a>
+          <a class="rank-item" href="#"><span class="rank-no">5</span><img src="image/a5.jpg" alt=""/><div class="rank-info"><h4>Người Cai Ngục</h4><p>2023</p><span class="rank-meta">👁 2,800 lượt</span></div></a>
+          <a class="rank-item" href="#"><span class="rank-no">6</span><img src="image/a6.jpg" alt=""/><div class="rank-info"><h4>Tại sao Boss muốn cưới tôi</h4><p>2019</p><span class="rank-meta">👁 2,100 lượt</span></div></a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="brand-icon">▶</span><h3>PhimHay</h3></div>
+    <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
+    <p class="footer-copy">© 2025 PhimHay. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const movieId = params.get("id");
+if (!movieId) window.location.href = "index.html";
+
+const BASE_URL = "http://localhost:8080";
+
+// ========== LOAD USER ==========
+async function loadme() {
+  const token = localStorage.getItem("accessToken");
+  if (!token) return;
+  try {
+    const res = await fetch(`${BASE_URL}/api/me`, { headers: { "Authorization": `Bearer ${token}` } });
+    if (!res.ok) { localStorage.removeItem("accessToken"); return; }
+    const me = await res.json();
+    let avatarUrl = "image/a9.jpg";
+    try {
+      const r = await fetch(`${BASE_URL}/movies/image/user`, { headers: { "Authorization": `Bearer ${token}` } });
+      if (r.ok) avatarUrl = (await r.text()).trim() || avatarUrl;
+    } catch (e) {}
+    document.getElementById("auth").innerHTML = `
+      <a href="xem1.html" class="user-info">
+        <img src="${avatarUrl}" class="user-avatar" alt="User"/>
+        <span class="user-name">${me.fullname}</span>
+      </a>`;
+  } catch (err) { console.error(err); }
+}
+
+// ========== LOAD THÔNG TIN PHIM + CAST ==========
+async function loadMovie() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/${movieId}`);
+    if (!res.ok) return;
+    const m = await res.json();
+
+    document.getElementById("movieTitle").textContent = m.name || "...";
+    document.title = `${m.name || "Xem phim"} - PhimHay`;
+
+    // Render cast
+    const people = m.people || [];
+    if (people.length === 0) {
+      document.getElementById("castList").innerHTML = "<p style='color:var(--sub);font-size:14px;'>Chưa có thông tin.</p>";
+      return;
+    }
+    document.getElementById("castList").innerHTML = people.map((person, i) => `
+      <a href="people.html?id=${person.id}" class="cast-card">
+        <div class="cast-avatar">${person.name.charAt(0).toUpperCase()}</div>
+        <span class="cast-name">${name}</span>
+        <span class="cast-role">${i === 0 ? 'Director' : 'Cast'}</span>
+      </a>`).join("");
+  } catch (err) { console.error(err); }
+}
+
+// ========== LOAD VIDEO ==========
+async function loadVideo() {
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=VIDEO`);
+    if (res.ok) {
+      const url = (await res.text()).trim();
+      if (url) {
+        const player = document.getElementById("videoPlayer");
+        player.src = url;
+        player.load();
+      }
+    }
+  } catch (err) { console.error(err); }
+}
+
+// ========== LOAD POSTER ==========
+async function loadPoster() {
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=POSTER`);
+    if (res.ok) {
+      const url = (await res.text()).trim();
+      if (url) document.getElementById("videoPlayer").poster = url;
+    }
+  } catch (err) { console.error(err); }
+}
+
+// ========== DROPDOWN ==========
+document.querySelectorAll(".dd").forEach(function(dd) {
+  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+    e.stopPropagation();
+    var wasOpen = dd.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+    if (!wasOpen) dd.classList.add("open");
+  });
+});
+document.addEventListener("click", function() {
+  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+});
+
+// ========== KHỞI ĐỘNG ==========
+loadme();
+loadMovie();
+loadVideo();
+loadPoster();
+</script>
+</body>
+</html>

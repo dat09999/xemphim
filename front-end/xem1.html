@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tài Khoản - PhimHay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
+  <form class="searchbar" action="#" role="search">
+    <span class="search-icon">🔍</span>
+    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+  </form>
+  <div class="auth" id="auth">
+    <div class="user-info">
+      <img id="headerAvatar" class="user-avatar" src="image/a9.jpg" alt="User"/>
+      <span class="user-name" id="headerName">...</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-link" href="index.html">Trang chủ</a>
+  <a class="nav-link" href="#">Phim mới</a>
+  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Thể loại
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu cols3">
+      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
+      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
+      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
+      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+    </div>
+  </div>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Quốc gia
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
+      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+    </div>
+  </div>
+
+  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Năm
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
+      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="profile-page">
+
+  <!-- SIDEBAR -->
+  <aside class="profile-sidebar">
+    <img id="sideAvatar" class="profile-avatar" src="image/a9.jpg" alt="Avatar"/>
+    <p class="profile-name" id="sideName">...</p>
+    <p class="profile-email" id="sideEmail">...</p>
+    <button class="change-avatar-btn" id="btnThayAnh">📷 Thay đổi ảnh</button>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-nav">
+      <button class="sidebar-nav-btn active" data-tab="thongtin">👤 Thông tin</button>
+      <button class="sidebar-nav-btn" data-tab="baomat">🔒 Bảo mật</button>
+      <button class="sidebar-nav-btn" data-tab="lichsu">🎬 Lịch sử xem</button>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <button class="logout-btn" id="btnLogout">🚪 Đăng xuất</button>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="profile-main">
+
+    <!-- TAB: THÔNG TIN -->
+    <div class="profile-card tab-panel show" id="tab-thongtin">
+      <h2 class="card-title">👤 Thông tin cá nhân</h2>
+      <div class="info-grid">
+        <div class="info-row">
+          <span class="info-label">Họ và tên</span>
+          <span class="info-value" id="infoName">...</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Email</span>
+          <span class="info-value" id="infoEmail">...</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Số điện thoại</span>
+          <span class="info-value" id="infoPhone">...</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Ngày sinh</span>
+          <span class="info-value" id="infoDob">...</span>
+        </div>
+        <div class="info-row">
+          <span class="info-label">Giới tính</span>
+          <span class="info-value" id="infoGender">...</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: BẢO MẬT -->
+    <div class="profile-card tab-panel" id="tab-baomat">
+      <h2 class="card-title">🔒 Bảo mật tài khoản</h2>
+
+      <!-- Thay ảnh -->
+      <!-- <div class="security-section">
+        <div class="security-row">
+          <div>
+            <p class="security-label">Ảnh đại diện</p>
+            <p class="security-value">Cập nhật ảnh của bạn</p>
+          </div>
+          <button class="sec-btn" id="btnToggleAnh">Thay đổi</button>
+        </div>
+        <div class="sec-form" id="formAnhWrap" style="display:none">
+          <form id="formAnh">
+            <div class="form-field">
+              <label>Chọn ảnh</label>
+              <input class="form-input" id="fileAnh" type="file" accept="image/*"/>
+            </div>
+            <button class="form-submit" type="submit">Tải lên</button>
+          </form>
+        </div>
+      </div> -->
+
+      <!-- Thay Gmail -->
+      <div class="security-section">
+        <div class="security-row">
+          <div>
+            <p class="security-label">Email đăng nhập</p>
+            <p class="security-value" id="secEmail">...</p>
+          </div>
+          <button class="sec-btn" id="btnToggleGmail">Thay đổi</button>
+        </div>
+        <div class="sec-form" id="formGmailWrap" style="display:none">
+          <form id="formGmail">
+            <div class="form-field">
+              <label>Gmail mới</label>
+              <input class="form-input" id="newGmail" type="text" placeholder="Nhập gmail mới..." autocomplete="off"/>
+            </div>
+            <div class="form-field">
+              <label>Mật khẩu xác nhận</label>
+              <input class="form-input" id="passGmail" type="password" placeholder="Nhập mật khẩu..." autocomplete="new-password"/>
+            </div>
+            <button class="form-submit" type="submit">Xác nhận thay đổi</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Đổi mật khẩu -->
+      <div class="security-section">
+        <div class="security-row">
+          <div>
+            <p class="security-label">Mật khẩu</p>
+            <p class="security-value">••••••••</p>
+          </div>
+          <button class="sec-btn" id="btnToggleMK">Thay đổi</button>
+        </div>
+        <div class="sec-form" id="formMKWrap" style="display:none">
+          <form id="formMK">
+            <div class="form-field">
+              <label>Mật khẩu cũ</label>
+              <input class="form-input" id="mkCu" type="password" placeholder="Nhập mật khẩu cũ..."/>
+            </div>
+            <div class="form-field">
+              <label>Mật khẩu mới</label>
+              <input class="form-input" id="mkMoi" type="password" placeholder="Nhập mật khẩu mới..."/>
+            </div>
+            <div class="form-field">
+              <label>Xác nhận mật khẩu mới</label>
+              <input class="form-input" id="mkMoi2" type="password" placeholder="Nhập lại mật khẩu mới..."/>
+            </div>
+            <button class="form-submit" type="submit">Xác nhận thay đổi</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB: LỊCH SỬ -->
+    <div class="profile-card tab-panel" id="tab-lichsu">
+      <h2 class="card-title">🎬 Lịch sử xem phim</h2>
+      <p style="color:var(--sub);">Chức năng đang phát triển...</p>
+    </div>
+
+    <!-- POPUP THAY ẢNH TỪ SIDEBAR -->
+    <div class="profile-card" id="popupAnhSidebar" style="display:none">
+      <h2 class="card-title">📷 Thay đổi ảnh đại diện</h2>
+      <form id="formAnhSidebar">
+        <div class="form-field">
+          <label>Chọn ảnh mới</label>
+          <input class="form-input" id="fileAnhSidebar" type="file" accept="image/*"/>
+        </div>
+        <button class="form-submit" type="submit">Tải lên</button>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="brand-icon">▶</span><h3>PhimHay</h3></div>
+    <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
+    <p class="footer-copy">© 2025 PhimHay. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+const API_BASE = "http://localhost:8080";
+
+function formatVNDate(isoString) {
+  if (!isoString) return "...";
+  const d = new Date(isoString);
+  if (isNaN(d)) return "...";
+  return d.toLocaleDateString("vi-VN");
+}
+
+// ========== LOAD USER ==========
+async function loadme() {
+  const token = localStorage.getItem("accessToken");
+  if (!token) { window.location.href = "index.html"; return; }
+  try {
+    const res = await fetch(`${API_BASE}/api/me`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (!res.ok) {
+      localStorage.removeItem("accessToken");
+      window.location.href = "index.html";
+      return;
+    }
+    const me = await res.json();
+    document.getElementById("headerName").textContent = me.fullname || "";
+    document.getElementById("sideName").textContent = me.fullname || "";
+    document.getElementById("sideEmail").textContent = me.email || "";
+    document.getElementById("infoName").textContent = me.fullname || "...";
+    document.getElementById("infoEmail").textContent = me.email || "...";
+    document.getElementById("infoPhone").textContent = me.phone || "...";
+    document.getElementById("infoDob").textContent = formatVNDate(me.dateofbirth);
+    document.getElementById("infoGender").textContent = me.gender || "...";
+    document.getElementById("secEmail").textContent = me.email || "...";
+  } catch (err) { console.error(err); }
+}
+
+// ========== LOAD ẢNH ==========
+async function loadAnh() {
+  const token = localStorage.getItem("accessToken");
+  if (!token) return;
+  try {
+    const res = await fetch(`${API_BASE}/movies/image/user`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (!res.ok) return;
+    const url = (await res.text()).trim();
+    if (url) {
+      document.getElementById("headerAvatar").src = url;
+      document.getElementById("sideAvatar").src = url;
+    }
+  } catch (err) { console.error(err); }
+}
+
+// ========== UPLOAD ẢNH ==========
+async function uploadAnh(fileInput) {
+  const token = localStorage.getItem("accessToken");
+  const file = fileInput.files[0];
+  if (!file) { alert("Bạn chưa chọn file"); return; }
+  const fd = new FormData();
+  fd.append("file", file);
+  try {
+    const res = await fetch(`${API_BASE}/movies/upload/user`, {
+      headers: { "Authorization": `Bearer ${token}` },
+      method: "POST", body: fd
+    });
+    if (!res.ok) { alert("Thay đổi ảnh không thành công"); return; }
+    alert("Thay đổi ảnh thành công!");
+    loadAnh();
+  } catch (err) { console.error(err); alert("Không kết nối được backend."); }
+}
+
+// ========== TABS ==========
+document.querySelectorAll(".sidebar-nav-btn[data-tab]").forEach(btn => {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll(".sidebar-nav-btn").forEach(b => b.classList.remove("active"));
+    this.classList.add("active");
+    document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("show"));
+    document.getElementById("tab-" + this.dataset.tab).classList.add("show");
+    document.getElementById("popupAnhSidebar").style.display = "none";
+  });
+});
+
+// ========== THAY ẢNH SIDEBAR ==========
+document.getElementById("btnThayAnh").addEventListener("click", function() {
+  const popup = document.getElementById("popupAnhSidebar");
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("show"));
+  document.querySelectorAll(".sidebar-nav-btn").forEach(b => b.classList.remove("active"));
+  popup.style.display = popup.style.display === "none" ? "block" : "none";
+});
+document.getElementById("formAnhSidebar").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  await uploadAnh(document.getElementById("fileAnhSidebar"));
+});
+
+// ========== THAY ẢNH (tab bảo mật) ==========
+
+
+// ========== THAY GMAIL ==========
+document.getElementById("btnToggleGmail").addEventListener("click", function() {
+  const wrap = document.getElementById("formGmailWrap");
+  wrap.style.display = wrap.style.display === "none" ? "block" : "none";
+});
+document.getElementById("formGmail").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const token = localStorage.getItem("accessToken");
+  const newemail = document.getElementById("newGmail").value;
+  const password = document.getElementById("passGmail").value;
+  try {
+    const res = await fetch(`${API_BASE}/reset/gmail`, {
+      headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+      method: "PUT",
+      body: JSON.stringify({ newemail, password })
+    });
+    if (!res.ok) { alert("Không thành công"); return; }
+    alert("Thay đổi gmail thành công!");
+    localStorage.removeItem("accessToken");
+    window.location.href = "index.html";
+  } catch (err) { console.error(err); alert("Backend bị lỗi"); }
+});
+
+// ========== ĐỔI MẬT KHẨU ==========
+document.getElementById("btnToggleMK").addEventListener("click", function() {
+  const wrap = document.getElementById("formMKWrap");
+  wrap.style.display = wrap.style.display === "none" ? "block" : "none";
+});
+document.getElementById("formMK").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  const mkMoi = document.getElementById("mkMoi").value;
+  const mkMoi2 = document.getElementById("mkMoi2").value;
+  if (mkMoi !== mkMoi2) { alert("Mật khẩu mới không khớp!"); return; }
+  const token = localStorage.getItem("accessToken");
+  const password = document.getElementById("mkCu").value;
+  const NewPassword = mkMoi;
+  try {
+    const res = await fetch(`${API_BASE}/auth/change-password`, {
+      headers: { "Authorization": `Bearer ${token}`, "Content-Type": "application/json" },
+      method: "POST",
+      body: JSON.stringify({password, NewPassword})
+    });
+    if (!res.ok) { alert("Đổi mật khẩu không thành công"); return; }
+    alert("Đổi mật khẩu thành công!");
+    document.getElementById("formMKWrap").style.display = "none";
+    document.getElementById("formMK").reset();
+  } catch (err) { console.error(err); alert("Không kết nối được backend."); }
+});
+
+// ========== ĐĂNG XUẤT ==========
+document.getElementById("btnLogout").addEventListener("click", function() {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("email");
+  window.location.href = "index.html";
+});
+
+// ========== DROPDOWN ==========
+document.querySelectorAll(".dd").forEach(function(dd) {
+  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+    e.stopPropagation();
+    var wasOpen = dd.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+    if (!wasOpen) dd.classList.add("open");
+  });
+});
+document.addEventListener("click", function() {
+  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+});
+
+// ========== KHỞI ĐỘNG ==========
+loadme();
+loadAnh();
+</script>
+</body>
+</html>

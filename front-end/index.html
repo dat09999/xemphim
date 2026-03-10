@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phim Hay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">▶</span>PhimHay</a>
+  <form class="searchbar" action="#" role="search">
+    <span class="search-icon">🔍</span>
+    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+  </form>
+  <div class="auth" id="auth">
+    <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
+    <a class="btn btn-primary" href="xem5.html">Đăng ký</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <a class="nav-link active" href="#">Trang chủ</a>
+  <a class="nav-link" href="#">Phim mới</a>
+  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Thể loại
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu cols3">
+      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
+      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
+      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
+      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+    </div>
+  </div>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Quốc gia
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
+      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+    </div>
+  </div>
+
+  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+
+  <div class="dd">
+    <button class="dd-btn" type="button">
+      Năm
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="dd-menu">
+      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
+      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+
+  <section class="strip">
+    <div class="sec-head">
+      <h2 class="sec-title"><span class="hot-dot"></span> Đang Hot</h2>
+    </div>
+    <div class="strip-track" id="hotMovies">
+      <p style="color:#aaa;padding:1rem;">Đang tải phim nổi bật...</p>
+    </div>
+  </section>
+
+  <section class="layout">
+    <a class="hero-banner" href="#">
+      <img src="image/a6.jpg" alt="Boss"/>
+      <div class="hero-overlay">
+        <span class="hero-badge">Phim bộ</span>
+        <h2>Tại sao Boss muốn cưới tôi</h2>
+        <p class="hero-sub">Well-intended Love • 2019</p>
+        <button class="hero-playbtn">▶ Xem ngay</button>
+      </div>
+    </a>
+    <aside class="sidebar">
+      <div class="sidebar-head"><h3>👁 Xem nhiều nhất</h3></div>
+      <a class="rank-item" href="#"><span class="rank-no t1">1</span><img src="image/a1.jpg"/><div class="rank-info"><h4>Avatar lửa và tro tàn</h4><p>Avatar: Fire and Ash • 2025</p><span class="rank-meta">👁 9,919 lượt</span></div></a>
+      <a class="rank-item" href="#"><span class="rank-no t2">2</span><img src="image/a2.jpg"/><div class="rank-info"><h4>Công chúa trở về</h4><p>Back of công chúa • 2025</p><span class="rank-meta">👁 8,000 lượt</span></div></a>
+      <a class="rank-item" href="#"><span class="rank-no t3">3</span><img src="image/a3.jpg"/><div class="rank-info"><h4>Điên Cuồng 731</h4><p>Crazy 731 • 2025</p><span class="rank-meta">👁 4,000 lượt</span></div></a>
+    </aside>
+  </section>
+
+  <section class="section">
+    <div class="sec-head">
+      <h2>🎬 Phim lẻ</h2>
+      <a class="more" href="xem6.html">Xem tất cả →</a>
+    </div>
+    <div class="grid" id="newestMovies">
+      <p style="color:#aaa;padding:1rem;">Đang tải phim...</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head">
+      <h2>🇨🇳 Phim Trung Quốc</h2>
+      <a class="more" href="#">Xem tất cả →</a>
+    </div>
+    <div class="grid" id="chinaMovies">
+      <p style="color:#aaa;padding:1rem;">Đang tải phim Trung Quốc...</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="brand-icon">▶</span><h3>PhimHay</h3></div>
+    <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
+    <p class="footer-copy">© 2025 PhimHay. All rights reserved.</p>
+  </div>
+</footer>
+
+<div id="loginModal" class="modal-overlay">
+  <div class="modal" role="dialog" aria-modal="true">
+    <button class="modal-close" id="closeLogin">✕</button>
+    <div class="modal-header">
+      <span class="modal-brand-icon">▶</span>
+      <h2 class="modal-title">Đăng Nhập</h2>
+    </div>
+    <p class="modal-desc">Xem phim chất lượng cao không giới hạn</p>
+    <form class="modal-form" id="loginForm">
+      <div class="input-group">
+        <label class="modal-label" for="loginEmail">Email / Tài khoản</label>
+        <input id="loginEmail" class="modal-input" type="text" placeholder="Nhập email hoặc tài khoản..." required/>
+      </div>
+      <div class="input-group">
+        <label class="modal-label" for="loginPassword">Mật khẩu</label>
+        <input id="loginPassword" class="modal-input" type="password" placeholder="Nhập mật khẩu..." required/>
+      </div>
+      <button class="modal-submit" type="submit">Đăng nhập</button>
+      <div class="modal-footer-links">
+        <a href="datlai.html" class="modal-note">Quên mật khẩu?</a>
+        <a href="xem5.html" class="modal-note">Tạo tài khoản mới</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const BASE_URL = "http://localhost:8080";
+
+// ========== RENDER CARDS ==========
+async function renderMovieCard(movie) {
+  const year = movie.releseDate ? movie.releseDate.substring(0, 4) : "";
+  const name = movie.name || "Không tên";
+  const originalName = movie.original_name || "";
+  const sub = [originalName, year].filter(Boolean).join(" • ");
+
+  let imageUrl = "image/a1.jpg";
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movie.id}?kind=POSTER`);
+    if (res.ok) imageUrl = (await res.text()).trim() || imageUrl;
+  } catch (err) {
+    console.error("Không tải được ảnh:", err);
+  }
+
+  return `
+    <a class="poster" href="xemphim.html?id=${movie.id}">
+      <div class="poster-thumb">
+        <img src="${imageUrl}" loading="lazy"/>
+        <div class="poster-overlay"><span class="play-btn">▶</span></div>
+        <span class="badge">HD</span>
+      </div>
+      <div class="poster-info"><h3>${name}</h3><p>${sub}</p></div>
+    </a>`;
+}
+
+async function renderStripCard(movie) {
+  const year = movie.releseDate ? movie.releseDate.substring(0, 4) : "";
+  const name = movie.name || "Không tên";
+
+  let imageUrl = "image/a1.jpg";
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movie.id}?kind=POSTER`);
+    if (res.ok) imageUrl = (await res.text()).trim() || imageUrl;
+  } catch (err) {
+    console.error("Không tải được ảnh:", err);
+  }
+
+  return `
+    <a class="movie-card" href="xemphim.html?id=${movie.id}">
+      <div class="movie-thumb">
+        <img src="${imageUrl}" alt="${name}" loading="lazy"/>
+        <div class="movie-overlay"><span class="play-btn">▶</span></div>
+        <span class="badge">HD</span>
+      </div>
+      <div class="movie-meta"><h3>${name}</h3><p>${year}</p></div>
+    </a>`;
+}
+
+// ========== LOAD PHIM ==========
+async function loadFeatured() {
+  const container = document.getElementById("hotMovies");
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/featured`);
+    if (!res.ok) throw new Error("Lỗi API");
+    const movies = await res.json();
+    if (!movies.length) { container.innerHTML = "<p style='color:#aaa;padding:1rem;'>Không có phim nổi bật.</p>"; return; }
+    container.innerHTML = (await Promise.all(movies.map(renderStripCard))).join("");
+  } catch (err) {
+    container.innerHTML = "<p style='color:#f66;padding:1rem;'>Không tải được phim nổi bật.</p>";
+    console.error(err);
+  }
+}
+
+async function loadNewest() {
+  const container = document.getElementById("newestMovies");
+  container.innerHTML = "<p style='color:#aaa;padding:1rem;'>Đang tải...</p>";
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/newest`);
+    if (!res.ok) throw new Error("Lỗi API");
+    const movies = await res.json();
+    if (!movies.length) { container.innerHTML = "<p style='color:#aaa;padding:1rem;'>Không có phim.</p>"; return; }
+    container.innerHTML = (await Promise.all(movies.slice(0, 3).map(renderMovieCard))).join("");
+  } catch (err) {
+    container.innerHTML = "<p style='color:#f66;padding:1rem;'>Không tải được phim.</p>";
+    console.error(err);
+  }
+}
+
+async function loadChinaMovies() {
+  const container = document.getElementById("chinaMovies");
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/country?country=China`);
+    if (!res.ok) throw new Error("Lỗi API");
+    const movies = await res.json();
+    if (!movies.length) { container.innerHTML = "<p style='color:#aaa;padding:1rem;'>Không có phim Trung Quốc.</p>"; return; }
+    container.innerHTML = (await Promise.all(movies.slice(0, 3).map(renderMovieCard))).join("");
+  } catch (err) {
+    container.innerHTML = "<p style='color:#f66;padding:1rem;'>Không tải được phim Trung Quốc.</p>";
+    console.error(err);
+  }
+}
+
+// ========== AUTH ==========
+async function loadme() {
+  const token = localStorage.getItem("accessToken");
+  if (!token) return;
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/me`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+    if (!res.ok) {
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("email");
+      return;
+    }
+    const me = await res.json();
+    console.log("User info:", me);
+
+    let avatarUrl = "image/a9.jpg";
+    try {
+      const res1 = await fetch(`${BASE_URL}/movies/image/user`, {
+        headers: { "Authorization": `Bearer ${token}` }
+      });
+      if (res1.ok) avatarUrl = (await res1.text()).trim() || avatarUrl;
+    } catch (e) {}
+
+    document.getElementById("auth").innerHTML = `
+      <a href="xem1.html" class="user-info">
+        <img src="${avatarUrl}" alt="User" class="user-avatar"/>
+        <span class="user-name">${me.fullname}</span>
+      </a>`;
+  } catch (err) {
+    console.error("Lỗi load user:", err);
+  }
+}
+
+// ========== KHỞI ĐỘNG ==========
+loadFeatured();
+loadNewest();
+loadChinaMovies();
+loadme();
+
+
+// ========== DROPDOWN ==========
+document.querySelectorAll(".dd").forEach(function(dd) {
+  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+    e.stopPropagation();
+    var wasOpen = dd.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+    if (!wasOpen) dd.classList.add("open");
+  });
+});
+document.addEventListener("click", function() {
+  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+});
+
+// ========== MODAL ==========
+var modal = document.getElementById("loginModal");
+document.getElementById("openLogin").addEventListener("click", function() {
+  modal.classList.add("show"); document.body.style.overflow = "hidden";
+});
+document.getElementById("closeLogin").addEventListener("click", function() {
+  modal.classList.remove("show"); document.body.style.overflow = "";
+});
+modal.addEventListener("click", function(e) {
+  if (e.target === modal) { modal.classList.remove("show"); document.body.style.overflow = ""; }
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") { modal.classList.remove("show"); document.body.style.overflow = ""; }
+});
+
+document.getElementById("loginForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+  var email = document.getElementById("loginEmail").value.trim();
+  var password = document.getElementById("loginPassword").value;
+  try {
+    var res = await fetch(`${BASE_URL}/api/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+    var ct = res.headers.get("content-type") || "";
+    var data = ct.includes("application/json") ? await res.json() : await res.text();
+    if (!res.ok) { alert(typeof data === "string" ? data : (data.message || "Đăng nhập thất bại")); return; }
+    if (!data.accessToken) { alert("Backend không trả accessToken"); return; }
+    localStorage.setItem("accessToken", data.accessToken);
+    localStorage.setItem("email", email);
+    modal.classList.remove("show");
+    document.body.style.overflow = "";
+    loadme();
+  } catch (err) {
+    alert("Không kết nối được backend.");
+  }
+});
+</script>
+</body>
+</html>
