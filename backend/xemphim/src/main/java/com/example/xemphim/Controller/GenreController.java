@@ -2,6 +2,7 @@ package com.example.xemphim.Controller;
 
 import com.example.xemphim.DTO.Genre.GenreRequest;
 import com.example.xemphim.Entity.Genre;
+import com.example.xemphim.Repository.GenreRepository;
 import com.example.xemphim.Service.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import java.util.List;
 public class GenreController {
 
     private final GenreService genreService;
+    private final GenreRepository genreRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity<Genre> getGenre(@PathVariable int id) {
@@ -25,6 +27,11 @@ public class GenreController {
     @GetMapping
     public ResponseEntity<List<Genre>> getAllGenres() {
         return ResponseEntity.ok(genreService.getAllGenres());
+    }
+    @GetMapping("/count")
+    public ResponseEntity<String> countGenres() {
+       long count = genreRepository.count();
+       return ResponseEntity.ok(String.valueOf(count));
     }
 
     @PostMapping

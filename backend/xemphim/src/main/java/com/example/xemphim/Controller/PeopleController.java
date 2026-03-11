@@ -3,6 +3,7 @@ package com.example.xemphim.Controller;
 import com.example.xemphim.DTO.people.PeopleRequest;
 import com.example.xemphim.DTO.people.PeopleResponse;
 import com.example.xemphim.Entity.People;
+import com.example.xemphim.Repository.PeopleRepository;
 import com.example.xemphim.Service.PeopleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import java.util.List;
 public class PeopleController {
 
     private final PeopleService peopleService;
+    private final PeopleRepository peopleRepository;
 
     @GetMapping("/{id}")
     public ResponseEntity<PeopleResponse> getPeople(@PathVariable Long id) {
@@ -28,6 +30,12 @@ public class PeopleController {
     public ResponseEntity<String> addPeople(@RequestBody PeopleRequest peopleRequest) {
         peopleService.AddPeople(peopleRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Add people successfully");
+    }
+    @GetMapping("/count")
+    public ResponseEntity<String> getPeopleCount() {
+        long peopleCount = peopleRepository.count();
+        return ResponseEntity.status(HttpStatus.OK).body(String.valueOf(peopleCount));
+
     }
 
     @GetMapping

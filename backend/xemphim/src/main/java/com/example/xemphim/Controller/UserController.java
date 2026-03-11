@@ -1,4 +1,4 @@
-package com.example.xemphim.controller;
+package com.example.xemphim.Controller;
 
 import com.example.xemphim.DTO.Auth.AuthResponse;
 import com.example.xemphim.DTO.Auth.LoginRequest;
@@ -46,6 +46,7 @@ public class UserController {
         // lấy role từ authorities
         String role = auth.getAuthorities().iterator().next().getAuthority(); // "ROLE_USER"
 
+        assert role != null;
         String token = jwtService.generateToken(req.getEmail(), Map.of("role", role));
         log.info("{}dang nhap thanh cong", req.toString());
         return ResponseEntity.ok(new AuthResponse(token, "Bearer"));
@@ -62,5 +63,13 @@ public class UserController {
                 .gender(a.getGender())
                 .phone(a.getSdt())
                 .build();
+    }
+    @GetMapping("/count")
+    public ResponseEntity<String> count() {
+        long count = userRepository.count();
+        log.info("laythong tin thanh cong");
+        return ResponseEntity.ok(Long.toString(count));
+
+
     }
 }

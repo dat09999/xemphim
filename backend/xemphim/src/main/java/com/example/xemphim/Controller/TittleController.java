@@ -2,6 +2,7 @@ package com.example.xemphim.Controller;
 
 import com.example.xemphim.DTO.Tittle.TittleRequest;
 import com.example.xemphim.DTO.Tittle.TittleResponse;
+import com.example.xemphim.Repository.TittleRepository;
 import com.example.xemphim.Service.TittleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,11 +17,18 @@ import java.util.List;
 public class TittleController {
 
     private final TittleService tittleService;
+    private final TittleRepository tittleRepository;
 
     @PostMapping
     public ResponseEntity<String> add(@RequestBody TittleRequest tittleRequest) {
         tittleService.add(tittleRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body("Add tittle successfully");
+    }
+    @GetMapping("/count")
+    private ResponseEntity<String> count(){
+        long k=tittleRepository.count();
+        return ResponseEntity.status(HttpStatus.OK).body(Long.toString(k));
+
     }
 
     @GetMapping("/{id}")
