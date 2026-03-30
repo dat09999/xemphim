@@ -1,6 +1,7 @@
 package com.example.xemphim.DTO.User;
 
 import com.example.xemphim.Enum.Gender;
+import com.example.xemphim.Enum.Role;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,7 +11,9 @@ import java.util.Date;
 @Builder
 
 public class Userreponse {
+        private Long id;
         private String fullname;
+        private Role role;
         private String email;
         private String phone;
         private Gender gender;

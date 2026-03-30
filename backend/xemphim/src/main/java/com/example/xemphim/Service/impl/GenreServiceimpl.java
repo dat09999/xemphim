@@ -13,7 +13,7 @@ import java.util.List;
 public class GenreServiceimpl  implements GenreService {
     private final GenreRepository genreRepository;
     @Override
-    public Genre getGenre(int id) {
+    public Genre getGenre(Long id) {
         return genreRepository.findById(id).orElseThrow(() -> new RuntimeException("Genre not found"));
     }
 

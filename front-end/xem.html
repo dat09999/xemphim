@@ -96,17 +96,11 @@
       <section class="player-card">
         <h2 class="card-title">💬 Bình luận</h2>
         <div class="comment-box">
-          <textarea class="comment-input" placeholder="Viết bình luận của bạn..."></textarea>
-          <button class="btn-comment">Gửi</button>
+          <textarea id="commentInput" class="comment-input" placeholder="Viết bình luận của bạn..."></textarea>
+          <button id="submitComment" class="btn-comment">Gửi</button>
         </div>
         <div class="comment-list" id="commentList">
-          <div class="comment-item">
-            <div class="comment-avatar">D</div>
-            <div class="comment-content">
-              <span class="comment-name">Dương Văn Hóa</span>
-              <p>Phim hay tuyệt!</p>
-            </div>
-          </div>
+          <p style="color:var(--sub);font-size:14px;">Đang tải bình luận...</p>
         </div>
       </section>
 
@@ -201,7 +195,7 @@ async function loadMovie() {
     document.getElementById("castList").innerHTML = people.map((person, i) => `
       <a href="people.html?id=${person.id}" class="cast-card">
         <div class="cast-avatar">${person.name.charAt(0).toUpperCase()}</div>
-        <span class="cast-name">${name}</span>
+        <span class="cast-name">${person.name}</span>
         <span class="cast-role">${i === 0 ? 'Director' : 'Cast'}</span>
       </a>`).join("");
   } catch (err) { console.error(err); }
@@ -209,8 +203,18 @@ async function loadMovie() {
 
 // ========== LOAD VIDEO ==========
 async function loadVideo() {
+  const token = localStorage.getItem("accessToken");
+
   try {
-    const res = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=VIDEO`);
+    const res = await fetch(`${BASE_URL}/link/video/${movieId}`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      }
+    });
+
+    console.log("Video link status:", res.status);
+
     if (res.ok) {
       const url = (await res.text()).trim();
       if (url) {
@@ -218,10 +222,13 @@ async function loadVideo() {
         player.src = url;
         player.load();
       }
+    } else {
+      console.log("Response text:", await res.text());
     }
-  } catch (err) { console.error(err); }
+  } catch (err) {
+    console.error(err);
+  }
 }
-
 // ========== LOAD POSTER ==========
 async function loadPoster() {
   try {
@@ -231,6 +238,64 @@ async function loadPoster() {
       if (url) document.getElementById("videoPlayer").poster = url;
     }
   } catch (err) { console.error(err); }
+}
+
+async function loadComments() {
+  const container = document.getElementById("commentList");
+  try {
+    const res = await fetch(`${BASE_URL}/api/comments/tittle/${movieId}`);
+    if (!res.ok) throw new Error("Lỗi lấy bình luận");
+    const comments = await res.json();
+    if (!comments.length) {
+      container.innerHTML = "<p style='color:var(--sub);font-size:14px;'>Chưa có bình luận nào.</p>";
+      return;
+    }
+    container.innerHTML = comments.map(c => `
+      <div class="comment-item">
+        <div class="comment-avatar">${(c.username||'U').charAt(0).toUpperCase()}</div>
+        <div class="comment-content">
+          <span class="comment-name">${c.username || 'Khách'}</span>
+          <p>${c.content || ''}</p>
+          <small>${c.date ? new Date(c.date).toLocaleString('vi-VN') : ''}</small>
+        </div>
+      </div>
+    `).join("");
+  } catch (err) {
+    container.innerHTML = "<p style='color:#f66;padding:1rem;'>Không tải được bình luận.</p>";
+    console.error(err);
+  }
+}
+
+async function postComment() {
+  const text = document.getElementById("commentInput").value.trim();
+  const userId = localStorage.getItem("userId");
+  if (!userId) {
+    alert("Vui lòng đăng nhập để bình luận");
+    return;
+  }
+  if (!text) {
+    alert("Vui lòng nhập nội dung bình luận");
+    return;
+  }
+  try {
+    const payload = {
+      tittleId: Number(movieId),
+      userId: Number(userId),
+      content: text,
+      date: new Date().toISOString()
+    };
+    const res = await fetch(`${BASE_URL}/api/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}` },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('Lỗi gửi bình luận');
+    document.getElementById("commentInput").value = "";
+    await loadComments();
+  } catch (err) {
+    alert("Không gửi được bình luận");
+    console.error(err);
+  }
 }
 
 // ========== DROPDOWN ==========
@@ -251,6 +316,11 @@ loadme();
 loadMovie();
 loadVideo();
 loadPoster();
+loadComments();
+
+document.getElementById("submitComment").addEventListener("click", function() {
+  postComment();
+});
 </script>
 </body>
 </html>

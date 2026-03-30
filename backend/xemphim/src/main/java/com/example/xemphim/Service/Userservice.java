@@ -6,6 +6,6 @@ import com.example.xemphim.Entity.User;
 
 public interface Userservice {
    public Userreponse add(UserRequest user);
-   public Userreponse update(User user);
-   public Userreponse delete(User user);
+   public void update(int user);
+   public void delete(int user);
 }

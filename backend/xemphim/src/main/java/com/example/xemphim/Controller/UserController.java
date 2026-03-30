@@ -42,6 +42,7 @@ public class UserController {
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
         );
+        User a=userRepository.findByEmail(req.getEmail()).orElseThrow(()->new RuntimeException("Email not found"));
 
         // lấy role từ authorities
         String role = auth.getAuthorities().iterator().next().getAuthority(); // "ROLE_USER"
@@ -57,7 +58,9 @@ public class UserController {
         User a= userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("Email not found"));
         log.info("laythong tin thanh cong");
         return Userreponse.builder()
+                .id(Long.valueOf(a.getId()))
                 .email(email)
+                .role(a.getRole())
                 .fullname(a.getFullName())
                 .dateofbirth(a.getBirthday())
                 .gender(a.getGender())
@@ -69,6 +72,23 @@ public class UserController {
         long count = userRepository.count();
         log.info("laythong tin thanh cong");
         return ResponseEntity.ok(Long.toString(count));
+
+
+    }
+    @DeleteMapping("/delete")
+    public void delete(@RequestParam int Id) {
+
+        log.info("xoa user thanh cong");
+         userService.delete(Id);
+
+
+    }
+    @PutMapping("/update")
+    public ResponseEntity<String> update(@RequestParam int Id) {
+
+        log.info("khoi phuc user thanh cong");
+        userService.update(Id);
+        return ResponseEntity.ok("khoi phuc Thanh cong");
 
 
     }

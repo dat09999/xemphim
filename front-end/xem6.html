@@ -3,215 +3,531 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Phim Lẻ - PhimHay</title>
+  <title>Phim - PhimHay</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style9.css">
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
-  <form class="searchbar" action="#" role="search">
-    <span class="search-icon">🔍</span>
-    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
-  </form>
-  <div class="auth" id="auth">
-    <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
-    <a class="btn btn-primary" href="xem5.html">Đăng ký</a>
-  </div>
-</header>
-
-<!-- NAVBAR -->
-<nav class="navbar">
-  <a class="nav-link" href="index.html">Trang chủ</a>
-  <a class="nav-link" href="#">Phim mới</a>
-  <a class="nav-link active" href="#">Phim lẻ</a>
-
-  <div class="dd">
-    <button class="dd-btn" type="button">
-      Thể loại
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div class="dd-menu cols3">
-      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
-      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
-      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
-      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+  <!-- HEADER -->
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
+    <form class="searchbar" action="#" role="search">
+      <span class="search-icon">🔍</span>
+      <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+    </form>
+    <div class="auth" id="auth">
+      <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
+      <a class="btn btn-primary" href="xem5.html">Đăng ký</a>
     </div>
-  </div>
+  </header>
 
-  <div class="dd">
-    <button class="dd-btn" type="button">
-      Quốc gia
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div class="dd-menu">
-      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
-      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
-    </div>
-  </div>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a class="nav-link" href="index.html">Trang chủ</a>
+    <a class="nav-link" href="xem6.html?type=titleType&value=HOAT_HINH">Phim mới</a>
+    <a class="nav-link" href="xem6.html?type=titleType&value=PHIM_LE">Phim lẻ</a>
 
-  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
-
-  <div class="dd">
-    <button class="dd-btn" type="button">
-      Năm
-      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-    <div class="dd-menu">
-      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
-      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
-    </div>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<main class="page">
-  <section class="section">
-    <div class="sec-head">
-      <h2>🎬 Phim Lẻ</h2>
-      <span class="result-count" id="resultCount">Đang tải...</span>
-    </div>
-    <div class="movie-grid" id="movieGrid">
-      <p style="color:#aaa;padding:1rem;grid-column:1/-1;">Đang tải phim...</p>
-    </div>
-    <div class="pagination" id="pagination"></div>
-  </section>
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-brand"><span class="brand-icon">▶</span><h3>PhimHay</h3></div>
-    <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
-    <p class="footer-copy">© 2025 PhimHay. All rights reserved.</p>
-  </div>
-</footer>
-
-<script>
-const BASE_URL = "http://localhost:8080";
-let currentPage = 0;
-const PAGE_SIZE = 12;
-
-// ========== RENDER CARD ==========
-async function renderMovieCard(movie) {
-  const year = movie.releseDate ? movie.releseDate.substring(0, 4) : "";
-  const name = movie.name || "Không tên";
-  const originalName = movie.original_name || "";
-  const sub = [originalName, year].filter(Boolean).join(" • ");
-
-  let imageUrl = "image/a1.jpg";
-  try {
-    const res = await fetch(`${BASE_URL}/movies/image/video/${movie.id}?kind=POSTER`);
-    if (res.ok) imageUrl = (await res.text()).trim() || imageUrl;
-  } catch (err) {}
-
-  return `
-    <a class="poster" href="xemphim.html?id=${movie.id}">
-      <div class="poster-thumb">
-        <img src="${imageUrl}" loading="lazy" alt="${name}"/>
-        <div class="poster-overlay"><span class="play-btn">▶</span></div>
-        <span class="badge">HD</span>
+    <div class="dd">
+      <button class="dd-btn" type="button">
+        Thể loại
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="dd-menu cols3">
+        <a href="xem6.html?type=genre&value=Hành động">🔥 Hành động</a>
+        <a href="xem6.html?type=genre&value=Hình sự">🔍 Hình sự</a>
+        <a href="xem6.html?type=genre&value=Kinh dị">👻 Kinh dị</a>
+        <a href="xem6.html?type=genre&value=Bí ẩn">🌙 Bí ẩn</a>
+        <a href="xem6.html?type=genre&value=Tình cảm">💕 Tình cảm</a>
+        <a href="xem6.html?type=genre&value=Hài hước">😂 Hài hước</a>
+        <a href="xem6.html?type=genre&value=Viễn tưởng">🚀 Viễn tưởng</a>
+        <a href="xem6.html?type=genre&value=Cổ trang">⚔️ Cổ trang</a>
+        <a href="xem6.html?type=genre&value=Hoạt hình">🎨 Hoạt hình</a>
+        <a href="xem6.html?type=genre&value=Gia đình">👨‍👩‍👧 Gia đình</a>
+        <a href="xem6.html?type=genre&value=Âm nhạc">🎵 Âm nhạc</a>
+        <a href="xem6.html?type=genre&value=Phiêu lưu">🗺️ Phiêu lưu</a>
       </div>
-      <div class="poster-info">
-        <h3>${name}</h3>
-        <p>${sub}</p>
+    </div>
+
+    <div class="dd">
+      <button class="dd-btn" type="button">
+        Quốc gia
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <a href="xem6.html?type=country&value=Vietnam">🇻🇳 Việt Nam</a>
+        <a href="xem6.html?type=country&value=Korea">🇰🇷 Hàn Quốc</a>
+        <a href="xem6.html?type=country&value=China">🇨🇳 Trung Quốc</a>
+        <a href="xem6.html?type=country&value=Japan">🇯🇵 Nhật Bản</a>
+        <a href="xem6.html?type=country&value=Thailand">🇹🇭 Thái Lan</a>
+        <a href="xem6.html?type=country&value=USA">🌍 Âu Mỹ</a>
       </div>
-    </a>`;
-}
+    </div>
 
-// ========== LOAD PHIM ==========
-async function loadMovies(page = 0) {
-  const grid = document.getElementById("movieGrid");
-  const countEl = document.getElementById("resultCount");
-  grid.innerHTML = "<p style='color:#aaa;padding:1rem;grid-column:1/-1;'>Đang tải...</p>";
+    <a class="nav-link" href="xem6.html?type=titleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
 
-  try {
-    const res = await fetch(`${BASE_URL}/api/tittles/genre?genre=Phim Lẻ`);
-    if (!res.ok) throw new Error("Lỗi API");
-    const movies = await res.json();
+    <div class="dd">
+      <button class="dd-btn" type="button">
+        Năm
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="dd-menu">
+        <a href="xem6.html?type=year&value=2026">2026</a>
+        <a href="xem6.html?type=year&value=2025">2025</a>
+        <a href="xem6.html?type=year&value=2024">2024</a>
+        <a href="xem6.html?type=year&value=2023">2023</a>
+        <a href="xem6.html?type=year&value=2022">2022</a>
+        <a href="xem6.html?type=year&value=2021">2021</a>
+      </div>
+    </div>
+  </nav>
 
-    if (!movies.length) {
-      grid.innerHTML = "<p style='color:#aaa;padding:1rem;grid-column:1/-1;'>Không có phim.</p>";
-      countEl.textContent = "0 phim";
-      return;
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-select-group">
+
+      <div class="fsel" id="fsel-quoc-gia">
+        <span class="fsel-label">Quốc gia</span>
+        <span style="display:flex;align-items:center;gap:4px;">
+          <span class="fsel-val" id="val-quoc-gia">Tất cả</span>
+          <span class="fsel-arrow">▼</span>
+        </span>
+        <div class="fsel-dropdown" id="drop-quoc-gia">
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item" data-val="Vietnam">🇻🇳 Việt Nam</div>
+          <div class="fsel-dropdown-item" data-val="Korea">🇰🇷 Hàn Quốc</div>
+          <div class="fsel-dropdown-item" data-val="China">🇨🇳 Trung Quốc</div>
+          <div class="fsel-dropdown-item" data-val="Japan">🇯🇵 Nhật Bản</div>
+          <div class="fsel-dropdown-item" data-val="Thailand">🇹🇭 Thái Lan</div>
+          <div class="fsel-dropdown-item" data-val="USA">🌍 Âu Mỹ</div>
+          <div class="fsel-dropdown-item" data-val="India">🇮🇳 Ấn Độ</div>
+          <div class="fsel-dropdown-item" data-val="Hong Kong">🇭🇰 Hồng Kông</div>
+        </div>
+      </div>
+
+      <div class="fsel" id="fsel-the-loai">
+        <span class="fsel-label">Thể loại</span>
+        <span style="display:flex;align-items:center;gap:4px;">
+          <span class="fsel-val" id="val-the-loai">Tất cả</span>
+          <span class="fsel-arrow">▼</span>
+        </span>
+        <div class="fsel-dropdown" id="drop-the-loai">
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item" data-val="Hành động">🔥 Hành động</div>
+          <div class="fsel-dropdown-item" data-val="Hình sự">🔍 Hình sự</div>
+          <div class="fsel-dropdown-item" data-val="Kinh dị">👻 Kinh dị</div>
+          <div class="fsel-dropdown-item" data-val="Tình cảm">💕 Tình cảm</div>
+          <div class="fsel-dropdown-item" data-val="Hài hước">😂 Hài hước</div>
+          <div class="fsel-dropdown-item" data-val="Viễn tưởng">🚀 Viễn tưởng</div>
+          <div class="fsel-dropdown-item" data-val="Cổ trang">⚔️ Cổ trang</div>
+          <div class="fsel-dropdown-item" data-val="Hoạt hình">🎨 Hoạt hình</div>
+          <div class="fsel-dropdown-item" data-val="Gia đình">👨‍👩‍👧 Gia đình</div>
+          <div class="fsel-dropdown-item" data-val="Phiêu lưu">🗺️ Phiêu lưu</div>
+        </div>
+      </div>
+
+      <div class="fsel" id="fsel-nam">
+        <span class="fsel-label">Năm</span>
+        <span style="display:flex;align-items:center;gap:4px;">
+          <span class="fsel-val" id="val-nam">Tất cả</span>
+          <span class="fsel-arrow">▼</span>
+        </span>
+        <div class="fsel-dropdown" id="drop-nam">
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item" data-val="2026">2026</div>
+          <div class="fsel-dropdown-item" data-val="2025">2025</div>
+          <div class="fsel-dropdown-item" data-val="2024">2024</div>
+          <div class="fsel-dropdown-item" data-val="2023">2023</div>
+          <div class="fsel-dropdown-item" data-val="2022">2022</div>
+          <div class="fsel-dropdown-item" data-val="2021">2021</div>
+          <div class="fsel-dropdown-item" data-val="2020">2020</div>
+          <div class="fsel-dropdown-item" data-val="2019">2019</div>
+          <div class="fsel-dropdown-item" data-val="2018">2018 trở về trước</div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="filter-apply-btn" id="applyFilter">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M1 3h12M3 7h8M5 11h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      Lọc phim
+    </button>
+  </div>
+
+  <div class="active-filters" id="activeTags"></div>
+
+  <main class="page">
+    <section class="section">
+      <div class="sec-head">
+        <h2 id="pageTitle">🎬 Phim</h2>
+        <span class="result-count" id="resultCount">Đang tải...</span>
+      </div>
+      <div class="movie-grid" id="movieGrid">
+        <p style="color:#aaa;padding:1rem;grid-column:1/-1;">Đang tải phim...</p>
+      </div>
+      <div class="pagination" id="pagination"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand"><span class="brand-icon">▶</span><h3>PhimHay</h3></div>
+      <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
+      <p class="footer-copy">© 2025 PhimHay. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const BASE_URL = "http://localhost:8080";
+    let currentPage = 0;
+    const PAGE_SIZE = 12;
+
+    // filterState dùng value tiếng Anh thẳng (giống data-val trong dropdown)
+    const filterState = {
+      "quoc-gia": "Tất cả",
+      "the-loai": "Tất cả",
+      "nam":      "Tất cả"
+    };
+
+    // titleType lấy từ URL, null = dùng mặc định PHIM_LE
+    let currentTitleType = null;
+
+    const labelMap = {
+      "quoc-gia": "Quốc gia",
+      "the-loai": "Thể loại",
+      "nam":      "Năm"
+    };
+
+    const displayCountry = {
+      "Vietnam": "Việt Nam", "Korea": "Hàn Quốc", "China": "Trung Quốc",
+      "Japan": "Nhật Bản", "Thailand": "Thái Lan", "USA": "Âu Mỹ",
+      "India": "Ấn Độ", "Hong Kong": "Hồng Kông"
+    };
+
+    const titleLabelMap = {
+      "tittleType": {
+        "PHIM_LE":        "🎬 Phim Lẻ",
+        "PHIM_CHIEU_RAP": "🎬 Chiếu Rạp",
+        "HOAT_HINH":      "🎨 Hoạt Hình",
+        
+      },
+      "country": {
+        "Vietnam":   "🇻🇳 Phim Việt Nam",
+        "Korea":     "🇰🇷 Phim Hàn Quốc",
+        "China":     "🇨🇳 Phim Trung Quốc",
+        "Japan":     "🇯🇵 Phim Nhật Bản",
+        "Thailand":  "🇹🇭 Phim Thái Lan",
+        "USA":       "🌍 Phim Âu Mỹ",
+        "India":     "🇮🇳 Phim Ấn Độ",
+        "Hong Kong": "🇭🇰 Phim Hồng Kông"
+      }
+    };
+
+    // ========== ĐỌC PARAMS TỪ URL ==========
+    function applyParamsFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const type  = params.get("type");
+      const value = params.get("value");
+      const titleEl = document.getElementById("pageTitle");
+
+      if (!type) return;
+
+      // Cập nhật tiêu đề h2
+      if (titleLabelMap[type] && titleLabelMap[type][value]) {
+        titleEl.textContent = titleLabelMap[type][value];
+      } else if (type === "genre")     { titleEl.textContent = `🎭 Thể loại: ${value}`; }
+        else if (type === "year")      { titleEl.textContent = `📅 Năm ${value}`; }
+        else if (type === "tim-kiem")  { titleEl.textContent = `🔍 Kết quả: "${value}"`; }
+
+      // Set vào filterState / currentTitleType
+      if (type === "titleType") {
+        currentTitleType = value;
+      } else if (type === "country") {
+        setFilter("quoc-gia", value);
+      } else if (type === "genre") {
+        setFilter("the-loai", value);
+      } else if (type === "year") {
+        setFilter("nam", value);
+      }
     }
 
-    const total = movies.length;
-    const start = page * PAGE_SIZE;
-    const paged = movies.slice(start, start + PAGE_SIZE);
+    // ========== BUILD PAYLOAD GỬI LÊN API CUSTOM ==========
+    function buildFilterPayload() {
+      const params = new URLSearchParams(window.location.search);
+      const type  = params.get("type");
+      const value = params.get("value");
+     
+      const payload = {
+        sortBy: "views",
+        sortDir: "desc"
+      };
 
-    countEl.textContent = `${total} phim`;
-    grid.innerHTML = (await Promise.all(paged.map(renderMovieCard))).join("");
-    renderPagination(total, page);
-
-  } catch (err) {
-    grid.innerHTML = "<p style='color:#f66;padding:1rem;grid-column:1/-1;'>Không tải được phim.</p>";
-    console.error(err);
+       if (type === "titleType" && value) {
+    payload.tittleType = value;
+  } else if (type === "country" && value) {
+    payload.country = value;
+  } else if (type === "genre" && value) {
+    payload.genre = value;
+  } else if (type === "year" && value) {
+    payload.year = parseInt(value, 10);
+  } else if (type === "name" && value) {
+    payload.name = value; // hoặc name = value, tùy backend bạn nhận field gì
   }
-}
+      const country = filterState["quoc-gia"];
+      const genre   = filterState["the-loai"];
+      const year    = filterState["nam"];
 
-// ========== PHÂN TRANG ==========
-function renderPagination(total, current) {
-  const totalPages = Math.ceil(total / PAGE_SIZE);
-  if (totalPages <= 1) { document.getElementById("pagination").innerHTML = ""; return; }
+      if (country !== "Tất cả") payload.country = country;
+      if (genre   !== "Tất cả") payload.genre   = genre;
+      if (year    !== "Tất cả") payload.year     = parseInt(year, 10);
 
-  let html = "";
-  for (let i = 0; i < totalPages; i++) {
-    html += `<button class="page-btn ${i === current ? "active" : ""}" data-page="${i}">${i + 1}</button>`;
-  }
-  document.getElementById("pagination").innerHTML = html;
+      return payload;
+    }
 
-  document.querySelectorAll(".page-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      currentPage = parseInt(this.dataset.page);
-      loadMovies(currentPage);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  });
-}
+    // ========== SET FILTER UI ==========
+    function setFilter(key, val) {
+      filterState[key] = val;
 
-// ========== AUTH ==========
-async function loadme() {
-  const token = localStorage.getItem("accessToken");
-  if (!token) return;
-  try {
-    const res = await fetch(`${BASE_URL}/api/me`, { headers: { "Authorization": `Bearer ${token}` } });
-    if (!res.ok) { localStorage.removeItem("accessToken"); return; }
-    const me = await res.json();
+      const fsel = document.getElementById("fsel-" + key);
+      if (!fsel) return;
 
-    let avatarUrl = "image/a9.jpg";
-    try {
-      const r = await fetch(`${BASE_URL}/movies/image/user`, { headers: { "Authorization": `Bearer ${token}` } });
-      if (r.ok) avatarUrl = (await r.text()).trim() || avatarUrl;
-    } catch (e) {}
+      const valueEl = fsel.querySelector(".fsel-val");
+      if (valueEl) valueEl.textContent = displayCountry[val] || val;
 
-    document.getElementById("auth").innerHTML = `
-      <a href="xem7.html" class="user-info">
-        <img src="${avatarUrl}" class="user-avatar" alt="User"/>
-        <span class="user-name">${me.fullname}</span>
-      </a>`;
-  } catch (err) { console.error(err); }
-}
+      const drop = fsel.querySelector(".fsel-dropdown");
+      if (!drop) return;
 
-// ========== DROPDOWN ==========
-document.querySelectorAll(".dd").forEach(function(dd) {
-  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
-    e.stopPropagation();
-    var wasOpen = dd.classList.contains("open");
-    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
-    if (!wasOpen) dd.classList.add("open");
-  });
-});
-document.addEventListener("click", function() {
-  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
-});
+      drop.querySelectorAll(".fsel-dropdown-item").forEach(function (item) {
+        item.classList.remove("active");
+        const chk = item.querySelector(".check");
+        if (chk) chk.remove();
+        if (item.dataset.val === val) {
+          item.classList.add("active");
+          item.insertAdjacentHTML("beforeend", '<span class="check">✓</span>');
+        }
+      });
+    }
 
-// ========== KHỞI ĐỘNG ==========
-loadMovies();
-loadme();
-</script>
+    // ========== ACTIVE TAGS ==========
+    function renderActiveTags() {
+      const container = document.getElementById("activeTags");
+      let tags = "";
+      Object.keys(filterState).forEach(function (key) {
+        if (filterState[key] !== "Tất cả") {
+          const displayVal = displayCountry[filterState[key]] || filterState[key];
+          tags += `<span class="atag">${labelMap[key]}: ${displayVal}<span class="atag-remove" data-key="${key}">✕</span></span>`;
+        }
+      });
+      container.innerHTML = tags;
+
+      container.querySelectorAll(".atag-remove").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const key = btn.dataset.key;
+          filterState[key] = "Tất cả";
+          const fsel = document.getElementById("fsel-" + key);
+          if (fsel) {
+            const valueEl = fsel.querySelector(".fsel-val");
+            if (valueEl) valueEl.textContent = "Tất cả";
+            const drop = fsel.querySelector(".fsel-dropdown");
+            if (drop) {
+              drop.querySelectorAll(".fsel-dropdown-item").forEach(function (i) {
+                i.classList.remove("active");
+                const chk = i.querySelector(".check");
+                if (chk) chk.remove();
+              });
+              const first = drop.querySelector(".fsel-dropdown-item");
+              if (first) { first.classList.add("active"); first.insertAdjacentHTML("beforeend", '<span class="check">✓</span>'); }
+            }
+          }
+          currentPage = 0;
+          renderActiveTags();
+          loadMovies(0);
+        });
+      });
+    }
+
+    // ========== RENDER CARD ==========
+    async function getPosterUrl(movieId) {
+      let url = "image/a1.jpg";
+      try {
+        const r = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=POSTER`);
+        if (r.ok) { const t = (await r.text()).trim(); if (t) url = t; }
+      } catch (e) {}
+      return url;
+    }
+
+    async function renderMovieCard(movie) {
+      const year = (movie.releseDate || movie.releaseDate || "").substring(0, 4);
+      const name = movie.name || "Không tên";
+      const ori  = movie.originalName || movie.original_name || "";
+      const sub  = [ori, year].filter(Boolean).join(" • ");
+      const img  = await getPosterUrl(movie.id);
+      return `
+        <a class="poster" href="xemphim.html?id=${movie.id}">
+          <div class="poster-thumb">
+            <img src="${img}" loading="lazy" alt="${name}" />
+            <div class="poster-overlay"><span class="play-btn">▶</span></div>
+            <span class="badge">HD</span>
+          </div>
+          <div class="poster-info"><h3>${name}</h3><p>${sub}</p></div>
+        </a>`;
+    }
+
+    // ========== PAGINATION ==========
+    function renderPagination(total, current) {
+      const totalPages = Math.ceil(total / PAGE_SIZE);
+      const el = document.getElementById("pagination");
+      if (totalPages <= 1) { el.innerHTML = ""; return; }
+      let html = "";
+      for (let i = 0; i < totalPages; i++) {
+        html += `<button class="page-btn ${i === current ? "active" : ""}" data-page="${i}">${i + 1}</button>`;
+      }
+      el.innerHTML = html;
+      el.querySelectorAll(".page-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          currentPage = parseInt(this.dataset.page, 10);
+          loadMovies(currentPage);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      });
+    }
+
+    // ========== LOAD PHIM ==========
+    async function loadMovies(page = 0) {
+      const grid    = document.getElementById("movieGrid");
+      const countEl = document.getElementById("resultCount");
+      const pagEl   = document.getElementById("pagination");
+
+      grid.innerHTML = "<p style='color:#aaa;padding:1rem;grid-column:1/-1;'>Đang tải phim...</p>";
+
+      try {
+        const payload = buildFilterPayload();
+        console.log("Payload:", payload);
+
+        const res = await fetch(`${BASE_URL}/api/tittles/custom`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error("Lỗi API");
+        let movies = await res.json();
+        if (!Array.isArray(movies)) movies = [];
+
+        // Filter năm 2018 trở về ở client
+        if (filterState["nam"] === "2018") {
+          movies = movies.filter(function (m) {
+            return parseInt((m.releseDate || m.releaseDate || "").substring(0, 4), 10) <= 2018;
+          });
+        }
+
+        if (!movies.length) {
+          grid.innerHTML = "<p style='color:#aaa;padding:1rem;grid-column:1/-1;'>Không có phim phù hợp.</p>";
+          countEl.textContent = "0 phim";
+          pagEl.innerHTML = "";
+          return;
+        }
+
+        const total = movies.length;
+        const paged = movies.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
+        countEl.textContent = `${total} phim`;
+        grid.innerHTML = (await Promise.all(paged.map(renderMovieCard))).join("");
+        renderPagination(total, page);
+
+      } catch (err) {
+        console.error(err);
+        grid.innerHTML = "<p style='color:#f66;padding:1rem;grid-column:1/-1;'>Không tải được phim.</p>";
+        countEl.textContent = "Lỗi";
+        pagEl.innerHTML = "";
+      }
+    }
+
+    // ========== AUTH ==========
+    async function loadme() {
+      const token = localStorage.getItem("accessToken");
+      if (!token) return;
+      try {
+        const res = await fetch(`${BASE_URL}/api/me`, { headers: { "Authorization": `Bearer ${token}` } });
+        if (!res.ok) { localStorage.removeItem("accessToken"); return; }
+        const me = await res.json();
+        let avatarUrl = "image/a9.jpg";
+        try {
+          const r = await fetch(`${BASE_URL}/movies/image/user`, { headers: { "Authorization": `Bearer ${token}` } });
+          if (r.ok) { const t = (await r.text()).trim(); if (t) avatarUrl = t; }
+        } catch (e) {}
+        document.getElementById("auth").innerHTML = `
+          <a href="xem7.html" class="user-info">
+            <img src="${avatarUrl}" class="user-avatar" alt="User" />
+            <span class="user-name">${me.fullname || "User"}</span>
+          </a>`;
+      } catch (err) { console.error(err); }
+    }
+
+    // ========== SETUP ==========
+    function setupFilterDropdowns() {
+      document.querySelectorAll(".fsel").forEach(function (fsel) {
+        fsel.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const wasOpen = fsel.classList.contains("open");
+          document.querySelectorAll(".fsel").forEach(function (f) { f.classList.remove("open"); });
+          if (!wasOpen) fsel.classList.add("open");
+        });
+      });
+      document.addEventListener("click", function () {
+        document.querySelectorAll(".fsel").forEach(function (f) { f.classList.remove("open"); });
+      });
+      document.querySelectorAll(".fsel-dropdown-item").forEach(function (item) {
+        item.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const fsel = item.closest(".fsel");
+          if (!fsel) return;
+          setFilter(fsel.id.replace("fsel-", ""), item.dataset.val);
+          fsel.classList.remove("open");
+          renderActiveTags();
+        });
+      });
+    }
+
+    function setupNavbarDropdowns() {
+      document.querySelectorAll(".dd").forEach(function (dd) {
+        const btn = dd.querySelector(".dd-btn");
+        if (!btn) return;
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          const wasOpen = dd.classList.contains("open");
+          document.querySelectorAll(".dd").forEach(function (d) { d.classList.remove("open"); });
+          if (!wasOpen) dd.classList.add("open");
+        });
+      });
+      document.addEventListener("click", function () {
+        document.querySelectorAll(".dd").forEach(function (d) { d.classList.remove("open"); });
+      });
+    }
+
+    function init() {
+      setupFilterDropdowns();
+      setupNavbarDropdowns();
+      applyParamsFromUrl();   // 1. đọc URL → set titleType + filterState + tiêu đề
+      renderActiveTags();     // 2. hiện tags filter
+      document.getElementById("applyFilter").addEventListener("click", function () {
+        currentPage = 0;
+        loadMovies(0);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+      loadMovies();           // 3. gọi API custom với payload đã build
+      loadme();
+    }
+
+    init();
+  </script>
 </body>
 </html>

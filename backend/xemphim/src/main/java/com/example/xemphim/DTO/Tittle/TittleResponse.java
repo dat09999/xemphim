@@ -14,6 +14,8 @@ public record TittleResponse(
         String country,
         Integer duration,
         LocalDate releseDate,
+        String type,
+        int view,
         Boolean featured,
         String titleStatus,
         List<String> genres,

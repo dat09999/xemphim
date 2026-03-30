@@ -1,10 +1,12 @@
 package com.example.xemphim.Repository;
 
+import com.example.xemphim.DTO.Tittle.TittleResponse;
 import com.example.xemphim.Entity.People;
 import com.example.xemphim.Entity.Tittle;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,7 +17,7 @@ import java.util.Optional;
 import java.util.Set;
 
 @Repository
-public interface TittleRepository extends JpaRepository<Tittle, Long> {
+public interface TittleRepository extends JpaRepository<Tittle, Long>, JpaSpecificationExecutor<Tittle> {
 
     @Query("""
         select distinct t
@@ -24,6 +26,8 @@ public interface TittleRepository extends JpaRepository<Tittle, Long> {
         where lower(g.name) = lower(:genre)
     """)
     List<Tittle> findByGenreNameIgnoreCase(@Param("genre") String genre);
+    @Query("SELECT SUM(t.views) FROM Tittle t")
+    Long sumView();
 
     List<Tittle> findAllByCountry(String country);
 
@@ -37,4 +41,6 @@ public interface TittleRepository extends JpaRepository<Tittle, Long> {
     List<Tittle> findAllByFeaturedTrueOrderByReleseDateDesc(Pageable pageable);
 
     List<Tittle> findByPeopleContaining(People people);
+
+    List<Tittle> findAllByName(String name);
 }

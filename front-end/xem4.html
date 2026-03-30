@@ -76,7 +76,7 @@
         <div class="stat-card"><span class="stat-icon">👥</span><div class="stat-info"><p class="stat-num" id="statUser">...</p><p class="stat-label">Số Lượng User</p></div></div>
         <div class="stat-card"><span class="stat-icon">🏷️</span><div class="stat-info"><p class="stat-num" id="statTL">...</p><p class="stat-label">Số Thể Loại</p></div></div>
         <div class="stat-card"><span class="stat-icon">🧑‍🎤</span><div class="stat-info"><p class="stat-num" id="statNguoi">...</p><p class="stat-label">Số Diễn Viên</p></div></div>
-        <div class="stat-card wide"><span class="stat-icon">👁</span><div class="stat-info"><p class="stat-num">2,000</p><p class="stat-label">Số Lượt Xem</p></div></div>
+        <div class="stat-card wide"><span class="stat-icon">👁</span><div class="stat-info"><p class="stat-num" id="statXem">...</p><p class="stat-label">Số Lượt Xem</p></div></div>
       </section>
     </div>
 
@@ -199,9 +199,9 @@
     <div id="qlyuser" class="ql-user">
       <h2 class="panel-title">👥 Quản Lý User</h2>
       <div class="user-list">
-        <div class="user"><div class="user-info"><span class="user-id">#1</span><span class="user-name">Dương Văn Đạt</span><span class="user-role">Admin</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
-        <div class="user"><div class="user-info"><span class="user-id">#2</span><span class="user-name">Nguyễn Văn A</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
-        <div class="user"><div class="user-info"><span class="user-id">#3</span><span class="user-name">Trần Thị B</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button></div>
+        <div class="user"><div class="user-info"><span class="user-id">#1</span><span class="user-name">Dương Văn Đạt</span><span class="user-role">Admin</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
+        <div class="user"><div class="user-info"><span class="user-id">#2</span><span class="user-name">Nguyễn Văn A</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
+        <div class="user"><div class="user-info"><span class="user-id">#3</span><span class="user-name">Trần Thị B</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
       </div>
     </div>
 
@@ -426,6 +426,7 @@ function renderMovieGrid(movies) {
       <div class="poster-actions">
         <button class="detail-btn" type="button" data-id="${m.id}">🔍 Chi tiết</button>
         <button class="del-btn" type="button" data-id="${m.id}">🗑</button>
+        <button class="del-btn" type="button" data-id="${m.id}">Sửa</button>
       </div>
     </div>`).join("");
 
@@ -691,14 +692,24 @@ async function deleteGenre(id) {
 // ===== STATS =====
 async function loadStats() {
   try {
-    const [r1, r2, r3] = await Promise.all([
+
+    const [r1, r2, r3,r4,r5] = await Promise.all([
       fetch(`${BASE_URL}/api/tittles`),
       fetch(`${BASE_URL}/api/people`),
-      fetch(`${BASE_URL}/api/genres`)
+      fetch(`${BASE_URL}/api/genres`),
+       fetch(`${BASE_URL}/api/count`),
+       fetch(`${BASE_URL}/api/tittles/views`,{
+        method:"GET",
+        headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` }
+       })
+
+
     ]);
     if (r1.ok) { const d=await r1.json(); document.getElementById("statPhim").textContent=d.length; }
-    if (r2.ok) { const d=await r2.json(); document.getElementById("statNguoi").textContent=d.length; }
-    if (r3.ok) { const d=await r3.json(); document.getElementById("statTL").textContent=d.length; }
+      if (r2.ok) { const d=await r2.json(); document.getElementById("statNguoi").textContent=d.length; }
+      if (r3.ok) { const d=await r3.json(); document.getElementById("statTL").textContent=d.length; }
+        if (r4.ok) { const d=await r4.text(); document.getElementById("statUser").textContent=d; }
+          if (r5.ok) { const d=await r5.text(); document.getElementById("statXem").textContent=d; }
   } catch(e) {}
 }
 

@@ -43,12 +43,18 @@ public class Userserviceimpl  implements Userservice {
 
 
     @Override
-    public Userreponse update(User user) {
-        return null;
+    public void update(int id) {
+        User a=userRepository.findById(id).orElseThrow(()->new RuntimeException("loi "));
+        a.setStatus(UserStatus.ACTIVE);
+        userRepository.save(a);
+
     }
 
     @Override
-    public Userreponse delete(User user) {
-        return null;
+    public void delete(int id) {
+        User a=userRepository.findById(id).orElseThrow(()->new RuntimeException("loi"));
+        a.setStatus(UserStatus.INACTIVE);
+        userRepository.save(a);
+
     }
 }

@@ -1,26 +1,33 @@
 package com.example.xemphim.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
+
 public class Comment {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne
-    @JoinColumn(name = "tittle_id", referencedColumnName = "id")
+
+    @ManyToOne
+    @JoinColumn(name = "tittle_id", nullable = false)
     private Tittle tittle;
-    @OneToOne
-    @JoinColumn(name = "User_id", referencedColumnName = "id",nullable = false)
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
-    @OneToOne
-    @JoinColumn(name = "ParentUser_id", referencedColumnName = "id")
-    private User parentUser;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_comment_id")
+    private Comment parentComment;
+
     private String content;
     private Date date;
-
 }

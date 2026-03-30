@@ -1,21 +1,32 @@
 package com.example.xemphim.Service.impl;
 
+import com.example.xemphim.DTO.Tittle.TittleFilterRequest;
 import com.example.xemphim.DTO.Tittle.TittleRequest;
 import com.example.xemphim.DTO.Tittle.TittleResponse;
+import com.example.xemphim.DTO.Tittle.TittleUpDate;
 import com.example.xemphim.DTO.people.PeopleResponse;
 import com.example.xemphim.Entity.Genre;
 import com.example.xemphim.Entity.People;
 import com.example.xemphim.Entity.Tittle;
 import com.example.xemphim.Enum.TitleStatus;
+import com.example.xemphim.Enum.TittleType;
+import com.example.xemphim.Repository.GenreRepository;
 import com.example.xemphim.Repository.PeopleRepository;
 import com.example.xemphim.Repository.TittleRepository;
 import com.example.xemphim.Service.TittleService;
+import com.example.xemphim.Specification.TittleSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -23,20 +34,25 @@ public class TitleServiceimpl implements TittleService {
 
     private final TittleRepository tittleRepository;
     private final PeopleRepository peopleRepository;
+    private final GenreRepository genreRepository;
 
     @Override
     public void add(TittleRequest tittle) {
-        Tittle t = Tittle.builder()
+        Set<Genre> genres = new HashSet<>(genreRepository.findAllById(tittle.getGenre()));
+        Set<People> people = new HashSet<>(peopleRepository.findAllById(tittle.getPeople()));
 
+        Tittle t = Tittle.builder()
                 .country(tittle.getCountry())
                 .name(tittle.getName())
-                .Original_name(tittle.getOriginal_name())
+                .originalName(tittle.getOriginal_name())
                 .description(tittle.getDescription())
-                .Duration(tittle.getDuration())
-                .genres(tittle.getGenre())
-                .people(tittle.getPeople())
+                .duration(tittle.getDuration())
+                .titleType(TittleType.valueOf(tittle.getTittleType()))
+                .titleStatus(TitleStatus.valueOf(tittle.getType()))
+                .genres(genres)
+                .people(people)
                 .releseDate(tittle.getRelease_date())
-                .featured(tittle.getFeatured())
+                .featured(Boolean.TRUE.equals(tittle.getFeatured()))
                 .build();
 
         tittleRepository.save(t);
@@ -57,6 +73,7 @@ public class TitleServiceimpl implements TittleService {
                 .toList();
     }
 
+
     @Override
     public void delete(Long id) {
         Tittle a = tittleRepository.findById(id)
@@ -74,12 +91,127 @@ public class TitleServiceimpl implements TittleService {
                 .map(this::toResponse)
                 .toList();
     }
+
+    @Override
+    public List<TittleResponse> filter(TittleFilterRequest tittle) {
+        Sort sort = Sort.unsorted();
+
+        if (tittle.getSortBy() != null && !tittle.getSortBy().isBlank()) {
+            Sort.Direction direction = "desc".equalsIgnoreCase(tittle.getSortDir())
+                    ? Sort.Direction.DESC
+                    : Sort.Direction.ASC;
+
+            sort = Sort.by(direction, tittle.getSortBy());
+        } else {
+            sort = Sort.by(Sort.Direction.DESC, "views")
+                    .and(Sort.by(Sort.Direction.DESC, "releseDate"));
+        }
+
+        return tittleRepository.findAll(TittleSpecification.filterPublished(tittle), sort)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    @Override
+    public List<TittleResponse> filterAdmin(TittleFilterRequest tittle) {
+        Sort sort = Sort.unsorted();
+
+        if (tittle.getSortBy() != null && !tittle.getSortBy().isBlank()) {
+            Sort.Direction direction = "desc".equalsIgnoreCase(tittle.getSortDir())
+                    ? Sort.Direction.DESC
+                    : Sort.Direction.ASC;
+
+            sort = Sort.by(direction, tittle.getSortBy());
+        } else {
+            sort = Sort.by(Sort.Direction.DESC, "views")
+                    .and(Sort.by(Sort.Direction.DESC, "releseDate"));
+        }
+
+        return tittleRepository.findAll(TittleSpecification.filterForAdmin(tittle), sort)
+                .stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
+    @Override
+    public TittleResponse update(TittleUpDate tittle) {
+        if (tittle.getId() == null) {
+            throw new RuntimeException("Id is required");
+        }
+
+        Tittle existing = tittleRepository.findById(tittle.getId())
+                .orElseThrow(() -> new RuntimeException("No tittle found"));
+
+        if (tittle.getName() != null && !tittle.getName().isBlank()) {
+            existing.setName(tittle.getName());
+        }
+        if (tittle.getTittleType()!= null) {
+            existing.setTitleType(tittle.getTittleType());
+        }
+
+
+        if (tittle.getOriginal_name() != null && !tittle.getOriginal_name().isBlank()) {
+            existing.setOriginalName(tittle.getOriginal_name());
+        }
+
+        if (tittle.getDescription() != null && !tittle.getDescription().isBlank()) {
+            existing.setDescription(tittle.getDescription());
+        }
+
+        if (tittle.getCountry() != null && !tittle.getCountry().isBlank()) {
+            existing.setCountry(tittle.getCountry());
+        }
+
+        if (tittle.getDuration() != null) {
+            existing.setDuration(tittle.getDuration());
+        }
+
+        if (tittle.getRelease_date() != null) {
+            existing.setReleseDate(tittle.getRelease_date());
+        }
+
+        if (tittle.getFeatured() != null) {
+            existing.setFeatured(tittle.getFeatured());
+        }
+
+        if (tittle.getGenre() != null) {
+            Set<Genre> genres = new HashSet<>(genreRepository.findAllById(tittle.getGenre()));
+
+            existing.setGenres(genres);
+        }
+
+        if (tittle.getPeople() != null) {
+            Set<People> people = new HashSet<>(peopleRepository.findAllById(tittle.getPeople()));
+            existing.setPeople(people);
+        }
+
+        Tittle updated = tittleRepository.save(existing);
+        return toResponse(updated);
+    }
+
+    @Override
+    public Long SumView() {
+        return tittleRepository.sumView();
+    }
+
+//    @Override
+//    public Page<TittleResponse> byviews(Pageable pageable) {
+//           return tittleRepository.findAllByOrderByViewsDesc(pageable)
+//                .map(this::toResponse);
+//    }
+
     @Override
     public List<TittleResponse> findByPeople(Long Id) {
         People a=peopleRepository.getPeopleById(Id).orElseThrow(() -> new RuntimeException("No people found"));
         return tittleRepository.findByPeopleContaining(a).stream().map(this::toResponse).toList();
 
 
+    }
+
+    @Override
+    public List<Tittle> findByName(String Name) {
+        return tittleRepository.findAllByName(Name);
     }
 
 
@@ -127,15 +259,36 @@ public class TitleServiceimpl implements TittleService {
                 .toList();
     }
 
+    @Override
+    public int getview(Long Id) {
+      Tittle a=tittleRepository.findById(Id).orElseThrow(() -> new RuntimeException("No tittle found"));
+      return a.getViews();
+    }
+
+    @Override
+    public Long getviews() {
+        return tittleRepository.sumView();
+    }
+
+    @Override
+    public void watch(Long Id) {
+        Tittle a=tittleRepository.findById(Id).orElseThrow(() -> new RuntimeException("No tittle found"));
+        a.setViews(a.getViews() + 1);
+        tittleRepository.save(a);
+    }
+
     private TittleResponse toResponse(Tittle tittle) {
         return new TittleResponse(
                 tittle.getId(),
                 tittle.getName(),
-                tittle.getOriginal_name(),
+                tittle.getOriginalName(),
+
                 tittle.getDescription(),
                 tittle.getCountry(),
                 tittle.getDuration(),
                 tittle.getReleseDate(),
+                String.valueOf(tittle.getTitleType()),
+                tittle.getViews(),
                 tittle.isFeatured(),
                 tittle.getTitleStatus() != null ? tittle.getTitleStatus().name() : null,
                 tittle.getGenres() != null

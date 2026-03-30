@@ -12,9 +12,9 @@
 
 <header class="topbar">
   <a class="brand" href="#"><span class="brand-icon">▶</span>PhimHay</a>
-  <form class="searchbar" action="#" role="search">
+  <form id="searchForm" class="searchbar" action="#" role="search">
     <span class="search-icon">🔍</span>
-    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+    <input id="searchInput" type="search" placeholder="Tìm kiếm phim, diễn viên..." />
   </form>
   <div class="auth" id="auth">
     <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
@@ -23,9 +23,10 @@
 </header>
 
 <nav class="navbar">
-  <a class="nav-link active" href="#">Trang chủ</a>
-  <a class="nav-link" href="#">Phim mới</a>
-  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+  <a class="nav-link active" href="index.html">Trang chủ</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=HOAT_HINH">Hoạt hình</a>
+    <a href="xem4.html" class="nav-link" id="adminLink" style="display:none;"> Admin</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_LE">Phim lẻ</a>
 
   <div class="dd">
     <button class="dd-btn" type="button">
@@ -33,10 +34,18 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu cols3">
-      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
-      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
-      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
-      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+      <a href="#" data-type="genre" data-value="Hành động">🔥 Hành động</a>
+      <a href="#" data-type="genre" data-value="Hình sự">🔍 Hình sự</a>
+      <a href="#" data-type="genre" data-value="Kinh dị">👻 Kinh dị</a>
+      <a href="#" data-type="genre" data-value="Bí ẩn">🌙 Bí ẩn</a>
+      <a href="#" data-type="genre" data-value="Tình cảm">💕 Tình cảm</a>
+      <a href="#" data-type="genre" data-value="Hài hước">😂 Hài hước</a>
+      <a href="#" data-type="genre" data-value="Viễn tưởng">🚀 Viễn tưởng</a>
+      <a href="#" data-type="genre" data-value="Cổ trang">⚔️ Cổ trang</a>
+      <a href="#" data-type="genre" data-value="Hoạt hình">🎨 Hoạt hình</a>
+      <a href="#" data-type="genre" data-value="Gia đình">👨‍👩‍👧 Gia đình</a>
+      <a href="#" data-type="genre" data-value="Âm nhạc">🎵 Âm nhạc</a>
+      <a href="#" data-type="genre" data-value="Phiêu lưu">🗺️ Phiêu lưu</a>
     </div>
   </div>
 
@@ -46,12 +55,16 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu">
-      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
-      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+      <a href="xem6.html?type=country&value=Vietnam" data-type="country" data-value="Vietnam">🇻🇳 Việt Nam</a>
+      <a href="xem6.html?type=country&value=Korea" data-type="country" data-value="Korea">🇰🇷 Hàn Quốc</a>
+      <a href="xem6.html?type=country&value=China" data-type="country" data-value="China">🇨🇳 Trung Quốc</a>
+      <a href="xem6.html?type=country&value=Japan" data-type="country" data-value="Japan">🇯🇵 Nhật Bản</a>
+      <a href="xem6.html?type=country&value=Thailand" data-type="country" data-value="Thailand">🇹🇭 Thái Lan</a>
+      <a href="xem6.html?type=country&value=USA" data-type="country" data-value="USA">🌍 Âu Mỹ</a>
     </div>
   </div>
 
-  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
 
   <div class="dd">
     <button class="dd-btn" type="button">
@@ -59,8 +72,12 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu">
-      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
-      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+      <a href="#" data-type="year" data-value="2026">2026</a>
+      <a href="#" data-type="year" data-value="2025">2025</a>
+      <a href="#" data-type="year" data-value="2024">2024</a>
+      <a href="#" data-type="year" data-value="2023">2023</a>
+      <a href="#" data-type="year" data-value="2022">2022</a>
+      <a href="#" data-type="year" data-value="2021">2021</a>
     </div>
   </div>
 </nav>
@@ -97,7 +114,7 @@
   <section class="section">
     <div class="sec-head">
       <h2>🎬 Phim lẻ</h2>
-      <a class="more" href="xem6.html">Xem tất cả →</a>
+      <a class="more" href="xem6.html?type=tittleType&value=PHIM_LE">Xem tất cả →</a>
     </div>
     <div class="grid" id="newestMovies">
       <p style="color:#aaa;padding:1rem;">Đang tải phim...</p>
@@ -107,7 +124,7 @@
   <section class="section">
     <div class="sec-head">
       <h2>🇨🇳 Phim Trung Quốc</h2>
-      <a class="more" href="#">Xem tất cả →</a>
+      <a class="more" href="xem6.html?type=country&value=China">Xem tất cả →</a>
     </div>
     <div class="grid" id="chinaMovies">
       <p style="color:#aaa;padding:1rem;">Đang tải phim Trung Quốc...</p>
@@ -258,10 +275,15 @@ async function loadme() {
     if (!res.ok) {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("email");
+      localStorage.removeItem("userId");
       return;
     }
     const me = await res.json();
-    console.log("User info:", me);
+    console.log("Logged in as:", me);
+    if (me.id) localStorage.setItem("userId", me.id);
+    if (me.role === "ADMIN") {
+    document.getElementById("adminLink").style.display = "inline-flex";
+}
 
     let avatarUrl = "image/a9.jpg";
     try {
@@ -287,8 +309,26 @@ loadNewest();
 loadChinaMovies();
 loadme();
 
+// ========== SEARCH ==========
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const q = document.getElementById("searchInput").value.trim();
+  if (q) {
+    window.location.href = `xem6.html?type=name&value=${encodeURIComponent(q)}`;
+  }
+});
 
-// ========== DROPDOWN ==========
+// ========== DROPDOWN FILTER → chuyển sang xem6.html ==========
+document.querySelectorAll(".dd-menu a[data-type]").forEach(function(link) {
+  link.addEventListener("click", function(e) {
+    e.preventDefault();
+    const type = this.dataset.type;
+    const value = this.dataset.value;
+    window.location.href = `xem6.html?type=${type}&value=${encodeURIComponent(value)}`;
+  });
+});
+
+// ========== DROPDOWN OPEN/CLOSE ==========
 document.querySelectorAll(".dd").forEach(function(dd) {
   dd.querySelector(".dd-btn").addEventListener("click", function(e) {
     e.stopPropagation();

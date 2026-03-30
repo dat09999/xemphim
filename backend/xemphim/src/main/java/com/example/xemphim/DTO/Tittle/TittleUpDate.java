@@ -2,6 +2,7 @@ package com.example.xemphim.DTO.Tittle;
 
 import com.example.xemphim.Entity.Genre;
 import com.example.xemphim.Entity.People;
+import com.example.xemphim.Enum.TittleType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,20 +15,17 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TittleRequest {
+public class TittleUpDate {
+    private Long id;
     private String name;
     private String Original_name;
     private String Description;
+    private TittleType tittleType;
     private String Country;
-    private int Duration;
-
+    private Integer Duration;
     private String Language;
     private LocalDate Release_date;
-    private String TittleType;
-    private String type;
     private Set<Long> genre=new HashSet<>();
     private Set<Long> people=new HashSet<>();
     private Boolean featured;
-
-
 }

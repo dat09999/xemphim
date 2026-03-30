@@ -20,7 +20,7 @@ public class GenreController {
     private final GenreRepository genreRepository;
 
     @GetMapping("/{id}")
-    public ResponseEntity<Genre> getGenre(@PathVariable int id) {
+    public ResponseEntity<Genre> getGenre(@PathVariable Long id) {
         return ResponseEntity.ok(genreService.getGenre(id));
     }
 

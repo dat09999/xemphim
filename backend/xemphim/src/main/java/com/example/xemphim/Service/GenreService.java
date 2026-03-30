@@ -6,7 +6,7 @@ import com.example.xemphim.Entity.Genre;
 import java.util.List;
 
 public interface GenreService {
-    public Genre getGenre(int id);
+    public Genre getGenre(Long id);
 
     public List<Genre> getAllGenres();
     public void addGenre(GenreRequest genre);

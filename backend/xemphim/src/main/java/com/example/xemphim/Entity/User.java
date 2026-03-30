@@ -50,6 +50,7 @@ public class User {
     private Gender gender;
     @Column(nullable = false)
     private Date birthday;
-    @Column(nullable = false, updatable = false)
+    @Builder.Default
+    @Column( nullable = false, updatable = false)
     private LocalDateTime createDate = LocalDateTime.now();
 }

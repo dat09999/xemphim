@@ -1,6 +1,7 @@
 package com.example.xemphim.Entity;
 
 import com.example.xemphim.Enum.TitleStatus;
+import com.example.xemphim.Enum.TittleType;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +20,8 @@ public class Tittle {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String Original_name;
+    @Column(name = "original_name")
+    private String originalName;
     @Column(columnDefinition = "TEXT")
     private  String description;
     @ManyToMany
@@ -30,7 +32,7 @@ public class Tittle {
     )
     private Set<Genre> genres = new HashSet<>();
     private LocalDate releseDate;
-    private int Duration;
+    private int duration;
     public String country;
     @Enumerated(EnumType.STRING)
     @Builder.Default
@@ -39,6 +41,11 @@ public class Tittle {
     private LocalDate CreateDate= LocalDate.now();
     @Builder.Default
     private boolean featured=false;
+    @Builder.Default
+    private int views=0;
+    @Enumerated(EnumType.STRING)
+
+    private TittleType titleType;
     @ManyToMany
     @JoinTable(
             name = "title_people",
