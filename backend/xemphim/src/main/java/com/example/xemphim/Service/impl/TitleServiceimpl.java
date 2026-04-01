@@ -1,9 +1,6 @@
 package com.example.xemphim.Service.impl;
 
-import com.example.xemphim.DTO.Tittle.TittleFilterRequest;
-import com.example.xemphim.DTO.Tittle.TittleRequest;
-import com.example.xemphim.DTO.Tittle.TittleResponse;
-import com.example.xemphim.DTO.Tittle.TittleUpDate;
+import com.example.xemphim.DTO.Tittle.*;
 import com.example.xemphim.DTO.people.PeopleResponse;
 import com.example.xemphim.Entity.Genre;
 import com.example.xemphim.Entity.People;
@@ -16,14 +13,14 @@ import com.example.xemphim.Repository.TittleRepository;
 import com.example.xemphim.Service.TittleService;
 import com.example.xemphim.Specification.TittleSpecification;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,9 +32,10 @@ public class TitleServiceimpl implements TittleService {
     private final TittleRepository tittleRepository;
     private final PeopleRepository peopleRepository;
     private final GenreRepository genreRepository;
+    private ImageService imageService;
 
     @Override
-    public void add(TittleRequest tittle) {
+    public TittleResponse add(TittleRequest tittle) {
         Set<Genre> genres = new HashSet<>(genreRepository.findAllById(tittle.getGenre()));
         Set<People> people = new HashSet<>(peopleRepository.findAllById(tittle.getPeople()));
 
@@ -56,6 +54,71 @@ public class TitleServiceimpl implements TittleService {
                 .build();
 
         tittleRepository.save(t);
+        return toResponse(t);
+    }
+   @Override
+   public AddMovieResult addwithLink(TittleRequest tittle,
+                                     MultipartFile video,
+                                     MultipartFile poster,
+                                     MultipartFile banner) {
+
+        TittleResponse a = add(tittle);
+
+        List<String> uploaded = new ArrayList<>();
+        List<String> missing = new ArrayList<>();
+        List<String> failed = new ArrayList<>();
+
+        if (video != null && !video.isEmpty()) {
+            try {
+                imageService.uploadVideo(a.id(), video);
+                uploaded.add("VIDEO");
+            } catch (Exception e) {
+                failed.add("VIDEO");
+            }
+        } else {
+            missing.add("VIDEO");
+        }
+
+        if (poster != null && !poster.isEmpty()) {
+            try {
+                imageService.uploadimage(a.id(), poster, "POSTER");
+                uploaded.add("POSTER");
+            } catch (Exception e) {
+                failed.add("POSTER");
+            }
+        } else {
+            missing.add("POSTER");
+        }
+
+        if (banner != null && !banner.isEmpty()) {
+            try {
+                imageService.uploadimage(a.id(), banner, "BANNER");
+                uploaded.add("BANNER");
+            } catch (Exception e) {
+                failed.add("BANNER");
+            }
+        } else {
+            missing.add("BANNER");
+        }
+
+        Tittle movie = tittleRepository.findById(a.id())
+                .orElseThrow(() -> new RuntimeException("No tittle found"));
+
+        if (!missing.isEmpty() || !failed.isEmpty()) {
+            movie.setTitleStatus(TitleStatus.PENDING);
+        }
+
+        tittleRepository.save(movie);
+
+        return new AddMovieResult(
+                a.id(),
+                missing.isEmpty() && failed.isEmpty()
+                        ? "Tạo phim thành công"
+                        : "Tạo phim thành công nhưng còn thiếu hoặc lỗi media",
+                uploaded,
+                missing,
+                failed
+        );
     }
 
     @Override

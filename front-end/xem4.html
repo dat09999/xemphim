@@ -90,6 +90,23 @@
         <div class="form-row"><label class="label">Quốc Gia</label><input class="text1" id="inp-quocgia" type="text" placeholder="Việt Nam, Hàn Quốc..."></div>
         <div class="form-row"><label class="label">Thời Lượng</label><input class="text1" id="inp-thoiluong" type="number" placeholder="phút..."></div>
         <div class="form-row"><label class="label">Ngày Phát Hành</label><input class="text1" id="inp-ngay" type="date"></div>
+       <div class="form-row">
+  <label class="label">Loại Phim</label>
+  <select class="text1" id="inp-loaiphim">
+    <option value="PHIM_LE">Phim lẻ</option>
+    <option value="PHIM_CHIEU_RAP">Phim chiếu rạp</option>
+    <option value="HOAT_HINH">Hoạt hình</option>
+  </select>
+</div>
+
+<div class="form-row">
+  <label class="label">Trạng Thái Phim</label>
+  <select class="text1" id="inp-trangthai">
+    <option value="PUBLISHED">Hoạt động</option>
+    <option value="NOT_PUBLISHED">Không hoạt động</option>
+    <option value="PENDING">Đang chờ</option>
+  </select>
+</div>
         <div class="form-row form-row-top"><label class="label">Thể Loại</label><div class="check-group" id="genreCheckGroup"><span class="loading-text">Đang tải...</span></div></div>
         <div class="form-row form-row-top">
           <label class="label">Đạo Diễn</label>
@@ -319,6 +336,62 @@ function showPanel(id, btn) {
   document.querySelectorAll(".sidebar-btn").forEach(b => b.classList.remove("active-btn"));
   if (btn) btn.classList.add("active-btn");
 }
+async function luuphim() {
+  const formData = new FormData();
+
+  // dữ liệu text
+  formData.append("name", document.getElementById("inp-tenphim").value.trim());
+  formData.append("original_name", document.getElementById("inp-tengoc").value.trim());
+  formData.append("description", document.getElementById("inp-noidung").value.trim());
+  formData.append("country", document.getElementById("inp-quocgia").value.trim());
+  formData.append("duration", parseInt(document.getElementById("inp-thoiluong").value) || 0);
+  formData.append("release_date", document.getElementById("inp-ngay").value);
+  formData.append("tittletype", document.getElementById("inp-loaiphim").value);
+  formData.append("type", document.getElementById("inp-trangthai").value);
+
+  // genre: chỉ lấy id
+  Array.from(
+    document.querySelectorAll("#genreCheckGroup input[type=checkbox]:checked")
+  ).forEach(cb => {
+    formData.append("genre", cb.value);
+  });
+
+  // people: chỉ lấy id
+  selectedDaodien.forEach(p => {
+    if (p && p.id) formData.append("people", p.id);
+  });
+
+  selectedDienVien.forEach(p => {
+    if (p && p.id) formData.append("people", p.id);
+  });
+
+  // 3 file
+  const poster = document.getElementById("filePoster").files[0];
+  const banner = document.getElementById("fileBanner").files[0];
+  const video = document.getElementById("fileVideo").files[0];
+
+  if (video) formData.append("video", video);
+  if (poster) formData.append("poster", poster);
+  if (banner) formData.append("banner", banner);
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/add`, {
+      method: "POST",
+      
+      body: formData
+    });
+
+    if (!res.ok) throw new Error("HTTP " + res.status);
+
+    const data = await res.json().catch(() => null);
+
+    alert(data?.message || "Phim mới đã được lưu thành công!");
+    loadMovieGrid();
+    showPanel("idquanly", document.querySelector(".quan-ly"));
+  } catch (e) {
+    alert("Lỗi khi lưu phim: " + e.message);
+  }
+}
 
 document.querySelector(".Thong-ke").addEventListener("click",      function(){ showPanel("idthongke", this); });
 document.querySelector(".btn-themphim").addEventListener("click",  function(){ showPanel("panel-themphim", this); loadFormData(); });
@@ -326,6 +399,7 @@ document.querySelector(".btn-themtl").addEventListener("click",    function(){ s
 document.querySelector(".btn-themnguoi").addEventListener("click", function(){ showPanel("panel-themnguoi", this); });
 document.querySelector(".quan-ly").addEventListener("click",       function(){ showPanel("idquanly", this); loadMovieGrid(); loadTheLoaiGrid(); });
 document.querySelector(".quanly-user").addEventListener("click",   function(){ showPanel("qlyuser", this); });
+document.getElementById("btnLuuPhim").addEventListener("click", luuphim);
 
 // ===== FILE INPUTS =====
 document.getElementById("filePoster").addEventListener("change", function(){ document.getElementById("namePoster").value = this.files[0]?.name || ""; });

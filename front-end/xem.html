@@ -95,18 +95,27 @@
       <!-- BÌNH LUẬN -->
       <section class="player-card">
         <h2 class="card-title">💬 Bình luận</h2>
-        <div class="comment-box">
-          <textarea id="commentInput" class="comment-input" placeholder="Viết bình luận của bạn..."></textarea>
-          <button id="submitComment" class="btn-comment">Gửi</button>
+
+        <!-- Form viết comment -->
+        <div class="comment-form-wrap">
+          <textarea id="commentInput" class="comment-input" placeholder="Chia sẻ cảm nhận của bạn về bộ phim này..."></textarea>
+          <div class="comment-form-footer">
+            <button id="submitComment" class="btn-comment">✈ Gửi bình luận</button>
+          </div>
         </div>
+
+        <!-- Danh sách comment -->
         <div class="comment-list" id="commentList">
-          <p style="color:var(--sub);font-size:14px;">Đang tải bình luận...</p>
+          <div class="comment-empty">
+            <div class="comment-empty-icon">💬</div>
+            <p>Đang tải bình luận...</p>
+          </div>
         </div>
       </section>
 
     </div>
 
-    <!-- CỘT PHẢI: XEM NHIỀU NHẤT -->
+    <!-- CỘT PHẢI -->
     <aside class="player-sidebar">
       <div class="sidebar-card">
         <h3 class="sidebar-title">👁 Xem nhiều nhất</h3>
@@ -134,28 +143,36 @@
 </footer>
 
 <script>
-const params = new URLSearchParams(window.location.search);
+const params  = new URLSearchParams(window.location.search);
 const movieId = params.get("id");
 if (!movieId) window.location.href = "index.html";
-
-
 const BASE_URL = "http://localhost:8080";
+
+// ── LOAD HISTORY ──────────────────────────────────
 async function loadhistory() {
   const token = localStorage.getItem("accessToken");
-  console.log("movieId", movieId);
-  if (!token) return;
-  if (!movieId) return;
+  if (!token || !movieId) return;
   try {
-    const res = await fetch(`${BASE_URL}/history/add/${movieId}`, {
+    await fetch(`${BASE_URL}/history/add/${movieId}`, {
       method: "POST",
       headers: { "Authorization": `Bearer ${token}` }
     });
-    // KHÔNG res.json() vì backend void
   } catch (err) { console.error(err); }
 }
 
-loadhistory();
-// ========== LOAD USER ==========
+// ── LOAD VIEW COUNT ───────────────────────────────
+async function loadViewCount() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/view?id=${movieId}`);
+    if (res.ok) {
+      const count = await res.text();
+      document.getElementById("viewCount").textContent =
+        Number(count.trim()).toLocaleString('vi-VN');
+    }
+  } catch (err) { console.error(err); }
+}
+
+// ── LOAD USER ─────────────────────────────────────
 async function loadme() {
   const token = localStorage.getItem("accessToken");
   if (!token) return;
@@ -176,45 +193,36 @@ async function loadme() {
   } catch (err) { console.error(err); }
 }
 
-// ========== LOAD THÔNG TIN PHIM + CAST ==========
+// ── LOAD PHIM + CAST ──────────────────────────────
 async function loadMovie() {
   try {
     const res = await fetch(`${BASE_URL}/api/tittles/${movieId}`);
     if (!res.ok) return;
     const m = await res.json();
-
     document.getElementById("movieTitle").textContent = m.name || "...";
     document.title = `${m.name || "Xem phim"} - PhimHay`;
-
-    // Render cast
     const people = m.people || [];
-    if (people.length === 0) {
+    if (!people.length) {
       document.getElementById("castList").innerHTML = "<p style='color:var(--sub);font-size:14px;'>Chưa có thông tin.</p>";
       return;
     }
-    document.getElementById("castList").innerHTML = people.map((person, i) => `
-      <a href="people.html?id=${person.id}" class="cast-card">
-        <div class="cast-avatar">${person.name.charAt(0).toUpperCase()}</div>
-        <span class="cast-name">${person.name}</span>
-        <span class="cast-role">${i === 0 ? 'Director' : 'Cast'}</span>
+    document.getElementById("castList").innerHTML = people.map(p => `
+      <a href="people.html?id=${p.id}" class="cast-card">
+        <div class="cast-avatar">${p.name.charAt(0).toUpperCase()}</div>
+        <span class="cast-name">${p.name}</span>
+        <span class="cast-role">${p.role === 'AUTHOR' ? 'Đạo diễn' : 'Diễn viên'}</span>
       </a>`).join("");
   } catch (err) { console.error(err); }
 }
 
-// ========== LOAD VIDEO ==========
+// ── LOAD VIDEO ────────────────────────────────────
 async function loadVideo() {
   const token = localStorage.getItem("accessToken");
-
   try {
     const res = await fetch(`${BASE_URL}/link/video/${movieId}`, {
       method: "POST",
-      headers: {
-        "Authorization": `Bearer ${token}`
-      }
+      headers: { "Authorization": `Bearer ${token}` }
     });
-
-    console.log("Video link status:", res.status);
-
     if (res.ok) {
       const url = (await res.text()).trim();
       if (url) {
@@ -222,14 +230,11 @@ async function loadVideo() {
         player.src = url;
         player.load();
       }
-    } else {
-      console.log("Response text:", await res.text());
     }
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) { console.error(err); }
 }
-// ========== LOAD POSTER ==========
+
+// ── LOAD POSTER ───────────────────────────────────
 async function loadPoster() {
   try {
     const res = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=POSTER`);
@@ -240,87 +245,196 @@ async function loadPoster() {
   } catch (err) { console.error(err); }
 }
 
+// ── COMMENT HELPERS ───────────────────────────────
+const AV_LIST = ['av-blue','av-red','av-green','av-purple','av-amber'];
+function avColor(name) {
+  let s = 0; for (let i = 0; i < (name||'').length; i++) s += name.charCodeAt(i);
+  return AV_LIST[s % AV_LIST.length];
+}
+function timeAgo(ds) {
+  if (!ds) return '';
+  const d = new Date(ds), diff = Math.floor((Date.now() - d) / 1000);
+  if (diff < 60)    return 'Vừa xong';
+  if (diff < 3600)  return `${Math.floor(diff/60)} phút trước`;
+  if (diff < 86400) return `${Math.floor(diff/3600)} giờ trước`;
+  return d.toLocaleDateString('vi-VN');
+}
+function escAttr(s) { return (s||'').replace(/'/g,"\\'"); }
+
+// ── ĐỆ QUY LẤY REPLIES ───────────────────────────
+async function fetchReplies(id) {
+  try {
+    const res = await fetch(`${BASE_URL}/api/comments/parent-comment/${id}`, {
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('accessToken')||''}` }
+    });
+    if (!res.ok) return [];
+    const list = await res.json();
+    for (const r of list) r.replies = await fetchReplies(r.id);
+    return list;
+  } catch { return []; }
+}
+
+// ── RENDER ĐỆ QUY ─────────────────────────────────
+function renderNode(c, depth) {
+  const av    = avColor(c.username);
+  const ch    = (c.username||'U').charAt(0).toUpperCase();
+  const admin = (c.username||'').toLowerCase().includes('admin');
+  const badgeHtml = admin ? `<span class="badge badge-admin">Admin</span>` : '';
+  const childHtml = (c.replies && c.replies.length)
+    ? `<div class="replies-list">${c.replies.map(r => renderNode(r, depth+1)).join('')}</div>`
+    : '';
+  const replyFormHtml = `
+    <div class="reply-form" id="rf-${c.id}">
+      <textarea class="reply-input" placeholder="Trả lời ${escAttr(c.username)}..."></textarea>
+      <div class="reply-form-actions">
+        <button class="btn-cancel" onclick="closeReply(${c.id})">Hủy</button>
+        <button class="btn-send-reply" onclick="postReply(${c.id})">Gửi</button>
+      </div>
+    </div>`;
+  const footerHtml = `
+    <div class="comment-footer">
+      <button class="btn-action reply-btn" onclick="toggleReply(${c.id})">💬 Trả lời</button>
+      <button class="btn-action like-btn" onclick="toggleLike(this)">♡ Thích</button>
+    </div>`;
+
+  if (depth === 0) {
+    return `
+      <div class="comment-item" data-id="${c.id}">
+        <div class="comment-avatar ${av}">${ch}</div>
+        <div class="comment-body">
+          <div class="comment-header">
+            <span class="comment-name">${c.username||'Khách'}</span>
+            ${badgeHtml}
+            <span class="comment-time">${timeAgo(c.date)}</span>
+          </div>
+          <p class="comment-text">${c.content||''}</p>
+          ${footerHtml}
+          ${replyFormHtml}
+          ${childHtml}
+        </div>
+      </div>`;
+  }
+  return `
+    <div class="reply-item" data-id="${c.id}">
+      <div class="reply-avatar ${av}">${ch}</div>
+      <div class="comment-body">
+        <div class="reply-header">
+          <span class="reply-name">${c.username||'Khách'}</span>
+          ${badgeHtml}
+          <span class="reply-time">${timeAgo(c.date)}</span>
+        </div>
+        <p class="reply-text">${c.content||''}</p>
+        ${footerHtml}
+        ${replyFormHtml}
+        ${childHtml}
+      </div>
+    </div>`;
+}
+
+// ── LOAD COMMENTS ─────────────────────────────────
 async function loadComments() {
-  const container = document.getElementById("commentList");
+  const el = document.getElementById("commentList");
+  el.innerHTML = `<div class="comment-empty"><div class="comment-empty-icon">⏳</div><p>Đang tải...</p></div>`;
   try {
     const res = await fetch(`${BASE_URL}/api/comments/tittle/${movieId}`);
-    if (!res.ok) throw new Error("Lỗi lấy bình luận");
-    const comments = await res.json();
-    if (!comments.length) {
-      container.innerHTML = "<p style='color:var(--sub);font-size:14px;'>Chưa có bình luận nào.</p>";
+    if (!res.ok) throw new Error();
+    const list = await res.json();
+
+    // Chỉ lấy comment gốc (không có parentCommentId)
+    const roots = list.filter(c => !c.parentCommentId);
+
+    if (!roots.length) {
+      el.innerHTML = `<div class="comment-empty"><div class="comment-empty-icon">💬</div><p>Chưa có bình luận nào. Hãy là người đầu tiên!</p></div>`;
       return;
     }
-    container.innerHTML = comments.map(c => `
-      <div class="comment-item">
-        <div class="comment-avatar">${(c.username||'U').charAt(0).toUpperCase()}</div>
-        <div class="comment-content">
-          <span class="comment-name">${c.username || 'Khách'}</span>
-          <p>${c.content || ''}</p>
-          <small>${c.date ? new Date(c.date).toLocaleString('vi-VN') : ''}</small>
-        </div>
-      </div>
-    `).join("");
-  } catch (err) {
-    container.innerHTML = "<p style='color:#f66;padding:1rem;'>Không tải được bình luận.</p>";
-    console.error(err);
+    for (const c of roots) c.replies = await fetchReplies(c.id);
+    el.innerHTML = roots.map(c => renderNode(c, 0)).join('');
+  } catch {
+    el.innerHTML = `<div class="comment-empty"><div class="comment-empty-icon">⚠️</div><p>Không tải được bình luận.</p></div>`;
   }
 }
 
+// ── POST COMMENT ──────────────────────────────────
 async function postComment() {
-  const text = document.getElementById("commentInput").value.trim();
+  const msg    = document.getElementById("commentInput").value.trim();
   const userId = localStorage.getItem("userId");
-  if (!userId) {
-    alert("Vui lòng đăng nhập để bình luận");
-    return;
-  }
-  if (!text) {
-    alert("Vui lòng nhập nội dung bình luận");
-    return;
-  }
+  if (!userId) { alert('Vui lòng đăng nhập để bình luận'); return; }
+  if (!msg)    { alert('Vui lòng nhập nội dung'); return; }
   try {
-    const payload = {
-      tittleId: Number(movieId),
-      userId: Number(userId),
-      content: text,
-      date: new Date().toISOString()
-    };
-    const res = await fetch(`${BASE_URL}/api/comments`, {
+    const r = await fetch(`${BASE_URL}/api/comments`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}` },
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type':'application/json', 'Authorization':`Bearer ${localStorage.getItem('accessToken')||''}` },
+      body: JSON.stringify({ tittleId: Number(movieId), userId: Number(userId), content: msg, date: new Date().toISOString() })
     });
-    if (!res.ok) throw new Error('Lỗi gửi bình luận');
-    document.getElementById("commentInput").value = "";
+    if (!r.ok) throw new Error();
+    document.getElementById("commentInput").value = '';
     await loadComments();
-  } catch (err) {
-    alert("Không gửi được bình luận");
-    console.error(err);
-  }
+  } catch { alert('Không gửi được bình luận.'); }
 }
 
-// ========== DROPDOWN ==========
-document.querySelectorAll(".dd").forEach(function(dd) {
-  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+// ── POST REPLY ────────────────────────────────────
+async function postReply(parentId) {
+  const form  = document.getElementById(`rf-${parentId}`);
+  const input = form.querySelector('.reply-input');
+  const msg   = input.value.trim();
+  const userId = localStorage.getItem("userId");
+  if (!userId) { alert('Vui lòng đăng nhập'); return; }
+  if (!msg)    { alert('Vui lòng nhập nội dung'); return; }
+  try {
+    const r = await fetch(`${BASE_URL}/api/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'Authorization':`Bearer ${localStorage.getItem('accessToken')||''}` },
+      body: JSON.stringify({ tittleId: Number(movieId), userId: Number(userId), content: msg, date: new Date().toISOString(), parentCommentId: parentId })
+    });
+    if (!r.ok) throw new Error();
+    input.value = '';
+    form.classList.remove('open');
+    await loadComments();
+  } catch { alert('Không gửi được trả lời.'); }
+}
+
+// ── TOGGLE REPLY FORM ─────────────────────────────
+function toggleReply(id) {
+  const form = document.getElementById(`rf-${id}`);
+  if (!form) return;
+  const open = form.classList.contains('open');
+  document.querySelectorAll('.reply-form.open').forEach(f => f.classList.remove('open'));
+  if (!open) { form.classList.add('open'); form.querySelector('.reply-input').focus(); }
+}
+function closeReply(id) {
+  const f = document.getElementById(`rf-${id}`);
+  if (f) f.classList.remove('open');
+}
+
+// ── LIKE (frontend only) ──────────────────────────
+function toggleLike(btn) {
+  btn.classList.toggle('liked');
+  btn.textContent = btn.classList.contains('liked') ? '❤ Đã thích' : '♡ Thích';
+}
+
+// ── DROPDOWN ──────────────────────────────────────
+document.querySelectorAll(".dd").forEach(dd => {
+  dd.querySelector(".dd-btn").addEventListener("click", e => {
     e.stopPropagation();
-    var wasOpen = dd.classList.contains("open");
-    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
-    if (!wasOpen) dd.classList.add("open");
+    const was = dd.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(d => d.classList.remove("open"));
+    if (!was) dd.classList.add("open");
   });
 });
-document.addEventListener("click", function() {
-  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+document.addEventListener("click", () => {
+  document.querySelectorAll(".dd").forEach(d => d.classList.remove("open"));
 });
 
-// ========== KHỞI ĐỘNG ==========
+document.getElementById("submitComment").addEventListener("click", postComment);
+
+// ── BOOT ──────────────────────────────────────────
+loadhistory();
 loadme();
 loadMovie();
 loadVideo();
 loadPoster();
+loadViewCount();
 loadComments();
-
-document.getElementById("submitComment").addEventListener("click", function() {
-  postComment();
-});
 </script>
 </body>
 </html>
