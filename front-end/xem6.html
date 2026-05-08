@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
   <meta charset="UTF-8" />
@@ -26,8 +26,8 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <a class="nav-link" href="index.html">Trang chủ</a>
-    <a class="nav-link" href="xem6.html?type=titleType&value=HOAT_HINH">Phim mới</a>
-    <a class="nav-link" href="xem6.html?type=titleType&value=PHIM_LE">Phim lẻ</a>
+    <a class="nav-link" href="xem6.html?type=tittleType&value=HOAT_HINH">Hoạt Hình</a>
+    <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_LE">Phim lẻ</a>
 
     <div class="dd">
       <button class="dd-btn" type="button">
@@ -65,11 +65,11 @@
         <a href="xem6.html?type=country&value=China">🇨🇳 Trung Quốc</a>
         <a href="xem6.html?type=country&value=Japan">🇯🇵 Nhật Bản</a>
         <a href="xem6.html?type=country&value=Thailand">🇹🇭 Thái Lan</a>
-        <a href="xem6.html?type=country&value=USA">🌍 Âu Mỹ</a>
+        <a href="xem6.html?type=country&value=USA">🌎 Âu Mỹ</a>
       </div>
     </div>
 
-    <a class="nav-link" href="xem6.html?type=titleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
+    <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
 
     <div class="dd">
       <button class="dd-btn" type="button">
@@ -100,13 +100,13 @@
           <span class="fsel-arrow">▼</span>
         </span>
         <div class="fsel-dropdown" id="drop-quoc-gia">
-          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✔</span></div>
           <div class="fsel-dropdown-item" data-val="Vietnam">🇻🇳 Việt Nam</div>
           <div class="fsel-dropdown-item" data-val="Korea">🇰🇷 Hàn Quốc</div>
           <div class="fsel-dropdown-item" data-val="China">🇨🇳 Trung Quốc</div>
           <div class="fsel-dropdown-item" data-val="Japan">🇯🇵 Nhật Bản</div>
           <div class="fsel-dropdown-item" data-val="Thailand">🇹🇭 Thái Lan</div>
-          <div class="fsel-dropdown-item" data-val="USA">🌍 Âu Mỹ</div>
+          <div class="fsel-dropdown-item" data-val="USA">🌎 Âu Mỹ</div>
           <div class="fsel-dropdown-item" data-val="India">🇮🇳 Ấn Độ</div>
           <div class="fsel-dropdown-item" data-val="Hong Kong">🇭🇰 Hồng Kông</div>
         </div>
@@ -119,7 +119,7 @@
           <span class="fsel-arrow">▼</span>
         </span>
         <div class="fsel-dropdown" id="drop-the-loai">
-          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✔</span></div>
           <div class="fsel-dropdown-item" data-val="Hành động">🔥 Hành động</div>
           <div class="fsel-dropdown-item" data-val="Hình sự">🔍 Hình sự</div>
           <div class="fsel-dropdown-item" data-val="Kinh dị">👻 Kinh dị</div>
@@ -140,7 +140,7 @@
           <span class="fsel-arrow">▼</span>
         </span>
         <div class="fsel-dropdown" id="drop-nam">
-          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✓</span></div>
+          <div class="fsel-dropdown-item active" data-val="Tất cả">Tất cả <span class="check">✔</span></div>
           <div class="fsel-dropdown-item" data-val="2026">2026</div>
           <div class="fsel-dropdown-item" data-val="2025">2025</div>
           <div class="fsel-dropdown-item" data-val="2024">2024</div>
@@ -191,15 +191,13 @@
     let currentPage = 0;
     const PAGE_SIZE = 12;
 
-    // filterState dùng value tiếng Anh thẳng (giống data-val trong dropdown)
     const filterState = {
       "quoc-gia": "Tất cả",
       "the-loai": "Tất cả",
       "nam":      "Tất cả"
     };
 
-    // titleType lấy từ URL, null = dùng mặc định PHIM_LE
-    let currentTitleType = null;
+    let currenttittleType = null;
 
     const labelMap = {
       "quoc-gia": "Quốc gia",
@@ -218,7 +216,6 @@
         "PHIM_LE":        "🎬 Phim Lẻ",
         "PHIM_CHIEU_RAP": "🎬 Chiếu Rạp",
         "HOAT_HINH":      "🎨 Hoạt Hình",
-        
       },
       "country": {
         "Vietnam":   "🇻🇳 Phim Việt Nam",
@@ -226,7 +223,7 @@
         "China":     "🇨🇳 Phim Trung Quốc",
         "Japan":     "🇯🇵 Phim Nhật Bản",
         "Thailand":  "🇹🇭 Phim Thái Lan",
-        "USA":       "🌍 Phim Âu Mỹ",
+        "USA":       "🌎 Phim Âu Mỹ",
         "India":     "🇮🇳 Phim Ấn Độ",
         "Hong Kong": "🇭🇰 Phim Hồng Kông"
       }
@@ -241,16 +238,14 @@
 
       if (!type) return;
 
-      // Cập nhật tiêu đề h2
       if (titleLabelMap[type] && titleLabelMap[type][value]) {
         titleEl.textContent = titleLabelMap[type][value];
       } else if (type === "genre")     { titleEl.textContent = `🎭 Thể loại: ${value}`; }
         else if (type === "year")      { titleEl.textContent = `📅 Năm ${value}`; }
         else if (type === "tim-kiem")  { titleEl.textContent = `🔍 Kết quả: "${value}"`; }
 
-      // Set vào filterState / currentTitleType
-      if (type === "titleType") {
-        currentTitleType = value;
+      if (type === "tittleType") {
+        currenttittleType = value;
       } else if (type === "country") {
         setFilter("quoc-gia", value);
       } else if (type === "genre") {
@@ -265,23 +260,24 @@
       const params = new URLSearchParams(window.location.search);
       const type  = params.get("type");
       const value = params.get("value");
-     
+
       const payload = {
         sortBy: "views",
         sortDir: "desc"
       };
 
-       if (type === "titleType" && value) {
-    payload.tittleType = value;
-  } else if (type === "country" && value) {
-    payload.country = value;
-  } else if (type === "genre" && value) {
-    payload.genre = value;
-  } else if (type === "year" && value) {
-    payload.year = parseInt(value, 10);
-  } else if (type === "name" && value) {
-    payload.name = value; // hoặc name = value, tùy backend bạn nhận field gì
-  }
+      if (type === "tittleType" && value) {
+        payload.tittleType = value;
+      } else if (type === "country" && value) {
+        payload.country = value;
+      } else if (type === "genre" && value) {
+        payload.genre = value;
+      } else if (type === "year" && value) {
+        payload.year = parseInt(value, 10);
+      } else if (type === "name" && value) {
+        payload.name = value;
+      }
+
       const country = filterState["quoc-gia"];
       const genre   = filterState["the-loai"];
       const year    = filterState["nam"];
@@ -312,7 +308,7 @@
         if (chk) chk.remove();
         if (item.dataset.val === val) {
           item.classList.add("active");
-          item.insertAdjacentHTML("beforeend", '<span class="check">✓</span>');
+          item.insertAdjacentHTML("beforeend", '<span class="check">✔</span>');
         }
       });
     }
@@ -345,7 +341,7 @@
                 if (chk) chk.remove();
               });
               const first = drop.querySelector(".fsel-dropdown-item");
-              if (first) { first.classList.add("active"); first.insertAdjacentHTML("beforeend", '<span class="check">✓</span>'); }
+              if (first) { first.classList.add("active"); first.insertAdjacentHTML("beforeend", '<span class="check">✔</span>'); }
             }
           }
           currentPage = 0;
@@ -423,7 +419,6 @@
         let movies = await res.json();
         if (!Array.isArray(movies)) movies = [];
 
-        // Filter năm 2018 trở về ở client
         if (filterState["nam"] === "2018") {
           movies = movies.filter(function (m) {
             return parseInt((m.releseDate || m.releaseDate || "").substring(0, 4), 10) <= 2018;
@@ -516,14 +511,14 @@
     function init() {
       setupFilterDropdowns();
       setupNavbarDropdowns();
-      applyParamsFromUrl();   // 1. đọc URL → set titleType + filterState + tiêu đề
-      renderActiveTags();     // 2. hiện tags filter
+      applyParamsFromUrl();
+      renderActiveTags();
       document.getElementById("applyFilter").addEventListener("click", function () {
         currentPage = 0;
         loadMovies(0);
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
-      loadMovies();           // 3. gọi API custom với payload đã build
+      loadMovies();
       loadme();
     }
 

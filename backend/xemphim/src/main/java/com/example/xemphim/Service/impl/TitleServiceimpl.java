@@ -10,6 +10,7 @@ import com.example.xemphim.Enum.TittleType;
 import com.example.xemphim.Repository.GenreRepository;
 import com.example.xemphim.Repository.PeopleRepository;
 import com.example.xemphim.Repository.TittleRepository;
+import com.example.xemphim.Repository.WatchHistoryRepository;
 import com.example.xemphim.Service.TittleService;
 import com.example.xemphim.Specification.TittleSpecification;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,8 @@ public class TitleServiceimpl implements TittleService {
     private final TittleRepository tittleRepository;
     private final PeopleRepository peopleRepository;
     private final GenreRepository genreRepository;
-    private ImageService imageService;
+    private final ImageService imageService;
+    private final WatchHistoryRepository watchHistoryRepository;
 
     @Override
     public TittleResponse add(TittleRequest tittle) {
@@ -303,6 +305,17 @@ public class TitleServiceimpl implements TittleService {
                 .stream()
                 .map(this::toResponse)
                 .toList();
+    }
+
+    @Override
+    public void addviews(Long id) {
+        Tittle a=tittleRepository.findById(id).orElseThrow(()->new RuntimeException("ko tim thay"));
+        if(!watchHistoryRepository.existsByTittle(a)){
+            a.setViews(a.getViews()+1);
+            tittleRepository.save(a);
+        }
+
+
     }
 
     @Override

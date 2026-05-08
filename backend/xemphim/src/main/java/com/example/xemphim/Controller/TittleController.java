@@ -32,13 +32,12 @@ public class TittleController {
         this.tittleRepository = tittleRepository;
     }
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> add(@RequestBody TittleRequest tittleRequest) {
-        tittleService.add(tittleRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Add tittle successfully");
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<TittleResponse> add(@RequestBody TittleRequest tittleRequest) {
+        return ResponseEntity.ok(tittleService.add(tittleRequest));
     }
     @GetMapping("/count")
-    @PreAuthorize("hasRole('ADMIN')")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> count(){
         long k=tittleRepository.count();
         return ResponseEntity.status(HttpStatus.OK).body(Long.toString(k));
@@ -121,17 +120,23 @@ public class TittleController {
         log.info("tim kiem thanh cong");
         return ResponseEntity.ok(tittleService.filterAdmin(tittleFilterRequest));
     }
-    @PostMapping(value = "/add",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> addMovie(
-
-            @ModelAttribute TittleRequest request,
-            @RequestPart(value = "video",required = false)  MultipartFile video,
-            @RequestPart(value = "poster",required = false) MultipartFile poster,
-            @RequestPart(value = "banner",required = false) MultipartFile banner
-    ) {
-        log.info(request.getName());
-        log.info(video.getOriginalFilename());
-        log.info(poster.getOriginalFilename());
-        return ResponseEntity.ok(tittleService.addwithLink(request, video, poster, banner));
-    }
+//    @PostMapping(value = "/add",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<?> addMovie(
+//
+//            @ModelAttribute TittleRequest request,
+//            @RequestPart(value = "video",required = false)  MultipartFile video,
+//            @RequestPart(value = "poster",required = false) MultipartFile poster,
+//            @RequestPart(value = "banner",required = false) MultipartFile banner
+//    ) {
+//        log.info("name: {}", request.getName());
+//        log.info("video: {}", video != null ? video.getOriginalFilename() : "null");
+//        log.info("poster: {}", poster != null ? poster.getOriginalFilename() : "null");
+//        log.info("banner: {}", banner != null ? banner.getOriginalFilename() : "null");
+//        return ResponseEntity.ok(tittleService.addwithLink(request, video, poster, banner));
+//    }
+@PostMapping("/add-view")
+    public  ResponseEntity<String> Addviewtittle(@RequestParam Long Id){
+        tittleService.addviews(Id);
+        return ResponseEntity.ok("xong");
+}
 }

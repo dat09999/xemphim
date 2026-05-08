@@ -32,6 +32,7 @@ public interface TittleService {
     public List<TittleResponse> findByCountry(String Country);
     public List<TittleResponse> findByYear(int Year);
     public   List<TittleResponse> getNewest3();
+    public void addviews(Long id);
     public List<TittleResponse> getFeatured6();
     public int getview(Long Id);
     public Long getviews();

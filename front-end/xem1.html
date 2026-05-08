@@ -13,10 +13,13 @@
 <!-- HEADER -->
 <header class="topbar">
   <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
-  <form class="searchbar" action="#" role="search">
+
+  <!-- ✅ THANH TÌM KIẾM HOẠT ĐỘNG -->
+  <form class="searchbar" id="searchForm" action="#" role="search">
     <span class="search-icon">🔍</span>
-    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+    <input id="searchInput" type="search" placeholder="Tìm kiếm phim, diễn viên..." />
   </form>
+
   <div class="auth" id="auth">
     <div class="user-info">
       <img id="headerAvatar" class="user-avatar" src="image/a9.jpg" alt="User"/>
@@ -28,30 +31,46 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <a class="nav-link" href="index.html">Trang chủ</a>
-  <a class="nav-link" href="#">Phim mới</a>
-  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=HOAT_HINH">Hoạt Hình</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_LE">Phim lẻ</a>
   <div class="dd">
     <button class="dd-btn" type="button">Thể loại <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu cols3">
-      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
-      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
-      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
-      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+      <a href="xem6.html?type=genre&value=Hành động">🔥 Hành động</a>
+      <a href="xem6.html?type=genre&value=Hình sự">🔍 Hình sự</a>
+      <a href="xem6.html?type=genre&value=Kinh dị">👻 Kinh dị</a>
+      <a href="xem6.html?type=genre&value=Bí ẩn">🌙 Bí ẩn</a>
+      <a href="xem6.html?type=genre&value=Tình cảm">💕 Tình cảm</a>
+      <a href="xem6.html?type=genre&value=Hài hước">😂 Hài hước</a>
+      <a href="xem6.html?type=genre&value=Viễn tưởng">🚀 Viễn tưởng</a>
+      <a href="xem6.html?type=genre&value=Cổ trang">⚔️ Cổ trang</a>
+      <a href="xem6.html?type=genre&value=Hoạt hình">🎨 Hoạt hình</a>
+      <a href="xem6.html?type=genre&value=Gia đình">👨‍👩‍👧 Gia đình</a>
+      <a href="xem6.html?type=genre&value=Âm nhạc">🎵 Âm nhạc</a>
+      <a href="xem6.html?type=genre&value=Phiêu lưu">🗺️ Phiêu lưu</a>
     </div>
   </div>
   <div class="dd">
     <button class="dd-btn" type="button">Quốc gia <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu">
-      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
-      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+      <a href="xem6.html?type=country&value=Vietnam">🇻🇳 Việt Nam</a>
+      <a href="xem6.html?type=country&value=Korea">🇰🇷 Hàn Quốc</a>
+      <a href="xem6.html?type=country&value=China">🇨🇳 Trung Quốc</a>
+      <a href="xem6.html?type=country&value=Japan">🇯🇵 Nhật Bản</a>
+      <a href="xem6.html?type=country&value=Thailand">🇹🇭 Thái Lan</a>
+      <a href="xem6.html?type=country&value=USA">🌍 Âu Mỹ</a>
     </div>
   </div>
-  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
   <div class="dd">
     <button class="dd-btn" type="button">Năm <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu">
-      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
-      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+      <a href="xem6.html?type=year&value=2026">2026</a>
+      <a href="xem6.html?type=year&value=2025">2025</a>
+      <a href="xem6.html?type=year&value=2024">2024</a>
+      <a href="xem6.html?type=year&value=2023">2023</a>
+      <a href="xem6.html?type=year&value=2022">2022</a>
+      <a href="xem6.html?type=year&value=2021">2021</a>
     </div>
   </div>
 </nav>
@@ -70,6 +89,7 @@
       <button class="sidebar-nav-btn active" data-tab="thongtin">👤 Thông tin</button>
       <button class="sidebar-nav-btn" data-tab="baomat">🔒 Bảo mật</button>
       <button class="sidebar-nav-btn" data-tab="lichsu">🎬 Lịch sử xem</button>
+      <button class="sidebar-nav-btn" data-tab="yeuthich">❤️ Lịch sử Yêu Thích</button>
     </nav>
     <div class="sidebar-divider"></div>
     <button class="logout-btn" id="btnLogout">🚪 Đăng xuất</button>
@@ -133,6 +153,12 @@
       <div id="lichsuList"><p class="ls-empty">⏳ Đang tải...</p></div>
     </div>
 
+    <!-- TAB: YÊU THÍCH -->
+    <div class="profile-card tab-panel" id="tab-yeuthich">
+      <h2 class="card-title">❤️ Phim yêu thích</h2>
+      <div id="yeuthichList"><p class="ls-empty">⏳ Đang tải...</p></div>
+    </div>
+
     <!-- POPUP THAY ẢNH -->
     <div class="profile-card" id="popupAnhSidebar" style="display:none">
       <h2 class="card-title">📷 Thay đổi ảnh đại diện</h2>
@@ -164,7 +190,6 @@ function formatVNDate(isoString) {
   return d.toLocaleDateString("vi-VN");
 }
 
-// Format datetime đẹp: "hôm nay lúc 14:32" hoặc "20/03/2025 lúc 09:15"
 function formatWatchTime(isoString) {
   if (!isoString) return "";
   const d = new Date(isoString);
@@ -174,9 +199,7 @@ function formatWatchTime(isoString) {
   const diffMins = Math.floor(diffMs / 60000);
   const diffHours = Math.floor(diffMs / 3600000);
   const diffDays = Math.floor(diffMs / 86400000);
-
   const timeStr = d.toLocaleTimeString("vi-VN", { hour: "2-digit", minute: "2-digit" });
-
   if (diffMins < 1)    return "Vừa xong";
   if (diffMins < 60)   return `${diffMins} phút trước`;
   if (diffHours < 24)  return `${diffHours} giờ trước lúc ${timeStr}`;
@@ -184,6 +207,13 @@ function formatWatchTime(isoString) {
   if (diffDays < 7)    return `${diffDays} ngày trước`;
   return d.toLocaleDateString("vi-VN") + ` lúc ${timeStr}`;
 }
+
+// ===== THANH TÌM KIẾM =====
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const q = document.getElementById("searchInput").value.trim();
+  if (q) window.location.href = `xem6.html?type=name&value=${encodeURIComponent(q)}`;
+});
 
 // ========== LOAD USER ==========
 async function loadme() {
@@ -250,8 +280,8 @@ document.querySelectorAll(".sidebar-nav-btn[data-tab]").forEach(btn => {
     document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("show"));
     document.getElementById("tab-" + this.dataset.tab).classList.add("show");
     document.getElementById("popupAnhSidebar").style.display = "none";
-    // Load lịch sử khi click vào tab
     if (this.dataset.tab === "lichsu") loadLichSu();
+    else if (this.dataset.tab === "yeuthich") loadYeuThich();
   });
 });
 
@@ -260,48 +290,34 @@ async function loadLichSu() {
   const token = localStorage.getItem("accessToken");
   const container = document.getElementById("lichsuList");
   container.innerHTML = `<p class="ls-empty">⏳ Đang tải...</p>`;
-
   try {
     const res = await fetch(`${API_BASE}/history/get`, {
       headers: { "Authorization": `Bearer ${token}` }
     });
-
     if (!res.ok) throw new Error("HTTP " + res.status);
-
     const list = await res.json();
-    console.log("Lịch sử xem:", list);
-
     if (!list || list.length === 0) {
       container.innerHTML = `<p class="ls-empty">📭 Bạn chưa xem phim nào</p>`;
       return;
     }
-
-    // Sắp xếp mới nhất lên trên
     list.sort((a, b) => new Date(b.date) - new Date(a.date));
-
     container.innerHTML = `
       <p class="ls-count">Đã xem <strong>${list.length}</strong> phim</p>
       <div class="ls-list" id="lsItems"></div>
     `;
-
     const listEl = document.getElementById("lsItems");
-
-    listEl.innerHTML = list.map((item) => {
-      return `
-        <div class="ls-item" data-id="${item.id}">
-          <img class="ls-poster" id="ls-poster-${item.id}" src="image/a1.jpg" alt="${item.name}">
-          <div class="ls-info">
-            <p class="ls-title">${item.name || "—"}</p>
-            <div class="ls-meta">
-              <span class="ls-time">🕐 ${formatWatchTime(item.date)}</span>
-            </div>
+    listEl.innerHTML = list.map((item) => `
+      <div class="ls-item" data-id="${item.id}">
+        <img class="ls-poster" id="ls-poster-${item.id}" src="image/a1.jpg" alt="${item.name}">
+        <div class="ls-info">
+          <p class="ls-title">${item.name || "—"}</p>
+          <div class="ls-meta">
+            <span class="ls-time">🕐 ${formatWatchTime(item.date)}</span>
           </div>
-          <button class="ls-watch-btn" onclick="window.location.href='xemphim.html?id=${item.id}'">▶ Xem lại</button>
         </div>
-      `;
-    }).join("");
-
-    // Load poster theo id phim
+        <button class="ls-watch-btn" onclick="window.location.href='xemphim.html?id=${item.id}'">▶ Xem lại</button>
+      </div>
+    `).join("");
     list.forEach(item => {
       fetch(`${API_BASE}/movies/image/video/${item.id}?kind=POSTER`)
         .then(r => r.ok ? r.text() : "")
@@ -313,12 +329,79 @@ async function loadLichSu() {
         })
         .catch(() => {});
     });
-
   } catch (e) {
     container.innerHTML = `<p class="ls-error">❌ Không tải được lịch sử: ${e.message}</p>`;
   }
 }
+// ========== LỊCH SỬ YÊU THÍCH ==========
+async function loadYeuThich() {
+  const token = localStorage.getItem("accessToken");
+  const container = document.getElementById("yeuthichList");
 
+  container.innerHTML = `<p class="ls-empty">⏳ Đang tải...</p>`;
+
+  try {
+    const res = await fetch(`${API_BASE}/api/favour/user`, {
+      headers: { "Authorization": `Bearer ${token}` }
+    });
+
+    if (!res.ok) throw new Error("HTTP " + res.status);
+
+    const list = await res.json();
+    console.log("Yêu thích của người dùng:", list);
+
+    if (!list || list.length === 0) {
+      container.innerHTML = `<p class="ls-empty">📭 Bạn chưa thích phim nào</p>`;
+      return;
+    }
+
+    list.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+    container.innerHTML = `
+      <p class="ls-count">Đã thích <strong>${list.length}</strong> phim</p>
+      <div class="ls-list" id="ytItems"></div>
+    `;
+
+    const listEl = document.getElementById("ytItems");
+
+    listEl.innerHTML = list.map((item) => {
+      const movieId = item.tittleId || item.titleId || item.id;
+      const movieName = item.tittleName || item.titleName || item.name || "—";
+
+      return `
+        <div class="ls-item" data-id="${movieId}">
+          <img class="ls-poster" id="yt-poster-${movieId}" src="image/a1.jpg" alt="${movieName}">
+          <div class="ls-info">
+            <p class="ls-title">${movieName}</p>
+            <div class="ls-meta">
+              <span class="ls-time">❤️ Phim đã yêu thích</span>
+            </div>
+          </div>
+          <button class="ls-watch-btn" onclick="window.location.href='xemphim.html?id=${movieId}'">
+            ▶ Xem phim
+          </button>
+        </div>
+      `;
+    }).join("");
+
+    list.forEach(item => {
+      const movieId = item.tittleId || item.titleId || item.id;
+
+      fetch(`${API_BASE}/movies/image/video/${movieId}?kind=POSTER`)
+        .then(r => r.ok ? r.text() : "")
+        .then(url => {
+          if (url.trim()) {
+            const img = document.getElementById(`yt-poster-${movieId}`);
+            if (img) img.src = url.trim();
+          }
+        })
+        .catch(() => {});
+    });
+
+  } catch (e) {
+    container.innerHTML = `<p class="ls-error">❌ Không tải được lịch sử yêu thích: ${e.message}</p>`;
+  }
+}
 // ========== THAY ẢNH SIDEBAR ==========
 document.getElementById("btnThayAnh").addEventListener("click", function() {
   const popup = document.getElementById("popupAnhSidebar");
@@ -353,6 +436,7 @@ document.getElementById("formGmail").addEventListener("submit", async function(e
     window.location.href = "index.html";
   } catch (err) { alert("Backend bị lỗi"); }
 });
+
 
 // ========== ĐỔI MẬT KHẨU ==========
 document.getElementById("btnToggleMK").addEventListener("click", function() {

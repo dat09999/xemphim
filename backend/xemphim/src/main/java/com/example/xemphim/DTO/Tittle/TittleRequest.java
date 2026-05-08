@@ -19,7 +19,7 @@ public class TittleRequest {
     private String Original_name;
     private String Description;
     private String Country;
-    private int Duration;
+    private Integer Duration;
 
     private String Language;
     private LocalDate Release_date;

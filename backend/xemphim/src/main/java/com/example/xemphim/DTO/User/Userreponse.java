@@ -5,6 +5,7 @@ import com.example.xemphim.Enum.Role;
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -18,5 +19,7 @@ public class Userreponse {
         private String phone;
         private Gender gender;
         private Date dateofbirth;
+        private String status;
+        private LocalDateTime create;
         
 }

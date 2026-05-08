@@ -27,8 +27,8 @@ public class ObjectStorageService {
         );
     }
 
-    // Nếu bucket public: tự build URL.
-    // Nếu bucket private: đổi sang presigned URL.
+    // Neu bucket public: tu build URL.
+    // Neu bucket private: doi sang presigned URL.
     public String getPublicUrlOrSignedUrl(String bucket, String key) {
         try {
             return minio.getPresignedObjectUrl(
@@ -36,7 +36,7 @@ public class ObjectStorageService {
                             .method(Method.GET)
                             .bucket(bucket)
                             .object(key)
-                            .expiry(60 * 60) // 1 giờ
+                            .expiry(60 * 60) // 1 gio
                             .build()
             );
         } catch (Exception e) {

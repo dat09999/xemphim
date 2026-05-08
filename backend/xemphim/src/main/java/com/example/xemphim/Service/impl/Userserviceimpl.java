@@ -12,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class Userserviceimpl  implements Userservice {
@@ -56,5 +58,22 @@ public class Userserviceimpl  implements Userservice {
         a.setStatus(UserStatus.INACTIVE);
         userRepository.save(a);
 
+    }
+    public Userreponse convertreponse(User user){
+        return Userreponse.builder().role(user.getRole())
+                .fullname(user.getFullName())
+                .dateofbirth(user.getBirthday())
+                .email(user.getEmail())
+                .phone(user.getSdt())
+                .gender(user.getGender())
+                .id(Long.valueOf(user.getId()))
+                .status(String.valueOf(user.getStatus()))
+                .build();
+    }
+
+    @Override
+    public List<Userreponse> getAllusers() {
+        List<User>a=userRepository.findAll();
+        return a.stream().map(this::convertreponse).toList();
     }
 }

@@ -41,4 +41,12 @@
             return ResponseEntity.ok(watchService.get(user.getId()));
 
         }
+        @GetMapping("/get/user")
+        public ResponseEntity<List<WatchHistoryReponse>> get(@RequestParam Long id) {
+            return ResponseEntity.ok(watchService.get(Math.toIntExact(id)));
+
+        }
+
+
     }
+

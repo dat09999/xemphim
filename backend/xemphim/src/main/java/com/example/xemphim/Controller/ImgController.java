@@ -60,6 +60,7 @@ public class ImgController {
         log.info("lay anh thanh cong");
         return objectStorageService.getPublicUrlOrSignedUrl(bucket,img.getPath());
     }
+
     @GetMapping("/image/video/{id}")
     public String getVideoImage(
             @PathVariable("id") Long titleID,

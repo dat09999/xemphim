@@ -16,4 +16,6 @@ public interface  WatchHistoryRepository extends JpaRepository<WatchHistory, Lon
 
 
     List<WatchHistory> findByUserId(Integer user_id);
+
+    boolean existsByTittle(Tittle tittle);
 }

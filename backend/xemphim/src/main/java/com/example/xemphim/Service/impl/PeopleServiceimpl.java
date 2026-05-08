@@ -43,6 +43,7 @@ public class PeopleServiceimpl  implements PeopleService {
                       .Description(people.getDescription())
                       .gender(people.getGender())
                       .role(people.getRole())
+                      .Country(people.getCountry())
                       .build();
               peopleRepository.save(a);
 

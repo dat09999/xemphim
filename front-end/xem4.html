@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin - PhimHay</title>
+  <title>Admin — PhimHay</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style16.css">
@@ -11,77 +11,145 @@
 <body>
 
 <header class="header">
-  <div class="logo"><span class="logo-icon">▶</span> PhimHay</div>
-  <input type="text" placeholder="Tìm kiếm Phim..." class="search" id="searchInput">
-  <div class="so1">
-    <img class="hello" src="image/a9.jpg" alt="">
-    <p class="ten">Đạt</p>
-  </div>
+ <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
+  <!-- ✅ THANH TÌM KIẾM HOẠT ĐỘNG -->
+  <form id="adminSearchForm" style="flex:1;display:flex;align-items:center;">
+    <input type="text" placeholder="Tìm kiếm Phim..." class="search" id="searchInput">
+  </form>
+
+  <!-- ✅ CLICK VÀO USER → CHUYỂN SANG xem1.html -->
+  <a href="xem1.html" class="so1" style="text-decoration:none;cursor:pointer;" title="Trang cá nhân">
+    <img class="hello" id="headerAvatar" src="image/a9.jpg" alt="">
+    <p class="ten" id="headerName">...</p>
+  </a>
 </header>
 
 <nav class="menu">
   <a href="index.html">TRANG CHỦ</a>
   <a href="#" class="active">ADMIN</a>
-  <a href="#">PHIM LẺ</a>
-  <a href="#">PHIM BỘ</a>
+  <a href="xem6.html?type=tittleType&value=HOAT_HINH">Hoạt Hình</a>
+  <a href="xem6.html?type=tittleType&value=PHIM_LE">Phim Lẻ</a>
+  
   <div class="dd">
     <button class="dd-btn" type="button">THỂ LOẠI <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu cols3">
-      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
-      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
-      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
-      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+      <a href="xem6.html?type=genre&value=Hành động">🔥 Hành động</a>
+      <a href="xem6.html?type=genre&value=Hình sự">🔍 Hình sự</a>
+      <a href="xem6.html?type=genre&value=Kinh dị">👻 Kinh dị</a>
+      <a href="xem6.html?type=genre&value=Bí ẩn">🌙 Bí ẩn</a>
+      <a href="xem6.html?type=genre&value=Tình cảm">💕 Tình cảm</a>
+      <a href="xem6.html?type=genre&value=Hài hước">😂 Hài hước</a>
+      <a href="xem6.html?type=genre&value=Viễn tưởng">🚀 Viễn tưởng</a>
+      <a href="xem6.html?type=genre&value=Cổ trang">⚔️ Cổ trang</a>
+      <a href="xem6.html?type=genre&value=Hoạt hình">🎨 Hoạt hình</a>
+      <a href="xem6.html?type=genre&value=Gia đình">👨‍👩‍👧 Gia đình</a>
+      <a href="xem6.html?type=genre&value=Âm nhạc">🎵 Âm nhạc</a>
+      <a href="xem6.html?type=genre&value=Phiêu lưu">🗺️ Phiêu lưu</a>
     </div>
   </div>
   <div class="dd">
     <button class="dd-btn" type="button">QUỐC GIA <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu">
-      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
-      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+      <a href="xem6.html?type=country&value=Vietnam">🇻🇳 Việt Nam</a>
+      <a href="xem6.html?type=country&value=Korea">🇰🇷 Hàn Quốc</a>
+      <a href="xem6.html?type=country&value=China">🇨🇳 Trung Quốc</a>
+      <a href="xem6.html?type=country&value=Japan">🇯🇵 Nhật Bản</a>
+      <a href="xem6.html?type=country&value=Thailand">🇹🇭 Thái Lan</a>
+      <a href="xem6.html?type=country&value=USA">🌍 Âu Mỹ</a>
     </div>
   </div>
-  <a href="#">CHIẾU RẠP</a>
+  <a href="xem6.html?type=tittleType&value=PHIM_CHIEU_RAP">🎬 Chiếu Rạp</a>
   <div class="dd">
     <button class="dd-btn" type="button">NĂM <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="dd-menu">
-      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
-      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+      <a href="xem6.html?type=year&value=2026">2026</a>
+      <a href="xem6.html?type=year&value=2025">2025</a>
+      <a href="xem6.html?type=year&value=2024">2024</a>
+      <a href="xem6.html?type=year&value=2023">2023</a>
+      <a href="xem6.html?type=year&value=2022">2022</a>
+      <a href="xem6.html?type=year&value=2021">2021</a>
     </div>
   </div>
 </nav>
 
 <main class="container">
-
-  <!-- SIDEBAR -->
   <section class="so2">
     <div class="so21">
-      <button class="Thong-ke sidebar-btn" type="button"><span class="btn-icon">📊</span> Thống Kê</button>
+      <button class="Thong-ke sidebar-btn active-btn" type="button"><span class="btn-icon">📊</span><span class="btn-label">Thống Kê</span></button>
       <div class="sidebar-group-label">THÊM MỚI</div>
-      <button class="btn-themphim sidebar-btn" type="button"><span class="btn-icon">➕</span> Thêm Phim</button>
-      <button class="btn-themtl sidebar-btn" type="button"><span class="btn-icon">🏷️</span> Thêm Thể Loại</button>
-      <button class="btn-themnguoi sidebar-btn" type="button"><span class="btn-icon">🧑‍🎤</span> Thêm Người</button>
+      <button class="btn-themphim sidebar-btn" type="button"><span class="btn-icon">➕</span><span class="btn-label">Thêm Phim</span></button>
+      <button class="btn-themtl sidebar-btn" type="button"><span class="btn-icon">🏷️</span><span class="btn-label">Thêm Thể Loại</span></button>
+      <button class="btn-themnguoi sidebar-btn" type="button"><span class="btn-icon">🧑‍🎤</span><span class="btn-label">Thêm Người</span></button>
       <div class="sidebar-group-label">QUẢN LÝ</div>
-      <button class="quan-ly sidebar-btn" type="button"><span class="btn-icon">🎬</span> Quản Lý Phim</button>
-      <button class="quanly-user sidebar-btn" type="button"><span class="btn-icon">👥</span> Quản Lý User</button>
+      <button class="quan-ly sidebar-btn" type="button"><span class="btn-icon">🎬</span><span class="btn-label">Quản Lý Phim</span></button>
+      <button class="quanly-user sidebar-btn" type="button"><span class="btn-icon">👥</span><span class="btn-label">Quản Lý User</span></button>
     </div>
   </section>
 
   <aside class="content-area">
 
     <!-- THỐNG KÊ -->
-    <div id="idthongke" class="thongke1 show">
+    <div id="idthongke" class="panel show">
       <h2 class="panel-title">📊 Thống Kê Hệ Thống</h2>
       <section class="stat-grid">
         <div class="stat-card"><span class="stat-icon">🎬</span><div class="stat-info"><p class="stat-num" id="statPhim">...</p><p class="stat-label">Số Lượng Phim</p></div></div>
         <div class="stat-card"><span class="stat-icon">👥</span><div class="stat-info"><p class="stat-num" id="statUser">...</p><p class="stat-label">Số Lượng User</p></div></div>
         <div class="stat-card"><span class="stat-icon">🏷️</span><div class="stat-info"><p class="stat-num" id="statTL">...</p><p class="stat-label">Số Thể Loại</p></div></div>
         <div class="stat-card"><span class="stat-icon">🧑‍🎤</span><div class="stat-info"><p class="stat-num" id="statNguoi">...</p><p class="stat-label">Số Diễn Viên</p></div></div>
-        <div class="stat-card wide"><span class="stat-icon">👁</span><div class="stat-info"><p class="stat-num" id="statXem">...</p><p class="stat-label">Số Lượt Xem</p></div></div>
+        <div class="stat-card"><span class="stat-icon">💬</span><div class="stat-info"><p class="stat-num" id="statComment">...</p><p class="stat-label">Số Bình Luận</p></div></div>
+        <div class="stat-card wide"><span class="stat-icon">👁</span><div class="stat-info"><p class="stat-num" id="statXem">...</p><p class="stat-label">Tổng Lượt Xem</p></div></div>
+        <!-- THỐNG KÊ PHIM ĐƯỢC YÊU THÍCH -->
+<section class="favour-stat-box">
+  <div class="favour-stat-head">
+    <div>
+      <h3>❤️ Thống kê phim được yêu thích</h3>
+      <p>Lọc theo thể loại và sắp xếp theo số lượt yêu thích</p>
+    </div>
+
+    <div class="favour-filter">
+      <select id="favourGenreFilter" class="ql-select">
+        <option value="">Tất cả thể loại</option>
+      </select>
+
+      <select id="favourSortDirection" class="ql-select">
+        <option value="DESC">↓ Giảm dần</option>
+        <option value="ASC">↑ Tăng dần</option>
+      </select>
+
+      <button class="reload-btn" type="button" id="btnReloadFavour">
+        🔄 Tải lại
+      </button>
+    </div>
+  </div>
+
+  <div class="favour-table-wrap">
+  <table class="favour-table">
+    <thead>
+      <tr>
+        <th>Top</th>
+        <th>Phim</th>
+        <th>Lượt yêu thích</th>
+      </tr>
+    </thead>
+    <tbody id="favourStatBody">
+      <tr>
+        <td colspan="3" class="favour-loading">⏳ Đang tải...</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="favour-pagination">
+  <button class="reload-btn" type="button" id="favourPrevPage">← Trước</button>
+  <span id="favourPageInfo">Trang 1 / 1</span>
+  <button class="reload-btn" type="button" id="favourNextPage">Sau →</button>
+</div>
+</section>
       </section>
     </div>
 
     <!-- THÊM PHIM -->
-    <div id="panel-themphim" class="thongke1">
+    <div id="panel-themphim" class="panel">
       <h2 class="panel-title">➕ Thêm Phim Mới</h2>
       <form class="modal-form" id="formthem">
         <div class="form-row"><label class="label">Tên Phim</label><input class="text1" id="inp-tenphim" type="text" placeholder="Nhập tên phim..."></div>
@@ -90,23 +158,30 @@
         <div class="form-row"><label class="label">Quốc Gia</label><input class="text1" id="inp-quocgia" type="text" placeholder="Việt Nam, Hàn Quốc..."></div>
         <div class="form-row"><label class="label">Thời Lượng</label><input class="text1" id="inp-thoiluong" type="number" placeholder="phút..."></div>
         <div class="form-row"><label class="label">Ngày Phát Hành</label><input class="text1" id="inp-ngay" type="date"></div>
-       <div class="form-row">
-  <label class="label">Loại Phim</label>
-  <select class="text1" id="inp-loaiphim">
-    <option value="PHIM_LE">Phim lẻ</option>
-    <option value="PHIM_CHIEU_RAP">Phim chiếu rạp</option>
-    <option value="HOAT_HINH">Hoạt hình</option>
-  </select>
-</div>
-
-<div class="form-row">
-  <label class="label">Trạng Thái Phim</label>
-  <select class="text1" id="inp-trangthai">
-    <option value="PUBLISHED">Hoạt động</option>
-    <option value="NOT_PUBLISHED">Không hoạt động</option>
-    <option value="PENDING">Đang chờ</option>
-  </select>
-</div>
+        <div class="form-row">
+          <label class="label">Loại Phim</label>
+          <select class="text1" id="inp-loaiphim">
+            <option value="PHIM_LE">Phim lẻ</option>
+            <option value="PHIM_CHIEU_RAP">Phim chiếu rạp</option>
+            <option value="HOAT_HINH">Hoạt hình</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Trạng Thái</label>
+          <select class="text1" id="inp-trangthai">
+            <option value="PUBLISHED">Hoạt động</option>
+            <option value="NOT_PUBLISHED">Không hoạt động</option>
+            <option value="PENDING">Đang chờ</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="label">Nổi Bật</label>
+          <div class="kind">
+            <input type="radio" id="featuredYes" name="featured" value="true"><label for="featuredYes" class="kind-btn">Có</label>
+            <input type="radio" id="featuredNo" name="featured" value="false" checked><label for="featuredNo" class="kind-btn">Không</label>
+          </div>
+        </div>
+        <div class="form-row"><label class="label">Ngôn Ngữ</label><input class="text1" id="inp-ngonngu" type="text" placeholder="VD: Tiếng Việt, English..."></div>
         <div class="form-row form-row-top"><label class="label">Thể Loại</label><div class="check-group" id="genreCheckGroup"><span class="loading-text">Đang tải...</span></div></div>
         <div class="form-row form-row-top">
           <label class="label">Đạo Diễn</label>
@@ -129,11 +204,11 @@
         <div class="form-row"><label class="label">🖼 Banner</label><div class="file-wrap"><input class="text1" id="nameBanner" type="text" placeholder="Chưa chọn file" readonly><input id="fileBanner" type="file" accept="image/*" hidden><button type="button" class="upload-btn" onclick="document.getElementById('fileBanner').click()">Chọn</button></div></div>
         <div class="form-row"><label class="label">🎬 Video</label><div class="file-wrap"><input class="text1" id="nameVideo" type="text" placeholder="Chưa chọn file" readonly><input id="fileVideo" type="file" accept="video/*" hidden><button type="button" class="upload-btn" onclick="document.getElementById('fileVideo').click()">Chọn</button></div></div>
       </form>
-      <button class="tp" type="button" id="btnLuuPhim">✓ Lưu Phim</button>
+      <button class="btn-primary" type="button" id="btnLuuPhim">✓ Lưu Phim</button>
     </div>
 
     <!-- THÊM THỂ LOẠI -->
-    <div id="panel-themtl" class="thongke1">
+    <div id="panel-themtl" class="panel">
       <h2 class="panel-title">🏷️ Thêm Thể Loại</h2>
       <form class="formthemtl">
         <div class="form-row-single">
@@ -141,11 +216,11 @@
           <input class="text111" id="inp-tenTL" type="text" placeholder="VD: Hành động">
         </div>
       </form>
-      <button class="tp1" type="button" id="btnLuuTL">✓ Lưu Thể Loại</button>
+      <button class="btn-secondary" type="button" id="btnLuuTL">✓ Lưu Thể Loại</button>
     </div>
 
     <!-- THÊM NGƯỜI -->
-    <div id="panel-themnguoi" class="thongke1">
+    <div id="panel-themnguoi" class="panel">
       <h2 class="panel-title">🧑‍🎤 Thêm Người</h2>
       <form class="modal-form" id="formThemNguoi">
         <div class="form-row"><label class="label">Họ Tên</label><input class="text1" id="inp-tenNguoi" type="text" placeholder="Nhập họ tên..."></div>
@@ -167,68 +242,67 @@
         <div class="form-row"><label class="label">Quốc Gia</label><input class="text1" id="inp-quocgiaNguoi" type="text" placeholder="VD: Vietnam, Korea..."></div>
         <div class="form-row"><label class="label">Mô Tả</label><textarea class="text11" id="inp-moTaNguoi" placeholder="Tiểu sử..."></textarea></div>
       </form>
-      <button class="tp" type="button" id="btnLuuNguoi">✓ Lưu Người</button>
+      <button class="btn-primary" type="button" id="btnLuuNguoi">✓ Lưu Người</button>
     </div>
 
     <!-- QUẢN LÝ PHIM -->
-    <div id="idquanly" class="quanly1">
+    <div id="idquanly" class="panel">
       <h2 class="panel-title">🎬 Quản Lý Phim</h2>
       <div class="tab-bar">
         <button class="tab-btn active" data-tab="tab-dsphim">📋 Danh sách phim</button>
         <button class="tab-btn" data-tab="tab-dstheloai">🏷️ Danh sách thể loại</button>
       </div>
-
-      <!-- TAB DANH SÁCH PHIM -->
       <div id="tab-dsphim" class="tab-panel show">
-
-        <!-- Toolbar filter -->
         <div class="ql-toolbar">
           <input type="text" id="qlSearch" class="ql-search" placeholder="🔍 Tìm tên phim...">
-          <select id="qlGenreFilter" class="ql-select">
-            <option value="">Tất cả thể loại</option>
+          <select id="qlGenreFilter" class="ql-select"><option value="">Tất cả thể loại</option></select>
+          <select id="qlCountryFilter" class="ql-select"><option value="">Tất cả quốc gia</option></select>
+          <select id="qlTypeFilter" class="ql-select">
+            <option value="">Tất cả loại phim</option>
+            <option value="PHIM_LE">Phim lẻ</option>
+            <option value="PHIM_CHIEU_RAP">Phim chiếu rạp</option>
+            <option value="HOAT_HINH">Hoạt hình</option>
           </select>
-          <select id="qlCountryFilter" class="ql-select">
-            <option value="">Tất cả quốc gia</option>
+          <select id="qlSortBy" class="ql-select">
+            <option value="">Sắp xếp theo...</option>
+            <option value="views">👁 Lượt xem</option>
+            <option value="releseDate">📅 Ngày phát hành</option>
+          </select>
+          <select id="qlSortDir" class="ql-select">
+            <option value="desc">↓ Giảm dần</option>
+            <option value="asc">↑ Tăng dần</option>
           </select>
           <button class="reload-btn" type="button" id="btnReload">🔄 Tải lại</button>
         </div>
-
-        <div class="result-info">
-          <span id="resultCount">Đang tải...</span>
-          <span id="genreLabel"></span>
-        </div>
-
-        <div class="movie-grid" id="movieGrid">
-          <div class="loading-wrap"><span class="loading-text">⏳ Đang tải danh sách phim...</span></div>
-        </div>
+        <div class="result-info"><span id="resultCount">Đang tải...</span><span id="genreLabel"></span></div>
+        <div class="movie-grid" id="movieGrid"><div class="loading-wrap"><span class="loading-text">⏳ Đang tải danh sách phim...</span></div></div>
         <div id="noResult" class="no-result" style="display:none"><p>😕 Không tìm thấy phim nào</p></div>
       </div>
-
-      <!-- TAB THỂ LOẠI -->
       <div id="tab-dstheloai" class="tab-panel">
-        <div class="theloai-grid" id="theloaiGrid">
-          <span class="loading-text">Đang tải...</span>
-        </div>
+        <div class="theloai-grid" id="theloaiGrid"><span class="loading-text">Đang tải...</span></div>
       </div>
     </div>
 
     <!-- QUẢN LÝ USER -->
-    <div id="qlyuser" class="ql-user">
+    <div id="qlyuser" class="panel">
       <h2 class="panel-title">👥 Quản Lý User</h2>
-      <div class="user-list">
-        <div class="user"><div class="user-info"><span class="user-id">#1</span><span class="user-name">Dương Văn Đạt</span><span class="user-role">Admin</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
-        <div class="user"><div class="user-info"><span class="user-id">#2</span><span class="user-name">Nguyễn Văn A</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
-        <div class="user"><div class="user-info"><span class="user-id">#3</span><span class="user-name">Trần Thị B</span><span class="user-role">User</span></div><button type="button" class="btn-disable">Vô hiệu hóa</button> <button type="button" class="btn-disable">Khôi phục</button></div>
+      <div class="ql-toolbar">
+        <input type="text" id="userSearch" class="ql-search" placeholder="🔍 Tìm tên hoặc email...">
+        <button class="reload-btn" type="button" id="btnReloadUser">🔄 Tải lại</button>
+      </div>
+      <div class="result-info"><span id="userCount">Đang tải...</span></div>
+      <div class="user-list" id="userList">
+        <div class="loading-wrap"><span class="loading-text">⏳ Đang tải danh sách user...</span></div>
       </div>
     </div>
 
   </aside>
 </main>
 
-<!-- MODAL CHI TIẾT -->
-<div id="detailModal" class="detail-overlay">
-  <div class="detail-modal">
-    <button class="detail-close" id="closeDetail">✕</button>
+<!-- MODAL CHI TIẾT PHIM -->
+<div id="detailModal" class="overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="closeDetail">✕</button>
     <div class="detail-content">
       <div class="detail-poster"><img id="detailImg" src="" alt=""/></div>
       <div class="detail-info">
@@ -240,90 +314,141 @@
         </div>
         <div class="detail-row"><span class="detail-label">🎬 Đạo diễn</span><span id="detailDirector"></span></div>
         <div class="detail-row"><span class="detail-label">🌟 Diễn viên</span><span id="detailCast"></span></div>
+        <div class="detail-row"><span class="detail-label">👁 Lượt xem</span><span id="detailViews"></span></div>
         <div class="detail-row desc-row"><span class="detail-label">📝 Nội dung</span><span id="detailDesc"></span></div>
         <div class="detail-btns">
-          <button class="watch-btn" type="button" id="detailWatchBtn">▶ Xem Phim</button>
-          <button class="del-btn" type="button" id="detailDelBtn" style="background:var(--red);color:#fff;padding:8px 18px;border-radius:8px;border:none;cursor:pointer;font-weight:600;">🗑 Xóa phim</button>
+          <button class="btn-primary" type="button" id="detailWatchBtn">▶ Xem Phim</button>
+          <button class="btn-danger" type="button" id="detailDelBtn">🗑 Xóa phim</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="tieude">
-  <div class="info6">
+<!-- MODAL SỬA PHIM -->
+<div id="editModal" class="overlay">
+  <div class="modal-box" style="max-width:600px">
+    <button class="modal-close" id="closeEdit">✕</button>
+    <h2 class="panel-title" style="margin-bottom:16px">✏️ Sửa Phim</h2>
+    <form class="modal-form" id="formEdit">
+      <input type="hidden" id="edit-id">
+      <div class="form-row"><label class="label">Tên Phim</label><input class="text1" id="edit-tenphim" type="text"></div>
+      <div class="form-row"><label class="label">Tên Gốc</label><input class="text1" id="edit-tengoc" type="text"></div>
+      <div class="form-row"><label class="label">Nội Dung</label><textarea class="text11" id="edit-noidung"></textarea></div>
+      <div class="form-row"><label class="label">Quốc Gia</label><input class="text1" id="edit-quocgia" type="text"></div>
+      <div class="form-row"><label class="label">Thời Lượng (phút)</label><input class="text1" id="edit-thoiluong" type="number"></div>
+      <div class="form-row"><label class="label">Ngày Phát Hành</label><input class="text1" id="edit-ngay" type="date"></div>
+      <div class="form-row">
+        <label class="label">Loại Phim</label>
+        <select class="text1" id="edit-loaiphim">
+          <option value="PHIM_LE">Phim lẻ</option>
+          <option value="PHIM_CHIEU_RAP">Phim chiếu rạp</option>
+          <option value="HOAT_HINH">Hoạt hình</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label class="label">Nổi Bật</label>
+        <div class="kind">
+          <input type="radio" id="editFeaturedYes" name="editFeatured" value="true"><label for="editFeaturedYes" class="kind-btn">Có</label>
+          <input type="radio" id="editFeaturedNo" name="editFeatured" value="false"><label for="editFeaturedNo" class="kind-btn">Không</label>
+        </div>
+      </div>
+      <div class="form-row form-row-top">
+        <label class="label">Thể Loại</label>
+        <div class="check-group" id="editGenreCheckGroup"><span class="loading-text">Đang tải...</span></div>
+      </div>
+      <div class="form-section-title">📁 Cập Nhật File (để trống nếu không đổi)</div>
+      <div class="form-row" style="align-items:flex-start;gap:12px">
+        <label class="label">🖼 Poster</label>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <img id="edit-currentPoster" src="" alt="Poster hiện tại" style="width:80px;border-radius:8px;aspect-ratio:2/3;object-fit:cover;display:none;border:1px solid var(--border)">
+          <div class="file-wrap">
+            <input class="text1" id="edit-namePoster" type="text" placeholder="Chưa chọn file mới" readonly>
+            <input id="edit-filePoster" type="file" accept="image/*" hidden>
+            <button type="button" class="upload-btn" onclick="document.getElementById('edit-filePoster').click()">Chọn</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row" style="align-items:flex-start;gap:12px">
+        <label class="label">🖼 Banner</label>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <img id="edit-currentBanner" src="" alt="Banner hiện tại" style="width:120px;border-radius:8px;aspect-ratio:16/5;object-fit:cover;display:none;border:1px solid var(--border)">
+          <div class="file-wrap">
+            <input class="text1" id="edit-nameBanner" type="text" placeholder="Chưa chọn file mới" readonly>
+            <input id="edit-fileBanner" type="file" accept="image/*" hidden>
+            <button type="button" class="upload-btn" onclick="document.getElementById('edit-fileBanner').click()">Chọn</button>
+          </div>
+        </div>
+      </div>
+      <div class="form-row" style="align-items:flex-start;gap:12px">
+        <label class="label">🎬 Video</label>
+        <div style="flex:1;display:flex;flex-direction:column;gap:8px">
+          <span id="edit-currentVideoLabel" style="font-size:12px;color:var(--sub)"></span>
+          <div class="file-wrap">
+            <input class="text1" id="edit-nameVideo" type="text" placeholder="Chưa chọn file mới" readonly>
+            <input id="edit-fileVideo" type="file" accept="video/*" hidden>
+            <button type="button" class="upload-btn" onclick="document.getElementById('edit-fileVideo').click()">Chọn</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="btn-primary" type="button" id="btnLuuSua">✓ Lưu thay đổi</button>
+      <button class="btn-secondary" type="button" id="btnHuySua">✕ Hủy</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CHI TIẾT USER -->
+<div id="userDetailModal" class="overlay">
+  <div class="modal-box ud-modal-box">
+    <button class="modal-close" id="closeUserDetail">✕</button>
+    <div id="userDetailContent">
+      <div class="loading-wrap"><span class="loading-text">⏳ Đang tải...</span></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
     <span class="logo-icon">▶</span>
     <h2>PhimHay Admin</h2>
     <p>Web được làm bởi <strong>Dương Văn Đạt</strong></p>
   </div>
 </footer>
 
-<style>
-/* Toolbar filter */
-.ql-toolbar {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 16px 0 12px;
-}
-.ql-search {
-  flex: 1;
-  min-width: 180px;
-  padding: 9px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border2);
-  background: var(--bg3);
-  color: var(--text);
-  font-size: 13px;
-  font-family: inherit;
-}
-.ql-select {
-  padding: 9px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border2);
-  background: var(--bg3);
-  color: var(--text);
-  font-size: 13px;
-  font-family: inherit;
-  cursor: pointer;
-}
-.reload-btn {
-  padding: 9px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--border2);
-  background: var(--bg3);
-  color: var(--sub);
-  font-size: 13px;
-  cursor: pointer;
-  transition: all .2s;
-}
-.reload-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
-.loading-wrap { padding: 40px; text-align: center; width: 100%; }
-.card-country { color: var(--dim); font-size: 11px; margin-top: 2px; }
-</style>
-
 <script>
 const BASE_URL = "http://localhost:8080";
+const getToken = () => localStorage.getItem("accessToken") || "";
+const authHeader = () => ({ "Authorization": `Bearer ${getToken()}` });
 
-// ===== STATE =====
-let allMovies     = [];
-let filteredMovies= [];
-let allPeople     = [];
-let selectedDaodien  = [];
-let selectedDienVien = [];
+if (!getToken()) window.location.href = "index.html";
+
+let allMovies = [], allPeople = [], allGenres = [];
+let selectedDaodien = [], selectedDienVien = [];
 
 // ===== DROPDOWN NAVBAR =====
-document.querySelectorAll(".dd").forEach(function(dd) {
-  dd.querySelector(".dd-btn").addEventListener("click", function(e) {
+document.querySelectorAll(".dd").forEach(dd => {
+  dd.querySelector(".dd-btn").addEventListener("click", e => {
     e.stopPropagation();
-    var wasOpen = dd.classList.contains("open");
-    document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+    const wasOpen = dd.classList.contains("open");
+    document.querySelectorAll(".dd").forEach(d => d.classList.remove("open"));
     if (!wasOpen) dd.classList.add("open");
   });
 });
-document.addEventListener("click", function() {
-  document.querySelectorAll(".dd").forEach(function(d){ d.classList.remove("open"); });
+document.addEventListener("click", () => document.querySelectorAll(".dd").forEach(d => d.classList.remove("open")));
+
+// ===== THANH TÌM KIẾM HEADER → chuyển sang xem6.html =====
+document.getElementById("adminSearchForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const q = document.getElementById("searchInput").value.trim();
+  if (q) window.location.href = `xem6.html?type=name&value=${encodeURIComponent(q)}`;
+});
+document.getElementById("searchInput").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const q = this.value.trim();
+    if (q) window.location.href = `xem6.html?type=name&value=${encodeURIComponent(q)}`;
+  }
 });
 
 // ===== PANEL SWITCHING =====
@@ -336,72 +461,15 @@ function showPanel(id, btn) {
   document.querySelectorAll(".sidebar-btn").forEach(b => b.classList.remove("active-btn"));
   if (btn) btn.classList.add("active-btn");
 }
-async function luuphim() {
-  const formData = new FormData();
-
-  // dữ liệu text
-  formData.append("name", document.getElementById("inp-tenphim").value.trim());
-  formData.append("original_name", document.getElementById("inp-tengoc").value.trim());
-  formData.append("description", document.getElementById("inp-noidung").value.trim());
-  formData.append("country", document.getElementById("inp-quocgia").value.trim());
-  formData.append("duration", parseInt(document.getElementById("inp-thoiluong").value) || 0);
-  formData.append("release_date", document.getElementById("inp-ngay").value);
-  formData.append("tittletype", document.getElementById("inp-loaiphim").value);
-  formData.append("type", document.getElementById("inp-trangthai").value);
-
-  // genre: chỉ lấy id
-  Array.from(
-    document.querySelectorAll("#genreCheckGroup input[type=checkbox]:checked")
-  ).forEach(cb => {
-    formData.append("genre", cb.value);
-  });
-
-  // people: chỉ lấy id
-  selectedDaodien.forEach(p => {
-    if (p && p.id) formData.append("people", p.id);
-  });
-
-  selectedDienVien.forEach(p => {
-    if (p && p.id) formData.append("people", p.id);
-  });
-
-  // 3 file
-  const poster = document.getElementById("filePoster").files[0];
-  const banner = document.getElementById("fileBanner").files[0];
-  const video = document.getElementById("fileVideo").files[0];
-
-  if (video) formData.append("video", video);
-  if (poster) formData.append("poster", poster);
-  if (banner) formData.append("banner", banner);
-
-  try {
-    const res = await fetch(`${BASE_URL}/api/tittles/add`, {
-      method: "POST",
-      
-      body: formData
-    });
-
-    if (!res.ok) throw new Error("HTTP " + res.status);
-
-    const data = await res.json().catch(() => null);
-
-    alert(data?.message || "Phim mới đã được lưu thành công!");
-    loadMovieGrid();
-    showPanel("idquanly", document.querySelector(".quan-ly"));
-  } catch (e) {
-    alert("Lỗi khi lưu phim: " + e.message);
-  }
-}
 
 document.querySelector(".Thong-ke").addEventListener("click",      function(){ showPanel("idthongke", this); });
 document.querySelector(".btn-themphim").addEventListener("click",  function(){ showPanel("panel-themphim", this); loadFormData(); });
 document.querySelector(".btn-themtl").addEventListener("click",    function(){ showPanel("panel-themtl", this); });
 document.querySelector(".btn-themnguoi").addEventListener("click", function(){ showPanel("panel-themnguoi", this); });
 document.querySelector(".quan-ly").addEventListener("click",       function(){ showPanel("idquanly", this); loadMovieGrid(); loadTheLoaiGrid(); });
-document.querySelector(".quanly-user").addEventListener("click",   function(){ showPanel("qlyuser", this); });
-document.getElementById("btnLuuPhim").addEventListener("click", luuphim);
+document.querySelector(".quanly-user").addEventListener("click",   function(){ showPanel("qlyuser", this); loadUserList(); });
 
-// ===== FILE INPUTS =====
+// ===== FILE INPUT LABELS =====
 document.getElementById("filePoster").addEventListener("change", function(){ document.getElementById("namePoster").value = this.files[0]?.name || ""; });
 document.getElementById("fileBanner").addEventListener("change", function(){ document.getElementById("nameBanner").value = this.files[0]?.name || ""; });
 document.getElementById("fileVideo").addEventListener("change",  function(){ document.getElementById("nameVideo").value  = this.files[0]?.name || ""; });
@@ -416,378 +484,809 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
   });
 });
 
-// ============================================================
-// LOAD MOVIE GRID TỪ API
-// ============================================================
+// ===== THÊM PHIM =====
+async function luuphim() {
+  try {
+    const request = {
+      name: document.getElementById("inp-tenphim").value.trim(),
+      Original_name: document.getElementById("inp-tengoc").value.trim(),
+      Description: document.getElementById("inp-noidung").value.trim(),
+      Country: document.getElementById("inp-quocgia").value.trim(),
+      Duration: parseInt(document.getElementById("inp-thoiluong").value) || 0,
+      Release_date: document.getElementById("inp-ngay").value,
+      TittleType: document.getElementById("inp-loaiphim").value,
+      type: document.getElementById("inp-trangthai").value,
+      language: document.getElementById("inp-ngonngu").value.trim(),
+      featured: document.querySelector('input[name="featured"]:checked').value === "true",
+      genre: Array.from(document.querySelectorAll("#genreCheckGroup input[type=checkbox]:checked")).map(cb => parseInt(cb.value)),
+      people: [
+        ...selectedDaodien.filter(p => p?.id).map(p => parseInt(p.id)),
+        ...selectedDienVien.filter(p => p?.id).map(p => parseInt(p.id))
+      ]
+    };
+    const poster = document.getElementById("filePoster").files[0];
+    const banner = document.getElementById("fileBanner").files[0];
+    const video  = document.getElementById("fileVideo").files[0];
+    const createRes = await fetch(`${BASE_URL}/api/tittles`, {
+      method: "POST", headers: { "Content-Type": "application/json", ...authHeader() }, body: JSON.stringify(request)
+    });
+    if (!createRes.ok) throw new Error("Tạo phim thất bại: HTTP " + createRes.status);
+    const createdMovie = await createRes.json();
+    const movieId = createdMovie?.id;
+    if (!movieId) throw new Error("Backend không trả về id phim");
+    const errors = [];
+    if (poster) { try { await uploadImageForMovie(movieId, poster, "POSTER"); } catch(e) { errors.push("Poster: " + e.message); } }
+    if (banner) { try { await uploadImageForMovie(movieId, banner, "IMAGE");  } catch(e) { errors.push("Banner: " + e.message); } }
+    if (video)  { try { await uploadVideoForMovie(movieId, video);             } catch(e) { errors.push("Video: " + e.message); } }
+    if (errors.length) alert("✓ Đã tạo phim.\n⚠️ Lỗi upload:\n" + errors.join("\n"));
+    else alert("✓ Phim mới đã được lưu thành công!");
+    document.getElementById("formthem").reset();
+    ["namePoster","nameBanner","nameVideo"].forEach(id => document.getElementById(id).value = "");
+    selectedDaodien = []; selectedDienVien = [];
+    renderTags("tagsDaodien", selectedDaodien, "AUTHOR");
+    renderTags("tagsDienVien", selectedDienVien, "ACTOR");
+    showPanel("idquanly", document.querySelector(".quan-ly"));
+    allMovies = []; loadMovieGrid();
+  } catch(e) { alert("Lỗi khi lưu phim: " + e.message); }
+}
+document.getElementById("btnLuuPhim").addEventListener("click", luuphim);
+
+async function uploadImageForMovie(movieId, file, kind) {
+  const fd = new FormData(); fd.append("file", file);
+  const res = await fetch(`${BASE_URL}/movies/upload/image/${movieId}?Kind=${kind}`, { method:"POST", headers:authHeader(), body:fd });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json().catch(() => null);
+}
+async function uploadVideoForMovie(movieId, file) {
+  const fd = new FormData(); fd.append("file", file);
+  const res = await fetch(`${BASE_URL}/movies/upload/video/${movieId}`, { method:"POST", headers:authHeader(), body:fd });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json().catch(() => null);
+}
+
+// ===== MOVIE GRID =====
+let searchDebounce = null;
 async function loadMovieGrid() {
   const grid = document.getElementById("movieGrid");
   grid.innerHTML = `<div class="loading-wrap"><span class="loading-text">⏳ Đang tải danh sách phim...</span></div>`;
   document.getElementById("noResult").style.display = "none";
   document.getElementById("resultCount").textContent = "Đang tải...";
-
   try {
-    const res = await fetch(`${BASE_URL}/api/tittles`);
-    if (!res.ok) throw new Error("HTTP " + res.status);
-    allMovies = await res.json();
-    filteredMovies = [...allMovies];
-
-    // Build filter dropdowns
-    buildGenreFilter(allMovies);
-    buildCountryFilter(allMovies);
-
-    // Render cards
-    renderMovieGrid(allMovies);
-
-    // Load poster bất đồng bộ
-    loadAllPosters(allMovies);
-
-    // Cập nhật stat
-    document.getElementById("statPhim").textContent = allMovies.length;
-
+    const [customRes, allRes] = await Promise.all([
+      fetch(`${BASE_URL}/api/tittles/custom`, { method:"POST", headers:{"Content-Type":"application/json",...authHeader()}, body:JSON.stringify(buildFilterBody()) }),
+      allMovies.length ? Promise.resolve(null) : fetch(`${BASE_URL}/api/tittles`)
+    ]);
+    if (!customRes.ok) throw new Error("HTTP " + customRes.status);
+    const movies = await customRes.json();
+    if (allRes && allRes.ok) {
+      allMovies = await allRes.json();
+      buildGenreFilter(allMovies); buildCountryFilter(allMovies);
+      document.getElementById("statPhim").textContent = allMovies.length;
+    }
+    renderMovieGrid(movies); loadAllPosters(movies);
   } catch(e) {
-    grid.innerHTML = `<div class="loading-wrap"><span class="loading-text" style="color:var(--red2)">❌ Lỗi tải dữ liệu: ${e.message}</span></div>`;
+    grid.innerHTML = `<div class="loading-wrap"><span class="loading-text" style="color:var(--red2)">❌ Lỗi: ${e.message}</span></div>`;
   }
 }
 
-// Build dropdown thể loại từ data thực
-function buildGenreFilter(movies) {
-  const sel = document.getElementById("qlGenreFilter");
-  // Xóa option cũ (giữ lại "Tất cả")
-  while (sel.options.length > 1) sel.remove(1);
-  const genres = new Set();
-  movies.forEach(m => (m.genres || []).forEach(g => genres.add(g)));
-  genres.forEach(g => {
-    const opt = document.createElement("option");
-    opt.value = g; opt.textContent = g;
-    sel.appendChild(opt);
-  });
+function buildFilterBody() {
+  const name    = document.getElementById("qlSearch").value.trim() || undefined;
+  const genre   = document.getElementById("qlGenreFilter").value   || undefined;
+  const country = document.getElementById("qlCountryFilter").value || undefined;
+  const type    = document.getElementById("qlTypeFilter").value    || undefined;
+  const sortBy  = document.getElementById("qlSortBy").value        || undefined;
+  const sortDir = document.getElementById("qlSortDir").value       || "desc";
+  const body = {};
+  if (name)    body.name       = name;
+  if (genre)   body.genre      = genre;
+  if (country) body.country    = country;
+  if (type)    body.tittleType = type;
+  if (sortBy) { body.sortBy = sortBy; body.sortDir = sortDir; }
+  return body;
 }
 
-// Build dropdown quốc gia
+function buildGenreFilter(movies) {
+  const sel = document.getElementById("qlGenreFilter");
+  while (sel.options.length > 1) sel.remove(1);
+  const genres = new Set();
+  movies.forEach(m => (m.genres||[]).forEach(g => genres.add(g)));
+  genres.forEach(g => { const o = document.createElement("option"); o.value=g; o.textContent=g; sel.appendChild(o); });
+}
 function buildCountryFilter(movies) {
   const sel = document.getElementById("qlCountryFilter");
   while (sel.options.length > 1) sel.remove(1);
-  const countries = [...new Set(movies.map(m => m.country).filter(Boolean))].sort();
-  countries.forEach(c => {
-    const opt = document.createElement("option");
-    opt.value = c; opt.textContent = c;
-    sel.appendChild(opt);
+  [...new Set(movies.map(m=>m.country).filter(Boolean))].sort().forEach(c => {
+    const o = document.createElement("option"); o.value=c; o.textContent=c; sel.appendChild(o);
   });
 }
 
-// Render danh sách phim
 function renderMovieGrid(movies) {
   const grid = document.getElementById("movieGrid");
   document.getElementById("noResult").style.display = movies.length ? "none" : "block";
   document.getElementById("resultCount").textContent = movies.length + " phim";
-
   if (!movies.length) { grid.innerHTML = ""; return; }
-
-  const year = m => m.releseDate ? m.releseDate.substring(0, 4) : "—";
-
+  const year = m => m.releseDate ? m.releseDate.substring(0,4) : "—";
   grid.innerHTML = movies.map(m => `
-    <div class="poster api-card" data-id="${m.id}">
-      <div class="poster-thumb">
+    <div class="movie-card" data-id="${m.id}">
+      <div class="movie-thumb">
         <img id="poster-${m.id}" src="image/a1.jpg" loading="lazy"/>
-        <div class="poster-overlay"><span class="play-btn">▶</span></div>
-        ${m.featured ? '<span class="m-badge">HOT</span>' : ""}
+        <div class="movie-overlay"><span class="play-icon">▶</span></div>
+        ${m.featured ? '<span class="badge-hot">HOT</span>' : ""}
       </div>
-      <div class="poster-info">
+      <div class="movie-info">
         <h4 title="${m.name}">${m.name}</h4>
-        <p>${(m.genres || []).join(", ") || "—"} • ${year(m)}</p>
-        <p class="card-country">${m.country || ""}</p>
+        <p class="movie-genres">${(m.genres||[]).join(", ")||"—"} • ${year(m)}</p>
+        <p class="movie-country">${m.country||""}</p>
+        <p class="movie-views">👁 ${m.view ?? 0} lượt xem</p>
       </div>
-      <div class="poster-actions">
-        <button class="detail-btn" type="button" data-id="${m.id}">🔍 Chi tiết</button>
-        <button class="del-btn" type="button" data-id="${m.id}">🗑</button>
-        <button class="del-btn" type="button" data-id="${m.id}">Sửa</button>
+      <div class="movie-actions">
+        <button class="act-btn act-detail" data-id="${m.id}">🔍 Chi tiết</button>
+        <button class="act-btn act-edit"   data-id="${m.id}">✏️ Sửa</button>
+        <button class="act-btn act-del"    data-id="${m.id}" data-name="${m.name}">🗑</button>
       </div>
     </div>`).join("");
-
-  // Event: chi tiết
-  grid.querySelectorAll(".detail-btn").forEach(btn => {
+  grid.querySelectorAll(".act-detail").forEach(btn => {
     btn.addEventListener("click", function() {
-      const m = allMovies.find(x => String(x.id) === this.dataset.id);
+      const m = (allMovies.length ? allMovies : movies).find(x => String(x.id)===this.dataset.id) || movies.find(x => String(x.id)===this.dataset.id);
       if (m) openDetail(m);
     });
   });
-
-  // Event: xóa
-  grid.querySelectorAll(".del-btn").forEach(btn => {
-    btn.addEventListener("click", function() {
-      const m = allMovies.find(x => String(x.id) === this.dataset.id);
-      if (m) deleteMovie(m.id, m.name);
+  grid.querySelectorAll(".act-edit").forEach(btn => {
+    btn.addEventListener("click", async function() {
+      try {
+        const res = await fetch(`${BASE_URL}/api/tittles/${this.dataset.id}`);
+        if (!res.ok) throw new Error();
+        openEditModal(await res.json());
+      } catch(e) { alert("Không tải được thông tin phim"); }
     });
+  });
+  grid.querySelectorAll(".act-del").forEach(btn => {
+    btn.addEventListener("click", function() { deleteMovie(this.dataset.id, this.dataset.name); });
   });
 }
 
-// Load poster async cho danh sách
 function loadAllPosters(movies) {
   movies.forEach(async m => {
     try {
       const r = await fetch(`${BASE_URL}/movies/image/video/${m.id}?kind=POSTER`);
-      if (r.ok) {
-        const url = (await r.text()).trim();
-        if (url) {
-          const img = document.getElementById(`poster-${m.id}`);
-          if (img) img.src = url;
-        }
-      }
+      if (r.ok) { const url=(await r.text()).trim(); if(url){const img=document.getElementById(`poster-${m.id}`); if(img) img.src=url;} }
     } catch(e) {}
   });
 }
 
-// ===== FILTER =====
-function applyFilter() {
-  const q       = document.getElementById("qlSearch").value.toLowerCase().trim();
-  const genre   = document.getElementById("qlGenreFilter").value;
-  const country = document.getElementById("qlCountryFilter").value;
+function triggerSearch() { clearTimeout(searchDebounce); searchDebounce = setTimeout(loadMovieGrid, 400); }
+document.getElementById("qlSearch").addEventListener("input", triggerSearch);
+["qlGenreFilter","qlCountryFilter","qlTypeFilter","qlSortBy","qlSortDir"].forEach(id =>
+  document.getElementById(id).addEventListener("change", loadMovieGrid)
+);
+document.getElementById("btnReload").addEventListener("click", () => { allMovies = []; loadMovieGrid(); });
 
-  filteredMovies = allMovies.filter(m => {
-    const matchName    = !q      || m.name.toLowerCase().includes(q) || (m.original_name||"").toLowerCase().includes(q);
-    const matchGenre   = !genre  || (m.genres||[]).includes(genre);
-    const matchCountry = !country|| m.country === country;
-    return matchName && matchGenre && matchCountry;
-  });
-
-  renderMovieGrid(filteredMovies);
-  loadAllPosters(filteredMovies);
-}
-
-document.getElementById("qlSearch").addEventListener("input", applyFilter);
-document.getElementById("qlGenreFilter").addEventListener("change", applyFilter);
-document.getElementById("qlCountryFilter").addEventListener("change", applyFilter);
-document.getElementById("btnReload").addEventListener("click", loadMovieGrid);
-
-// ===== MODAL =====
+// ===== MODAL CHI TIẾT PHIM =====
 const detailModal = document.getElementById("detailModal");
-
-function openDetail(m) {
-  const directors = (m.people||[]).filter(p=>p.role==="AUTHOR").map(p=>p.name).join(", ") || "—";
-  const actors    = (m.people||[]).filter(p=>p.role==="ACTOR").map(p=>p.name).join(", ")  || "—";
-  const year      = m.releseDate ? m.releseDate.substring(0,4) : "—";
-
+async function openDetail(m) {
+  let views = m.view ?? "—";
+  try { const vr = await fetch(`${BASE_URL}/api/tittles/view?id=${m.id}`); if(vr.ok) views=await vr.text(); } catch(e) {}
+  const directors = (m.people||[]).filter(p=>p.role==="AUTHOR").map(p=>p.name).join(", ")||"—";
+  const actors    = (m.people||[]).filter(p=>p.role==="ACTOR").map(p=>p.name).join(", ")  ||"—";
   document.getElementById("detailTitle").textContent    = m.name;
-  document.getElementById("detailYear").textContent     = year;
-  document.getElementById("detailCountry").textContent  = m.country || "—";
-  document.getElementById("detailGenres").textContent   = (m.genres||[]).join(", ") || "—";
+  document.getElementById("detailYear").textContent     = m.releseDate ? m.releseDate.substring(0,4) : "—";
+  document.getElementById("detailCountry").textContent  = m.country||"—";
+  document.getElementById("detailGenres").textContent   = (m.genres||[]).join(", ")||"—";
   document.getElementById("detailDirector").textContent = directors;
   document.getElementById("detailCast").textContent     = actors;
-  document.getElementById("detailDesc").textContent     = m.description || "—";
+  document.getElementById("detailViews").textContent    = views + " lượt";
+  document.getElementById("detailDesc").textContent     = m.description||"—";
   document.getElementById("detailImg").src              = "image/a1.jpg";
-
   document.getElementById("detailWatchBtn").onclick = () => window.open(`xemphim.html?id=${m.id}`, "_blank");
-  document.getElementById("detailDelBtn").onclick   = () => { closeDetail(); deleteMovie(m.id, m.name); };
-
-  // Load poster modal
-  fetch(`${BASE_URL}/movies/image/video/${m.id}?kind=POSTER`)
-    .then(r => r.ok ? r.text() : "")
-    .then(url => { if(url.trim()) document.getElementById("detailImg").src = url.trim(); })
-    .catch(()=>{});
-
-  detailModal.classList.add("show");
-  document.body.style.overflow = "hidden";
+  document.getElementById("detailDelBtn").onclick   = () => { closeOverlay(detailModal); deleteMovie(m.id, m.name); };
+  fetch(`${BASE_URL}/movies/image/video/${m.id}?kind=POSTER`).then(r=>r.ok?r.text():"").then(url=>{if(url.trim()) document.getElementById("detailImg").src=url.trim();}).catch(()=>{});
+  openOverlay(detailModal);
 }
-
-document.getElementById("closeDetail").addEventListener("click", closeDetail);
-detailModal.addEventListener("click", e => { if(e.target === detailModal) closeDetail(); });
-document.addEventListener("keydown", e => { if(e.key === "Escape") closeDetail(); });
-function closeDetail() { detailModal.classList.remove("show"); document.body.style.overflow = ""; }
+document.getElementById("closeDetail").addEventListener("click", () => closeOverlay(detailModal));
+detailModal.addEventListener("click", e => { if(e.target===detailModal) closeOverlay(detailModal); });
 
 // ===== XÓA PHIM =====
 async function deleteMovie(id, name) {
   if (!confirm(`Xóa phim "${name}"?`)) return;
   try {
-    const res = await fetch(`${BASE_URL}/api/tittles/${id}`, {
-      method: "DELETE",
-      headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` }
-    });
-    if (res.ok) {
-      alert("✓ Đã xóa: " + name);
-      allMovies = allMovies.filter(m => String(m.id) !== String(id));
-      applyFilter();
-      document.getElementById("statPhim").textContent = allMovies.length;
-    } else {
-      alert("Lỗi xóa: " + res.status);
-    }
+    const res = await fetch(`${BASE_URL}/api/tittles/${id}`, { method:"DELETE", headers:authHeader() });
+    if (res.ok) { alert("✓ Đã xóa: "+name); allMovies=allMovies.filter(m=>String(m.id)!==String(id)); document.getElementById("statPhim").textContent=allMovies.length; loadMovieGrid(); }
+    else alert("Lỗi xóa: "+res.status);
   } catch(e) { alert("Lỗi kết nối"); }
 }
 
-// ===== LOAD FORM DATA =====
+// ===== MODAL SỬA PHIM =====
+const editModal = document.getElementById("editModal");
+async function openEditModal(m) {
+  document.getElementById("edit-id").value        = m.id;
+  document.getElementById("edit-tenphim").value   = m.name||"";
+  document.getElementById("edit-tengoc").value    = m.originalName||"";
+  document.getElementById("edit-noidung").value   = m.description||"";
+  document.getElementById("edit-quocgia").value   = m.country||"";
+  document.getElementById("edit-thoiluong").value = m.duration||"";
+  document.getElementById("edit-ngay").value      = m.releseDate||"";
+  document.getElementById("edit-loaiphim").value  = m.type||"PHIM_LE";
+  ["edit-filePoster","edit-fileBanner","edit-fileVideo"].forEach(id=>document.getElementById(id).value="");
+  ["edit-namePoster","edit-nameBanner","edit-nameVideo"].forEach(id=>document.getElementById(id).value="");
+  document.querySelector(`input[name="editFeatured"][value="${m.featured?"true":"false"}"]`).checked = true;
+  const box = document.getElementById("editGenreCheckGroup");
+  if (!allGenres.length) { const r=await fetch(`${BASE_URL}/api/genres`); if(r.ok) allGenres=await r.json(); }
+  box.innerHTML = allGenres.map(g=>`<label class="check-item"><input type="checkbox" value="${g.id}" name="editGenres" ${(m.genres||[]).includes(g.name)?"checked":""}><span>${g.name}</span></label>`).join("");
+  const posterEl=document.getElementById("edit-currentPoster"), bannerEl=document.getElementById("edit-currentBanner"), videoLbl=document.getElementById("edit-currentVideoLabel");
+  posterEl.style.display=bannerEl.style.display="none"; videoLbl.textContent="Đang kiểm tra video...";
+  fetch(`${BASE_URL}/movies/image/video/${m.id}?kind=POSTER`).then(r=>r.ok?r.text():"").then(url=>{if(url.trim()){posterEl.src=url.trim();posterEl.style.display="block";}}).catch(()=>{});
+  fetch(`${BASE_URL}/movies/image/video/${m.id}?kind=IMAGE`).then(r=>r.ok?r.text():"").then(url=>{if(url.trim()){bannerEl.src=url.trim();bannerEl.style.display="block";}}).catch(()=>{});
+  fetch(`${BASE_URL}/link/video/${m.id}`,{method:"POST",headers:authHeader()}).then(r=>r.ok?r.text():"").then(url=>{videoLbl.textContent=url.trim()?"✅ Đã có video":"⚠️ Chưa có video";}).catch(()=>{videoLbl.textContent="⚠️ Không kiểm tra được";});
+  openOverlay(editModal);
+}
+function closeEditModal() { closeOverlay(editModal); }
+document.getElementById("closeEdit").addEventListener("click", closeEditModal);
+document.getElementById("btnHuySua").addEventListener("click", closeEditModal);
+editModal.addEventListener("click", e => { if(e.target===editModal) closeEditModal(); });
+document.getElementById("edit-filePoster").addEventListener("change", function(){ document.getElementById("edit-namePoster").value=this.files[0]?.name||""; });
+document.getElementById("edit-fileBanner").addEventListener("change", function(){ document.getElementById("edit-nameBanner").value=this.files[0]?.name||""; });
+document.getElementById("edit-fileVideo").addEventListener("change",  function(){ document.getElementById("edit-nameVideo").value =this.files[0]?.name||""; });
+
+document.getElementById("btnLuuSua").addEventListener("click", async function() {
+  const movieId = parseInt(document.getElementById("edit-id").value);
+  const body = {
+    id: movieId,
+    name:          document.getElementById("edit-tenphim").value.trim(),
+    original_name: document.getElementById("edit-tengoc").value.trim(),
+    description:   document.getElementById("edit-noidung").value.trim(),
+    country:       document.getElementById("edit-quocgia").value.trim(),
+    duration:      parseInt(document.getElementById("edit-thoiluong").value)||0,
+    release_date:  document.getElementById("edit-ngay").value,
+    tittleType:    document.getElementById("edit-loaiphim").value,
+    featured:      document.querySelector('input[name="editFeatured"]:checked').value==="true",
+    genre: Array.from(document.querySelectorAll("#editGenreCheckGroup input[type=checkbox]:checked")).map(cb=>parseInt(cb.value)),
+    people: []
+  };
+  const poster=document.getElementById("edit-filePoster").files[0];
+  const banner=document.getElementById("edit-fileBanner").files[0];
+  const video =document.getElementById("edit-fileVideo").files[0];
+  const errors=[];
+  try {
+    const res=await fetch(`${BASE_URL}/api/tittles/update`,{method:"PUT",headers:{"Content-Type":"application/json",...authHeader()},body:JSON.stringify(body)});
+    if(!res.ok) throw new Error("HTTP "+res.status);
+    if(poster){try{await uploadImageForMovie(movieId,poster,"POSTER");}catch(e){errors.push("Poster: "+e.message);}}
+    if(banner){try{await uploadImageForMovie(movieId,banner,"IMAGE"); }catch(e){errors.push("Banner: "+e.message);}}
+    if(video) {try{await uploadVideoForMovie(movieId,video);          }catch(e){errors.push("Video: " +e.message);}}
+    if(errors.length) alert("✓ Đã lưu.\n⚠️ Lỗi file:\n"+errors.join("\n"));
+    else alert("✓ Đã cập nhật phim thành công!");
+    closeEditModal(); allMovies=[]; loadMovieGrid();
+  } catch(e) { alert("Lỗi khi sửa phim: "+e.message); }
+});
+
+// ===== FORM DATA =====
 async function loadFormData() {
-  selectedDaodien  = [];
-  selectedDienVien = [];
+  selectedDaodien=[]; selectedDienVien=[];
   await Promise.all([loadGenreCheckboxes(), loadPeopleData()]);
 }
-
 async function loadGenreCheckboxes() {
-  const box = document.getElementById("genreCheckGroup");
+  const box=document.getElementById("genreCheckGroup");
   try {
-    const res = await fetch(`${BASE_URL}/api/genres`);
-    if (!res.ok) throw new Error();
-    const genres = await res.json();
-    box.innerHTML = genres.map(g => `
-      <label class="check-item">
-        <input type="checkbox" value="${g.id}" name="genres">
-        <span>${g.name}</span>
-      </label>`).join("");
-  } catch(e) {
-    box.innerHTML = `<span class="loading-text" style="color:var(--red2)">Không tải được thể loại</span>`;
-  }
+    if(!allGenres.length){const res=await fetch(`${BASE_URL}/api/genres`);if(!res.ok) throw new Error();allGenres=await res.json();}
+    box.innerHTML=allGenres.map(g=>`<label class="check-item"><input type="checkbox" value="${g.id}" name="genres"><span>${g.name}</span></label>`).join("");
+  } catch(e){box.innerHTML=`<span style="color:var(--red2)">Không tải được thể loại</span>`;}
 }
-
 async function loadPeopleData() {
   try {
-    const res = await fetch(`${BASE_URL}/api/people`);
-    if (!res.ok) throw new Error();
-    allPeople = await res.json();
-    setupPeopleSearch("searchDaodien", "ddDaodien", "tagsDaodien", "AUTHOR", selectedDaodien);
-    setupPeopleSearch("searchDienVien", "ddDienVien", "tagsDienVien", "ACTOR",  selectedDienVien);
-  } catch(e) { console.error(e); }
+    if(!allPeople.length){const res=await fetch(`${BASE_URL}/api/people`);if(!res.ok) throw new Error();allPeople=await res.json();}
+    setupPeopleSearch("searchDaodien","ddDaodien","tagsDaodien","AUTHOR",selectedDaodien);
+    setupPeopleSearch("searchDienVien","ddDienVien","tagsDienVien","ACTOR",selectedDienVien);
+  } catch(e){console.error(e);}
 }
-
 function setupPeopleSearch(inputId, dropdownId, tagsId, role, selectedArr) {
-  const input    = document.getElementById(inputId);
-  const dropdown = document.getElementById(dropdownId);
-  input.addEventListener("focus", () => showPeopleDropdown(input, dropdown, tagsId, role, selectedArr));
-  input.addEventListener("input", () => showPeopleDropdown(input, dropdown, tagsId, role, selectedArr));
-  document.addEventListener("click", function(e) {
-    if (!input.contains(e.target) && !dropdown.contains(e.target)) dropdown.classList.remove("open");
-  });
+  const input=document.getElementById(inputId), dropdown=document.getElementById(dropdownId);
+  input.addEventListener("focus", ()=>showPeopleDropdown(input,dropdown,tagsId,role,selectedArr));
+  input.addEventListener("input", ()=>showPeopleDropdown(input,dropdown,tagsId,role,selectedArr));
+  document.addEventListener("click", function(e){if(!input.contains(e.target)&&!dropdown.contains(e.target)) dropdown.classList.remove("open");});
 }
-
 function showPeopleDropdown(input, dropdown, tagsId, role, selectedArr) {
-  const q = input.value.toLowerCase();
-  const filtered = allPeople.filter(p =>
-    p.role === role &&
-    p.name.toLowerCase().includes(q) &&
-    !selectedArr.find(s => s.id === p.id)
-  );
-  if (!filtered.length) { dropdown.classList.remove("open"); return; }
-  dropdown.innerHTML = filtered.slice(0,8).map(p => `
-    <div class="people-option" data-id="${p.id}" data-name="${p.name}">
-      <span class="people-avatar">${p.name.charAt(0)}</span>${p.name}
-    </div>`).join("");
+  const q=input.value.toLowerCase();
+  const filtered=allPeople.filter(p=>p.role===role&&p.name.toLowerCase().includes(q)&&!selectedArr.find(s=>s.id===p.id));
+  if(!filtered.length){dropdown.classList.remove("open");return;}
+  dropdown.innerHTML=filtered.slice(0,8).map(p=>`<div class="people-option" data-id="${p.id}" data-name="${p.name}"><span class="people-avatar">${p.name.charAt(0)}</span>${p.name}</div>`).join("");
   dropdown.classList.add("open");
-  dropdown.querySelectorAll(".people-option").forEach(opt => {
-    opt.addEventListener("mousedown", function(e) {
+  dropdown.querySelectorAll(".people-option").forEach(opt=>{
+    opt.addEventListener("mousedown",function(e){
       e.preventDefault();
-      selectedArr.push({ id: this.dataset.id, name: this.dataset.name });
-      input.value = "";
-      dropdown.classList.remove("open");
-      renderTags(tagsId, selectedArr, role);
+      selectedArr.push({id:this.dataset.id,name:this.dataset.name});
+      input.value=""; dropdown.classList.remove("open");
+      renderTags(tagsId,selectedArr,role);
     });
   });
 }
-
 function renderTags(tagsId, arr, role) {
-  document.getElementById(tagsId).innerHTML = arr.map((p, i) => `
-    <span class="selected-tag">
-      ${p.name}
-      <button type="button" onclick="removeTag(${i},'${role}')">✕</button>
-    </span>`).join("");
+  document.getElementById(tagsId).innerHTML=arr.map((p,i)=>`<span class="selected-tag">${p.name}<button type="button" onclick="removeTag(${i},'${role}')">✕</button></span>`).join("");
 }
-
 function removeTag(idx, role) {
-  if (role === "AUTHOR") { selectedDaodien.splice(idx,1); renderTags("tagsDaodien", selectedDaodien, role); }
-  else                   { selectedDienVien.splice(idx,1); renderTags("tagsDienVien", selectedDienVien, role); }
+  if(role==="AUTHOR"){selectedDaodien.splice(idx,1);renderTags("tagsDaodien",selectedDaodien,role);}
+  else              {selectedDienVien.splice(idx,1);renderTags("tagsDienVien",selectedDienVien,role);}
 }
 
 // ===== LƯU THỂ LOẠI =====
 document.getElementById("btnLuuTL").addEventListener("click", async function() {
-  const name = document.getElementById("inp-tenTL").value.trim();
-  if (!name) { alert("Nhập tên thể loại!"); return; }
+  const name=document.getElementById("inp-tenTL").value.trim();
+  if(!name){alert("Nhập tên thể loại!");return;}
   try {
-    const res = await fetch(`${BASE_URL}/api/genres`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` },
-      body: JSON.stringify({ name })
-    });
-    if (res.ok) { alert("✓ Đã thêm: " + name); document.getElementById("inp-tenTL").value = ""; }
-    else alert("Lỗi: " + res.status);
-  } catch(e) { alert("Lỗi kết nối"); }
+    const res=await fetch(`${BASE_URL}/api/genres`,{method:"POST",headers:{"Content-Type":"application/json",...authHeader()},body:JSON.stringify({genre:name})});
+    if(res.ok){alert("✓ Đã thêm: "+name);document.getElementById("inp-tenTL").value="";allGenres=[];}
+    else alert("Lỗi: "+res.status);
+  } catch(e){alert("Lỗi kết nối");}
 });
 
 // ===== LƯU NGƯỜI =====
 document.getElementById("btnLuuNguoi").addEventListener("click", async function() {
-  const body = {
+  const body={
     fullName:    document.getElementById("inp-tenNguoi").value.trim(),
-    dateOfBirth: document.getElementById("inp-ngaySinh").value || null,
+    dateOfBirth: document.getElementById("inp-ngaySinh").value||null,
     gender:      document.querySelector('input[name="gender"]:checked').value,
     role:        document.querySelector('input[name="role_people"]:checked').value,
     country:     document.getElementById("inp-quocgiaNguoi").value.trim(),
     description: document.getElementById("inp-moTaNguoi").value.trim()
   };
-  if (!body.fullName) { alert("Nhập họ tên!"); return; }
+  if(!body.fullName){alert("Nhập họ tên!");return;}
   try {
-    const res = await fetch(`${BASE_URL}/api/people`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` },
-      body: JSON.stringify(body)
-    });
-    if (res.ok) { alert("✓ Đã thêm: " + body.fullName); document.getElementById("formThemNguoi").reset(); }
-    else alert("Lỗi: " + res.status);
-  } catch(e) { alert("Lỗi kết nối"); }
+    const res=await fetch(`${BASE_URL}/api/people`,{method:"POST",headers:{"Content-Type":"application/json",...authHeader()},body:JSON.stringify(body)});
+    if(res.ok){alert("✓ Đã thêm: "+body.fullName);document.getElementById("formThemNguoi").reset();allPeople=[];}
+    else alert("Lỗi: "+res.status);
+  } catch(e){alert("Lỗi kết nối");}
 });
 
-// ===== LOAD THỂ LOẠI GRID =====
+// ===== THỂ LOẠI GRID =====
 async function loadTheLoaiGrid() {
-  const grid = document.getElementById("theloaiGrid");
+  const grid=document.getElementById("theloaiGrid");
   try {
-    const res = await fetch(`${BASE_URL}/api/genres`);
-    if (!res.ok) throw new Error();
-    const genres = await res.json();
-    const icons = ["🔥","👻","💕","🌙","😂","🚀","⚔️","🎨","🗺️","🎵","👨‍👩‍👧","🔍"];
-    grid.innerHTML = genres.map((g, i) => `
+    if(!allGenres.length){const res=await fetch(`${BASE_URL}/api/genres`);if(!res.ok) throw new Error();allGenres=await res.json();}
+    const icons=["🔥","👻","💕","🌙","😂","🚀","⚔️","🎨","🗺️","🎵","👨‍👩‍👧","🔍"];
+    grid.innerHTML=allGenres.map((g,i)=>`
       <div class="tl-item">
         <span class="tl-icon">${icons[i%icons.length]}</span>
         <span class="tl-name">${g.name}</span>
-        <div class="tl-actions">
-          <button class="del-btn" type="button" onclick="deleteGenre(${g.id})">🗑</button>
-        </div>
+        <div class="tl-actions"><span style="font-size:11px;color:var(--sub)">ID: ${g.id}</span></div>
       </div>`).join("");
-    document.getElementById("statTL").textContent = genres.length;
-  } catch(e) {
-    grid.innerHTML = `<span style="color:var(--sub);padding:20px;display:block">Không tải được dữ liệu</span>`;
+    document.getElementById("statTL").textContent=allGenres.length;
+  } catch(e){grid.innerHTML=`<span style="color:var(--sub);padding:20px;display:block">Không tải được dữ liệu</span>`;}
+}
+
+// ===== QUẢN LÝ USER =====
+async function loadUserList() {
+  const list=document.getElementById("userList"), count=document.getElementById("userCount");
+  list.innerHTML=`<div class="loading-wrap"><span class="loading-text">⏳ Đang tải...</span></div>`;
+  try {
+    const [meRes,countRes]=await Promise.all([fetch(`${BASE_URL}/api/users`),fetch(`${BASE_URL}/api/count`)]);
+    let totalUsers="—";
+    if(countRes.ok){totalUsers=(await countRes.text()).trim();document.getElementById("statUser").textContent=totalUsers;}
+    count.textContent=`Tổng cộng: ${totalUsers} user`;
+    if(meRes.ok){
+      const users=await meRes.json();
+      list.innerHTML=`
+        <div class="user-table-wrap">
+          <table class="user-table">
+            <thead><tr><th>#ID</th><th>Họ tên</th><th>Email</th><th>Giới tính</th><th>SĐT</th><th>Vai trò</th><th>Thao tác</th></tr></thead>
+            <tbody id="userTableBody">
+              ${users.map(u=>`
+                <tr>
+                  <td><span class="uid">#${u.id??"—"}</span></td>
+                  <td><span class="uname">${u.fullname??"—"}</span></td>
+                  <td class="uemail">${u.email??"—"}</td>
+                  <td>${u.gender==="MALE"?"Nam":u.gender==="FEMALE"?"Nữ":"—"}</td>
+                  <td>${u.phone??"—"}</td>
+                  <td><span class="${u.role==='ADMIN'?'badge-admin':'badge-user'}">${u.role??"—"}</span></td>
+                  <td class="user-acts">
+                    <button class="btn-view-user" onclick="openUserDetail(${u.id})">👁 Chi tiết</button>
+                    <button class="btn-del-user"  onclick="deleteUser(${u.id},'${(u.fullname||"").replace(/'/g,"\\'")}')">🗑 Xóa</button>
+                  </td>
+                </tr>`).join("")}
+            </tbody>
+          </table>
+        </div>`;
+    } else {
+      list.innerHTML=`<p style="color:var(--sub);padding:20px">Không có quyền.<br>Tổng số user: <strong>${totalUsers}</strong></p>`;
+    }
+  } catch(e){
+    list.innerHTML=`<div class="loading-wrap"><span class="loading-text" style="color:var(--red2)">❌ Lỗi: ${e.message}</span></div>`;
   }
 }
 
-async function deleteGenre(id) {
-  if (!confirm("Xóa thể loại này?")) return;
+async function deleteUser(id, name) {
+  if(!confirm(`Xóa user "${name}" (#${id})?`)) return;
   try {
-    await fetch(`${BASE_URL}/api/genres/${id}`, {
-      method: "DELETE",
-      headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` }
-    });
-    loadTheLoaiGrid();
-  } catch(e) {}
+    const res=await fetch(`${BASE_URL}/api/delete?Id=${id}`,{method:"DELETE",headers:authHeader()});
+    if(res.ok){alert("✓ Đã xóa user: "+name);loadUserList();}
+    else alert("Lỗi xóa user: "+res.status);
+  } catch(e){alert("Lỗi kết nối");}
 }
 
+document.getElementById("userSearch").addEventListener("input", function() {
+  const q=this.value.toLowerCase().trim();
+  document.querySelectorAll("#userTableBody tr").forEach(row=>{
+    row.style.display=!q||row.textContent.toLowerCase().includes(q)?"":"none";
+  });
+});
+document.getElementById("btnReloadUser").addEventListener("click", loadUserList);
+
+// ===== MODAL CHI TIẾT USER =====
+const userDetailModal = document.getElementById("userDetailModal");
+
+function formatDateTime(isoString) {
+  if(!isoString) return "—";
+  const d=new Date(isoString); if(isNaN(d)) return "—";
+  const diffMs=Date.now()-d, diffMins=Math.floor(diffMs/60000), diffHours=Math.floor(diffMs/3600000), diffDays=Math.floor(diffMs/86400000);
+  const timeStr=d.toLocaleTimeString("vi-VN",{hour:"2-digit",minute:"2-digit"});
+  if(diffMins<1) return "Vừa xong";
+  if(diffMins<60) return `${diffMins} phút trước`;
+  if(diffHours<24) return `${diffHours} giờ trước lúc ${timeStr}`;
+  if(diffDays===1) return `Hôm qua lúc ${timeStr}`;
+  if(diffDays<7) return `${diffDays} ngày trước`;
+  return d.toLocaleDateString("vi-VN")+` lúc ${timeStr}`;
+}
+
+async function openUserDetail(userId) {
+  const content=document.getElementById("userDetailContent");
+  content.innerHTML=`<div class="loading-wrap"><span class="loading-text">⏳ Đang tải thông tin user...</span></div>`;
+  openOverlay(userDetailModal);
+  try {
+    const usersRes=await fetch(`${BASE_URL}/api/users`);
+    let user=null;
+    if(usersRes.ok){const users=await usersRes.json();user=users.find(u=>String(u.id)===String(userId));}
+    if(!user){
+      const r=await fetch(`${BASE_URL}/api/get/user?id=${userId}`,{headers:authHeader()});
+      if(r.ok) user=await r.json();
+    }
+    if(!user) throw new Error("Không tìm thấy thông tin user");
+
+    let historyItems=[];
+    try {
+      const histRes=await fetch(`${BASE_URL}/history/get/user?id=${userId}`,{headers:authHeader()});
+      if(histRes.ok) historyItems=await histRes.json();
+    } catch(e){}
+    historyItems.sort((a,b)=>new Date(b.date)-new Date(a.date));
+
+    let avatarHtml=`<div class="ud-avatar-fallback">${(user.fullname||"U").charAt(0).toUpperCase()}</div>`;
+    try {
+      const imgRes=await fetch(`${BASE_URL}/movies/image/user/${userId}`,{headers:authHeader()});
+      if(imgRes.ok){const url=(await imgRes.text()).trim();if(url) avatarHtml=`<img class="ud-avatar" src="${url}" alt="">`;}
+    } catch(e){}
+
+    const isAdmin=user.role==="ADMIN", isActive=user.status==="ACTIVE";
+    const formatDate=d=>d?new Date(d).toLocaleDateString("vi-VN"):"—";
+
+    content.innerHTML=`
+      <div class="ud-header">
+        ${avatarHtml}
+        <div class="ud-header-info">
+          <p class="ud-name">${user.fullname||"—"}</p>
+          <div class="ud-badges">
+            <span class="${isAdmin?'badge-admin':'badge-user'}">${user.role||"—"}</span>
+            <span class="ud-status ${isActive?'ud-status--active':'ud-status--locked'}">${isActive?'● Hoạt động':'● Bị khóa'}</span>
+          </div>
+        </div>
+      </div>
+      <div class="ud-info-grid">
+        <div class="ud-info-cell"><label>ID</label><span>#${user.id??"—"}</span></div>
+        <div class="ud-info-cell"><label>Email</label><span>${user.email||"—"}</span></div>
+        <div class="ud-info-cell"><label>Số điện thoại</label><span>${user.phone||"—"}</span></div>
+        <div class="ud-info-cell"><label>Giới tính</label><span>${user.gender==="MALE"?"Nam":user.gender==="FEMALE"?"Nữ":"—"}</span></div>
+        <div class="ud-info-cell"><label>Ngày sinh</label><span>${formatDate(user.dateofbirth)}</span></div>
+        <div class="ud-info-cell"><label>Ngày đăng ký</label><span>22-12-2025</span></div>
+      </div>
+      <div class="ud-section-hd">🎬 Lịch sử xem phim <span class="ud-hist-count">${historyItems.length} phim</span></div>
+      ${historyItems.length
+        ? `<div class="ud-hist-list">
+            ${historyItems.map(item=>`
+              <div class="ud-hist-item">
+                <img class="ud-hist-thumb" id="hist-img-${item.id}" src="image/a1.jpg" alt="${item.name}">
+                <div class="ud-hist-info">
+                  <h4>${item.name||"—"}</h4>
+                  <p>🕐 ${formatDateTime(item.date)}</p>
+                </div>
+                <a class="ud-hist-watch" href="xemphim.html?id=${item.id}" target="_blank">▶ Xem</a>
+              </div>`).join("")}
+           </div>`
+        : `<div class="ud-empty">Chưa có lịch sử xem phim nào</div>`
+      }
+      <div class="ud-footer">
+        <button class="btn-secondary" onclick="closeUserDetail()">✕ Đóng</button>
+        <button class="btn-danger" onclick="closeUserDetail();deleteUser(${user.id},'${(user.fullname||"").replace(/'/g,"\\'")}')">🗑 Xóa user này</button>
+      </div>
+    `;
+
+    historyItems.forEach(item => {
+      if (!item.id) return;
+      fetch(`${BASE_URL}/movies/image/video/${item.id}?kind=POSTER`)
+        .then(r => r.ok ? r.text() : "")
+        .then(url => {
+          if (url.trim()) {
+            const img = document.getElementById(`hist-img-${item.id}`);
+            if (img) img.src = url.trim();
+          }
+        })
+        .catch(() => {});
+    });
+
+  } catch(e){
+    content.innerHTML=`<p style="color:var(--red2);padding:20px">❌ ${e.message}</p><button class="btn-secondary" style="margin:0 20px 20px" onclick="closeUserDetail()">Đóng</button>`;
+  }
+}
+
+function closeUserDetail() { closeOverlay(userDetailModal); }
+document.getElementById("closeUserDetail").addEventListener("click", closeUserDetail);
+userDetailModal.addEventListener("click", e => { if(e.target===userDetailModal) closeUserDetail(); });
+
+// ===== OVERLAY HELPERS =====
+function openOverlay(el)  { el.classList.add("show"); document.body.style.overflow="hidden"; }
+function closeOverlay(el) { el.classList.remove("show"); document.body.style.overflow=""; }
+document.addEventListener("keydown", e => {
+  if(e.key==="Escape"){ closeOverlay(detailModal); closeEditModal(); closeUserDetail(); }
+});
+// ===== THỐNG KÊ PHIM ĐƯỢC YÊU THÍCH =====
+// ===== THỐNG KÊ PHIM ĐƯỢC YÊU THÍCH =====
+let favourCurrentPage = 0;
+let favourPageSize = 5;
+let favourTotalPages = 1;
+
+async function initFavourStatistics() {
+  await loadFavourGenreFilter();
+  await loadFavourStatistics();
+
+  document.getElementById("favourGenreFilter").addEventListener("change", function () {
+    favourCurrentPage = 0;
+    loadFavourStatistics();
+  });
+
+  document.getElementById("favourSortDirection").addEventListener("change", function () {
+    favourCurrentPage = 0;
+    loadFavourStatistics();
+  });
+
+  document.getElementById("btnReloadFavour").addEventListener("click", function () {
+    favourCurrentPage = 0;
+    loadFavourStatistics();
+  });
+
+  document.getElementById("favourPrevPage").addEventListener("click", function () {
+    if (favourCurrentPage > 0) {
+      favourCurrentPage--;
+      loadFavourStatistics();
+    }
+  });
+
+  document.getElementById("favourNextPage").addEventListener("click", function () {
+    if (favourCurrentPage < favourTotalPages - 1) {
+      favourCurrentPage++;
+      loadFavourStatistics();
+    }
+  });
+}
+
+async function loadFavourGenreFilter() {
+  const select = document.getElementById("favourGenreFilter");
+  if (!select) return;
+
+  try {
+    if (!allGenres.length) {
+      const res = await fetch(`${BASE_URL}/api/genres`, {
+        headers: authHeader()
+      });
+
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      allGenres = await res.json();
+    }
+
+    while (select.options.length > 1) {
+      select.remove(1);
+    }
+
+    allGenres.forEach(g => {
+      const option = document.createElement("option");
+      option.value = g.id;
+      option.textContent = g.name || g.genre || "Không tên";
+      select.appendChild(option);
+    });
+
+  } catch (e) {
+    console.error("Lỗi tải thể loại cho thống kê yêu thích:", e);
+  }
+}
+
+async function loadFavourStatistics() {
+  const tbody = document.getElementById("favourStatBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = `
+    <tr>
+      <td colspan="3" class="favour-loading">⏳ Đang tải thống kê yêu thích...</td>
+    </tr>
+  `;
+
+  const genreId = document.getElementById("favourGenreFilter").value;
+  const sortDirection = document.getElementById("favourSortDirection").value || "DESC";
+
+  const params = new URLSearchParams();
+
+  if (genreId) {
+    params.append("genreId", genreId);
+  }
+
+  params.append("sortDirection", sortDirection);
+  params.append("page", favourCurrentPage);
+  params.append("size", favourPageSize);
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/favour/admin/statistics?${params.toString()}`, {
+      headers: authHeader()
+    });
+
+    if (!res.ok) {
+      const msg = await res.text();
+      throw new Error(msg || "HTTP " + res.status);
+    }
+
+    const pageData = await res.json();
+
+    const list = pageData.content || [];
+
+    favourCurrentPage = pageData.number ?? 0;
+    favourTotalPages = pageData.totalPages ?? 1;
+
+    if (favourTotalPages < 1) {
+      favourTotalPages = 1;
+    }
+
+    renderFavourStatistics(list);
+    renderFavourPagination(pageData);
+
+  } catch (e) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3" class="favour-loading" style="color:var(--red2)">
+          ❌ Lỗi tải thống kê yêu thích: ${escapeHTML(e.message)}
+        </td>
+      </tr>
+    `;
+  }
+}
+
+function renderFavourStatistics(list) {
+  const tbody = document.getElementById("favourStatBody");
+
+  if (!list || !list.length) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3" class="favour-empty">
+          Không có phim nào
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  tbody.innerHTML = list.map((item, index) => {
+    const movieId = item.tittleId;
+    const movieName = item.tittleName || "Không tên";
+    const favourCount = item.totalFavour ?? 0;
+    const topIndex = favourCurrentPage * favourPageSize + index + 1;
+
+    return `
+      <tr>
+        <td>
+          <span class="favour-rank">${topIndex}</span>
+        </td>
+
+        <td>
+          <div class="favour-movie-cell">
+            <img
+              class="favour-poster"
+              id="favour-poster-${movieId}"
+              src="image/a1.jpg"
+              alt=""
+            >
+            <div>
+              <div class="favour-title">${escapeHTML(movieName)}</div>
+              <small style="color:var(--sub)">ID: ${movieId ?? "—"}</small>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <span class="favour-count">❤️ ${favourCount}</span>
+        </td>
+      </tr>
+    `;
+  }).join("");
+
+  list.forEach(item => {
+    if (item.tittleId) {
+      loadFavourPoster(item.tittleId);
+    }
+  });
+}
+
+function renderFavourPagination(pageData) {
+  const pageInfo = document.getElementById("favourPageInfo");
+  const prevBtn = document.getElementById("favourPrevPage");
+  const nextBtn = document.getElementById("favourNextPage");
+
+  if (!pageInfo || !prevBtn || !nextBtn) return;
+
+  const totalElements = pageData.totalElements ?? 0;
+
+  pageInfo.textContent = `Trang ${favourCurrentPage + 1} / ${favourTotalPages} — Tổng ${totalElements} phim`;
+
+  prevBtn.disabled = favourCurrentPage <= 0;
+  nextBtn.disabled = favourCurrentPage >= favourTotalPages - 1;
+}
+
+async function loadFavourPoster(movieId) {
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movieId}?kind=POSTER`);
+    if (!res.ok) return;
+
+    const url = (await res.text()).trim();
+    if (!url) return;
+
+    const img = document.getElementById(`favour-poster-${movieId}`);
+    if (img) img.src = url;
+
+  } catch (e) {}
+}
+
+function escapeHTML(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 // ===== STATS =====
 async function loadStats() {
   try {
-
-    const [r1, r2, r3,r4,r5] = await Promise.all([
-      fetch(`${BASE_URL}/api/tittles`),
-      fetch(`${BASE_URL}/api/people`),
-      fetch(`${BASE_URL}/api/genres`),
-       fetch(`${BASE_URL}/api/count`),
-       fetch(`${BASE_URL}/api/tittles/views`,{
-        method:"GET",
-        headers: { "Authorization": `Bearer ${localStorage.getItem("accessToken")||""}` }
-       })
-
-
+    const [r1,r2,r3,r4,r5,r6]=await Promise.all([
+      fetch(`${BASE_URL}/api/tittles/count`,{headers:authHeader()}),
+      fetch(`${BASE_URL}/api/people/count`, {headers:authHeader()}),
+      fetch(`${BASE_URL}/api/genres/count`, {headers:authHeader()}),
+      fetch(`${BASE_URL}/api/count`,        {headers:authHeader()}),
+      fetch(`${BASE_URL}/api/tittles/views`,{headers:authHeader()}),
+      fetch(`${BASE_URL}/api/comments/count`,{headers:authHeader()})
     ]);
-    if (r1.ok) { const d=await r1.json(); document.getElementById("statPhim").textContent=d.length; }
-      if (r2.ok) { const d=await r2.json(); document.getElementById("statNguoi").textContent=d.length; }
-      if (r3.ok) { const d=await r3.json(); document.getElementById("statTL").textContent=d.length; }
-        if (r4.ok) { const d=await r4.text(); document.getElementById("statUser").textContent=d; }
-          if (r5.ok) { const d=await r5.text(); document.getElementById("statXem").textContent=d; }
-  } catch(e) {}
+    if(r1.ok) document.getElementById("statPhim").textContent    =(await r1.text()).trim();
+    if(r2.ok) document.getElementById("statNguoi").textContent   =(await r2.text()).trim();
+    if(r3.ok) document.getElementById("statTL").textContent      =(await r3.text()).trim();
+    if(r4.ok) document.getElementById("statUser").textContent    =(await r4.text()).trim();
+    if(r5.ok) document.getElementById("statXem").textContent     =(await r5.text()).trim();
+    if(r6.ok) document.getElementById("statComment").textContent =(await r6.text()).trim();
+  } catch(e){console.error("Lỗi load stats:",e);}
+}
+
+async function loadHeaderUser() {
+  try {
+    const res=await fetch(`${BASE_URL}/api/me`,{headers:authHeader()});
+    if(!res.ok){localStorage.removeItem("accessToken");window.location.href="index.html";return;}
+    const user=await res.json();
+    if(user.role!=="ADMIN"){window.location.href="index.html";return;}
+    const nameEl=document.getElementById("headerName");
+    if(nameEl) nameEl.textContent=user.fullname||user.email||"Admin";
+    const avatarEl=document.getElementById("headerAvatar");
+    if(avatarEl){
+      try {
+        const imgRes=await fetch(`${BASE_URL}/movies/image/user`,{headers:authHeader()});
+        if(imgRes.ok){const url=(await imgRes.text()).trim();if(url) avatarEl.src=url;}
+      } catch(e){}
+    }
+  } catch(e){
+    const nameEl=document.getElementById("headerName");
+    if(nameEl) nameEl.textContent="Admin";
+  }
 }
 
 loadStats();
+loadHeaderUser();
+initFavourStatistics();
 </script>
 </body>
 </html>

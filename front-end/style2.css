@@ -20,9 +20,11 @@ img { display: block; max-width: 100%; }
 .topbar { position: sticky; top: 0; z-index: 200; display: flex; gap: 14px; align-items: center; padding: 12px 24px; background: rgba(8,12,20,.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
 .brand { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .brand-icon { color: var(--red); }
-.searchbar { flex: 1; display: flex; align-items: center; gap: 8px; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 8px 14px; }
-.searchbar input { flex: 1; background: none; border: 0; outline: none; color: var(--text); font-family: inherit; font-size: 14px; }
-.searchbar input::placeholder { color: var(--dim); }
+.searchbar{flex:1;display:flex;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:0 14px;transition:border-color .2s}
+.searchbar:focus-within{border-color:var(--blue)}
+.search-icon{color:var(--sub);font-size:14px;flex-shrink:0}
+.searchbar input{flex:1;padding:10px;border:0;background:transparent;color:var(--text);font-family:inherit;font-size:14px;outline:none}
+.searchbar input::placeholder{color:var(--dim)}
 .search-icon { color: var(--dim); }
 .auth { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .btn { padding: 9px 18px; border-radius: 10px; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer; border: 0; transition: all .2s; }

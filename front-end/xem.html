@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -12,10 +14,10 @@
 
 <!-- HEADER -->
 <header class="topbar">
-  <a class="brand" href="index.html"><span class="brand-icon">▶</span>PhimHay</a>
-  <form class="searchbar" action="#" role="search">
+  <a class="brand" href="#"><span class="brand-icon">▶</span>PhimHay</a>
+  <form id="searchForm" class="searchbar" action="#" role="search">
     <span class="search-icon">🔍</span>
-    <input type="search" placeholder="Tìm kiếm phim, diễn viên..." />
+    <input id="searchInput" type="search" placeholder="Tìm kiếm phim  ..." />
   </form>
   <div class="auth" id="auth">
     <button class="btn btn-ghost" id="openLogin">Đăng nhập</button>
@@ -26,18 +28,18 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <a class="nav-link" href="index.html">Trang chủ</a>
-  <a class="nav-link" href="#">Phim mới</a>
-  <a class="nav-link" href="xem6.html">Phim lẻ</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=HOAT_HINH">Hoạt hình</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_LE">Phim lẻ</a>
   <div class="dd">
     <button class="dd-btn" type="button">
       Thể loại
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu cols3">
-      <a href="#">🔥 Hành động</a><a href="#">🔍 Hình sự</a><a href="#">👻 Kinh dị</a>
-      <a href="#">🌙 Bí ẩn</a><a href="#">💕 Tình cảm</a><a href="#">😂 Hài hước</a>
-      <a href="#">🚀 Viễn tưởng</a><a href="#">⚔️ Cổ trang</a><a href="#">🎨 Hoạt hình</a>
-      <a href="#">👨‍👩‍👧 Gia đình</a><a href="#">🎵 Âm nhạc</a><a href="#">🗺️ Phiêu lưu</a>
+      <a href="#" data-type="genre" data-value="Hành động">🔥 Hành động</a><a href="#" data-type="genre" data-value="Hình sự">🔍 Hình sự</a><a href="#" data-type="genre" data-value="Kinh dị">👻 Kinh dị</a>
+      <a href="#" data-type="genre" data-value="Bí ẩn">🌙 Bí ẩn</a><a href="#" data-type="genre" data-value="Tình cảm">💕 Tình cảm</a><a href="#" data-type="genre" data-value="Hài hước">😂 Hài hước</a>
+      <a href="#" data-type="genre" data-value="Viễn tưởng">🚀 Viễn tưởng</a><a href="#" data-type="genre" data-value="Cổ trang">⚔️ Cổ trang</a><a href="#" data-type="genre" data-value="Hoạt hình">🎨 Hoạt hình</a>
+      <a href="#" data-type="genre" data-value="Gia đình">👨‍👩‍👧 Gia đình</a><a href="#" data-type="genre" data-value="Âm nhạc">🎵 Âm nhạc</a><a href="#" data-type="genre" data-value="Phiêu lưu">🗺️ Phiêu lưu</a>
     </div>
   </div>
   <div class="dd">
@@ -46,19 +48,19 @@
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu">
-      <a href="#">🇻🇳 Việt Nam</a><a href="#">🇰🇷 Hàn Quốc</a><a href="#">🇨🇳 Trung Quốc</a>
-      <a href="#">🇯🇵 Nhật Bản</a><a href="#">🇹🇭 Thái Lan</a><a href="#">🌍 Âu Mỹ</a>
+      <a href="xem6.html?type=country&value=Vietnam" data-type="country" data-value="Vietnam">🇻🇳 Việt Nam</a><a href="xem6.html?type=country&value=Korea" data-type="country" data-value="Korea">🇰🇷 Hàn Quốc</a><a href="xem6.html?type=country&value=China" data-type="country" data-value="China">🇨🇳 Trung Quốc</a>
+      <a href="xem6.html?type=country&value=Japan" data-type="country" data-value="Japan">🇯🇵 Nhật Bản</a><a href="xem6.html?type=country&value=Thailand" data-type="country" data-value="Thailand">🇹🇭 Thái Lan</a><a href="xem6.html?type=country&value=USA" data-type="country" data-value="USA">🌍 Âu Mỹ</a>
     </div>
   </div>
-  <a class="nav-link" href="#">🎬 Chiếu rạp</a>
+  <a class="nav-link" href="xem6.html?type=tittleType&value=PHIM_CHIEU_RAP">🎬 Chiếu rạp</a>
   <div class="dd">
     <button class="dd-btn" type="button">
       Năm
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </button>
     <div class="dd-menu">
-      <a href="#">2026</a><a href="#">2025</a><a href="#">2024</a>
-      <a href="#">2023</a><a href="#">2022</a><a href="#">2021</a>
+      <a href="#" data-type="year" data-value="2026">2026</a><a href="#" data-type="year" data-value="2025">2025</a><a href="#" data-type="year" data-value="2024">2024</a>
+      <a href="#" data-type="year" data-value="2023">2023</a><a href="#" data-type="year" data-value="2022">2022</a><a href="#" data-type="year" data-value="2021">2021</a>
     </div>
   </div>
 </nav>
@@ -119,13 +121,8 @@
     <aside class="player-sidebar">
       <div class="sidebar-card">
         <h3 class="sidebar-title">👁 Xem nhiều nhất</h3>
-        <div class="rank-list">
-          <a class="rank-item" href="#"><span class="rank-no t1">1</span><img src="image/a1.jpg" alt=""/><div class="rank-info"><h4>Avatar lửa và tro tàn</h4><p>2025</p><span class="rank-meta">👁 9,919 lượt</span></div></a>
-          <a class="rank-item" href="#"><span class="rank-no t2">2</span><img src="image/a2.jpg" alt=""/><div class="rank-info"><h4>Công chúa trở về</h4><p>2025</p><span class="rank-meta">👁 8,000 lượt</span></div></a>
-          <a class="rank-item" href="#"><span class="rank-no t3">3</span><img src="image/a3.jpg" alt=""/><div class="rank-info"><h4>Điên Cuồng 731</h4><p>2025</p><span class="rank-meta">👁 4,000 lượt</span></div></a>
-          <a class="rank-item" href="#"><span class="rank-no">4</span><img src="image/a4.jpg" alt=""/><div class="rank-info"><h4>Bé Ghẻ Ma Cung</h4><p>2024</p><span class="rank-meta">👁 3,500 lượt</span></div></a>
-          <a class="rank-item" href="#"><span class="rank-no">5</span><img src="image/a5.jpg" alt=""/><div class="rank-info"><h4>Người Cai Ngục</h4><p>2023</p><span class="rank-meta">👁 2,800 lượt</span></div></a>
-          <a class="rank-item" href="#"><span class="rank-no">6</span><img src="image/a6.jpg" alt=""/><div class="rank-info"><h4>Tại sao Boss muốn cưới tôi</h4><p>2019</p><span class="rank-meta">👁 2,100 lượt</span></div></a>
+        <div class="rank-list" id="mostViewedMovies">
+          <p style="color:var(--sub);font-size:14px;">Đang tải phim xem nhiều...</p>
         </div>
       </div>
     </aside>
@@ -245,6 +242,71 @@ async function loadPoster() {
   } catch (err) { console.error(err); }
 }
 
+
+
+// ── RENDER XEM NHIỀU NHẤT ───────────────────────
+async function renderRankItem(movie, index) {
+  const year = movie.releseDate ? movie.releseDate.substring(0, 4) : "";
+  const name = movie.name || "Không tên";
+  const originalName = movie.original_name || "";
+  const views = movie.views ?? movie.view ?? 0;
+
+  let imageUrl = "image/a1.jpg";
+  try {
+    const res = await fetch(`${BASE_URL}/movies/image/video/${movie.id}?kind=POSTER`);
+    if (res.ok) imageUrl = (await res.text()).trim() || imageUrl;
+  } catch (err) {
+    console.error("Không tải được ảnh:", err);
+  }
+
+  const topClass = index === 0 ? "t1" : index === 1 ? "t2" : index === 2 ? "t3" : "";
+
+  return `
+    <a class="rank-item" href="xemphim.html?id=${movie.id}">
+      <span class="rank-no ${topClass}">${index + 1}</span>
+      <img src="${imageUrl}" alt="${name}" />
+      <div class="rank-info">
+        <h4>${name}</h4>
+        <p>${[originalName, year].filter(Boolean).join(" • ")}</p>
+        <span class="rank-meta">👁 ${Number(views).toLocaleString("vi-VN")} lượt</span>
+      </div>
+    </a>
+  `;
+}
+
+async function loadMostViewed() {
+  const container = document.getElementById("mostViewedMovies");
+  if (!container) return;
+  container.innerHTML = "<p style='color:var(--sub);font-size:14px;'>Đang tải phim xem nhiều...</p>";
+
+  try {
+    const res = await fetch(`${BASE_URL}/api/tittles/custom`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        sortBy: "views",
+        sortDir: "desc"
+      })
+    });
+
+    if (!res.ok) throw new Error("Lỗi API");
+
+    const movies = await res.json();
+
+    if (!movies.length) {
+      container.innerHTML = "<p style='color:var(--sub);font-size:14px;'>Không có dữ liệu.</p>";
+      return;
+    }
+
+    container.innerHTML = (await Promise.all(
+      movies.filter(movie => String(movie.id) !== String(movieId)).slice(0, 6).map((movie, index) => renderRankItem(movie, index))
+    )).join("");
+  } catch (err) {
+    container.innerHTML = "<p style='color:#f66;font-size:14px;'>Không tải được phim xem nhiều.</p>";
+    console.error("Lỗi loadMostViewed:", err);
+  }
+}
+
 // ── COMMENT HELPERS ───────────────────────────────
 const AV_LIST = ['av-blue','av-red','av-green','av-purple','av-amber'];
 function avColor(name) {
@@ -330,7 +392,13 @@ function renderNode(c, depth) {
       </div>
     </div>`;
 }
-
+document.getElementById("searchForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const q = document.getElementById("searchInput").value.trim();
+  if (q) {
+    window.location.href = `xem6.html?type=name&value=${encodeURIComponent(q)}`;
+  }
+});
 // ── LOAD COMMENTS ─────────────────────────────────
 async function loadComments() {
   const el = document.getElementById("commentList");
@@ -411,8 +479,22 @@ function toggleLike(btn) {
   btn.classList.toggle('liked');
   btn.textContent = btn.classList.contains('liked') ? '❤ Đã thích' : '♡ Thích';
 }
+function addview(){
+    fetch(`${BASE_URL}/api/tittles/add-view?Id=${movieId}`, {
+        method: "POST"
+      }).catch(err => console.error(err));
+} 
 
 // ── DROPDOWN ──────────────────────────────────────
+document.querySelectorAll(".dd-menu a[data-type]").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const type = link.dataset.type;
+    const value = link.dataset.value;
+    window.location.href = `xem6.html?type=${type}&value=${encodeURIComponent(value)}`;
+  });
+});
+
 document.querySelectorAll(".dd").forEach(dd => {
   dd.querySelector(".dd-btn").addEventListener("click", e => {
     e.stopPropagation();
@@ -435,6 +517,14 @@ loadVideo();
 loadPoster();
 loadViewCount();
 loadComments();
+loadMostViewed();
+addview();
+
 </script>
 </body>
 </html>
+
+
+
+
+youtube-dubbing

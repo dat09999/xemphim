@@ -36,11 +36,11 @@ public class SercurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/login","/api/add","/auth/**","/swagger-ui/**",
                                 "/v3/api-docs/**",
-                                "/swagger-ui.html","/movies/**","/api/**").permitAll() // ✅ register/login public
+                                "/swagger-ui.html","/movies/**","/api/**","/history/**").permitAll() // ✅ register/login public
                         .anyRequest().authenticated()
                 )
 
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore    (jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
     @Bean

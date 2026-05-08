@@ -19,6 +19,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -28,21 +29,23 @@ import java.util.Map;
 public class UserController {
 
     private final Userserviceimpl userService;
-   private final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final Jwtservice jwtService;
     private final AuthenticationManager authenticationManager;
+
     @PostMapping("/add")
     public ResponseEntity<Userreponse> create(@RequestBody UserRequest req) {
         log.info("Request to create user: {}", req);
         return ResponseEntity.ok(userService.add(req));
     }
+
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest req) {
 
         Authentication auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(req.getEmail(), req.getPassword())
         );
-        User a=userRepository.findByEmail(req.getEmail()).orElseThrow(()->new RuntimeException("Email not found"));
+        User a = userRepository.findByEmail(req.getEmail()).orElseThrow(() -> new RuntimeException("Email not found"));
 
         // lấy role từ authorities
         String role = auth.getAuthorities().iterator().next().getAuthority(); // "ROLE_USER"
@@ -52,10 +55,11 @@ public class UserController {
         log.info("{}dang nhap thanh cong", req.toString());
         return ResponseEntity.ok(new AuthResponse(token, "Bearer"));
     }
+
     @GetMapping("/me")
-    public Userreponse me( Authentication auth) {
+    public Userreponse me(Authentication auth) {
         String email = auth.getName();
-        User a= userRepository.findByEmail(email).orElseThrow(()->new RuntimeException("Email not found"));
+        User a = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("Email not found"));
         log.info("laythong tin thanh cong");
         return Userreponse.builder()
                 .id(Long.valueOf(a.getId()))
@@ -67,6 +71,8 @@ public class UserController {
                 .phone(a.getSdt())
                 .build();
     }
+
+
     @GetMapping("/count")
     public ResponseEntity<String> count() {
         long count = userRepository.count();
@@ -75,14 +81,16 @@ public class UserController {
 
 
     }
+
     @DeleteMapping("/delete")
     public void delete(@RequestParam int Id) {
 
         log.info("xoa user thanh cong");
-         userService.delete(Id);
+        userService.delete(Id);
 
 
     }
+
     @PutMapping("/update")
     public ResponseEntity<String> update(@RequestParam int Id) {
 
@@ -92,4 +100,27 @@ public class UserController {
 
 
     }
+
+    @GetMapping("/users")
+    public ResponseEntity<List<Userreponse>> getAll() {
+        log.info("lay danh sach");
+        return ResponseEntity.ok(userService.getAllusers());
+    }
+    @GetMapping("/get/user")
+    public Userreponse me(@RequestParam int id) {
+
+        User a = userRepository.findById(id).orElseThrow(() -> new RuntimeException("Email not found"));
+        log.info("laythong tin thanh cong");
+        return Userreponse.builder()
+                .id(Long.valueOf(a.getId()))
+                .email(a.getEmail())
+                .role(a.getRole())
+                .fullname(a.getFullName())
+                .dateofbirth(a.getBirthday())
+                .gender(a.getGender())
+                .phone(a.getSdt())
+                .create(a.getCreateDate())
+                .build();
+    }
+
 }
