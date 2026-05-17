@@ -23,7 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 public class ImgController {
     @Value("${minio.bucket}")
     private String bucket;
-    @Value("${minio.bucket1}")
+    @Value("${minio.bucket.video}")
     private String bucket1;
     private final ImageService imageService;
     private  final ImageRepository imageRepository;
